@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Марк Сердюк — Продакт-менеджер</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --lime: #CDFF50;
+  --pink: #FF6B9D;
+  --blue: #4ECDC4;
+  --orange: #FF8C42;
+  --dark: #1A1A2E;
+  --darker: #12121F;
+  --light: #F0F0F5;
+  --card: rgba(255,255,255,0.06);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--darker);
+  color: var(--light);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* NOISE OVERLAY */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* GLOW BLOBS */
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+.blob-1 { width: 600px; height: 600px; background: var(--lime); top: -200px; left: -200px; }
+.blob-2 { width: 500px; height: 500px; background: var(--pink); bottom: -100px; right: -150px; }
+.blob-3 { width: 400px; height: 400px; background: var(--blue); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  padding: 20px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  backdrop-filter: blur(20px);
+  background: rgba(18,18,31,0.7);
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.nav-logo {
+  font-family: 'Dela Gothic One', cursive;
+  font-size: 1.3rem;
+  background: linear-gradient(135deg, var(--lime), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  color: rgba(240,240,245,0.6);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--lime); }
+
+/* SECTIONS */
+section {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 100px;
+}
+.hero-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--lime), var(--blue));
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 6px 16px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 24px;
+  width: fit-content;
+  animation: fadeUp 0.8s ease both;
+}
+.hero h1 {
+  font-family: 'Dela Gothic One', cursive;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1.05;
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s ease 0.15s both;
+}
+.hero h1 .accent { color: var(--lime); }
+.hero h1 .accent2 { color: var(--pink); }
+.hero-sub {
+  font-size: 1.15rem;
+  color: rgba(240,240,245,0.6);
+  max-width: 600px;
+  margin-bottom: 40px;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+.hero-badges {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  animation: fadeUp 0.8s ease 0.45s both;
+}
+.badge {
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+}
+.badge:hover { border-color: var(--lime); transform: translateY(-2px); }
+.badge.highlight {
+  background: linear-gradient(135deg, rgba(205,255,80,0.15), rgba(78,205,196,0.15));
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+/* SECTION HEADERS */
+.section-header {
+  margin-bottom: 48px;
+  padding-top: 120px;
+}
+.section-header h2 {
+  font-family: 'Dela Gothic One', cursive;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin-bottom: 12px;
+}
+.section-header .line {
+  height: 4px;
+  width: 60px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--lime), var(--blue));
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.about-card {
+  padding: 32px;
+  border-radius: 20px;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+  transition: all 0.35s;
+}
+.about-card:hover {
+  border-color: rgba(205,255,80,0.3);
+  transform: translateY(-4px);
+}
+.about-card .icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+.about-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--lime);
+}
+.about-card p {
+  color: rgba(240,240,245,0.6);
+  font-size: 0.92rem;
+}
+.about-card.wide {
+  grid-column: 1 / -1;
+}
+
+/* STATS */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+.stat {
+  text-align: center;
+  padding: 28px 16px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.stat-num {
+  font-family: 'Dela Gothic One', cursive;
+  font-size: 2.4rem;
+  background: linear-gradient(135deg, var(--lime), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-label {
+  font-size: 0.82rem;
+  color: rgba(240,240,245,0.5);
+  margin-top: 6px;
+}
+
+/* PROJECTS */
+.projects-grid {
+  display: grid;
+  gap: 20px;
+}
+.project {
+  padding: 32px;
+  border-radius: 20px;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 24px;
+  transition: all 0.35s;
+}
+.project:hover {
+  border-color: rgba(255,107,157,0.3);
+  transform: translateY(-3px);
+}
+.project-emoji {
+  font-size: 2.4rem;
+  padding-top: 2px;
+}
+.project h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.project .org {
+  color: var(--pink);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.project p {
+  color: rgba(240,240,245,0.55);
+  font-size: 0.88rem;
+}
+.project-date {
+  color: rgba(240,240,245,0.35);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  padding-top: 4px;
+}
+
+/* ACHIEVEMENTS */
+.achievements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.ach {
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(255,140,66,0.12), rgba(255,107,157,0.12));
+  border: 1px solid rgba(255,140,66,0.25);
+  color: var(--orange);
+}
+
+/* CONTACT */
+.contact-section { padding-bottom: 120px; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 24px;
+  border-radius: 20px;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.06);
+  text-decoration: none;
+  color: var(--light);
+  transition: all 0.35s;
+}
+.contact-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(78,205,196,0.1);
+}
+.contact-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+.contact-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.contact-card span {
+  color: rgba(240,240,245,0.5);
+  font-size: 0.85rem;
+}
+
+/* FOOTER */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 32px;
+  color: rgba(240,240,245,0.25);
+  font-size: 0.8rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 0.8rem; }
+  section { padding: 0 20px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .project { grid-template-columns: auto 1fr; }
+  .project-date { grid-column: 1 / -1; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+}
+</style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<nav>
+  <div class="nav-logo">МС</div>
+  <div class="nav-links">
+    <a href="#about">Обо мне</a>
+    <a href="#projects">Проекты</a>
+    <a href="#contact">Контакты</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-tag">Продакт-менеджер</div>
+  <h1>Марк<br><span class="accent">Сердюк</span><span class="accent2">.</span></h1>
+  <p class="hero-sub">Строю продукты на стыке бизнеса, аналитики и технологий. От стратегии образования в Правительстве РФ до партнёрских платформ в Т-Банке.</p>
+  <div class="hero-badges">
+    <span class="badge highlight">CustDev</span>
+    <span class="badge">Agile</span>
+    <span class="badge">SQL</span>
+    <span class="badge">Figma</span>
+    <span class="badge">A/B-тесты</span>
+    <span class="badge">JTBD</span>
+    <span class="badge">CJM</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <h2>Обо мне</h2>
+    <div class="line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-card fade-in">
+      <div class="icon">🎓</div>
+      <h3>Образование</h3>
+      <p>Центральный Университет, Москва — Математика и компьютерные науки, трек «Бизнес и аналитика» (2024–2028). Корпоративный университет Газпром нефти — Руководитель проектов (2025).</p>
+    </div>
+    <div class="about-card fade-in">
+      <div class="icon">🚀</div>
+      <h3>Опыт</h3>
+      <p>Газпромнефть Бизнес-сервис, X5 Group, Т-Банк Автоуслуги, Правительство РФ. Преподаю бизнес-аналитику в Центральном университете.</p>
+    </div>
+    <div class="about-card wide fade-in">
+      <div class="icon">🎹</div>
+      <h3>Не только продакт</h3>
+      <p>Основал крупнейший студенческий спортивный клуб, выиграл 4 премии за виртуозную игру на пианино, автор выставки генеративного искусства CU:/dev/art, держал ферму из 100+ кроликов.</p>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat fade-in"><div class="stat-num">131</div><div class="stat-label">глубинных интервью</div></div>
+    <div class="stat fade-in"><div class="stat-num">50+</div><div class="stat-label">улучшений системы</div></div>
+    <div class="stat fade-in"><div class="stat-num">9</div><div class="stat-label">регионов гембы</div></div>
+    <div class="stat fade-in"><div class="stat-num">6</div><div class="stat-label">стипендий</div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <h2>Проекты</h2>
+    <div class="line"></div>
+  </div>
+  <div class="projects-grid">
+    <div class="project fade-in">
+      <div class="project-emoji">⚙️</div>
+      <div>
+        <div class="org">Газпромнефть Бизнес-сервис</div>
+        <h3>Руководитель проекта</h3>
+        <p>CustDev среди 10 дочерних обществ, апробация LLM для работы с документами и ERP, калькулятор эффектов роботизации, запуск перехода к продуктовому подходу.</p>
+      </div>
+      <div class="project-date">Июл–Сен 2025</div>
+    </div>
+    <div class="project fade-in">
+      <div class="project-emoji">🏪</div>
+      <div>
+        <div class="org">X5 Group</div>
+        <h3>Система полномочий директоров-партнёров</h3>
+        <p>Гемба в 9 регионах, 50+ предложений по улучшению системы, CJM директоров-партнёров.</p>
+      </div>
+      <div class="project-date">Мар–Сен 2025</div>
+    </div>
+    <div class="project fade-in">
+      <div class="project-emoji">🚗</div>
+      <div>
+        <div class="org">Т-Банк Автоуслуги</div>
+        <h3>Партнёрское привлечение</h3>
+        <p>131 глубинное интервью, лендинг для привлечения партнёров, база для подключения автосервисов в 5 регионах.</p>
+      </div>
+      <div class="project-date">Июн–Окт 2025</div>
+    </div>
+    <div class="project fade-in">
+      <div class="project-emoji">🏛️</div>
+      <div>
+        <div class="org">Правительство РФ</div>
+        <h3>Стратегия образования 2040</h3>
+        <p>Руководитель рабочей группы, управление командой из 8 госслужащих, мнения 100+ экспертов.</p>
+      </div>
+      <div class="project-date">Дек 2024–2025</div>
+    </div>
+    <div class="project fade-in">
+      <div class="project-emoji">🌍</div>
+      <div>
+        <div class="org">БРИКС</div>
+        <h3>Доклад в Бразилии</h3>
+        <p>Аналитика по розничным инвесторам стран БРИКС. Предложение по трансформации системы платежей — экономия до $30 млрд ежегодно.</p>
+      </div>
+      <div class="project-date">Май 2025</div>
+    </div>
+  </div>
+
+  <div class="section-header" style="padding-top:60px;">
+    <h2>Достижения</h2>
+    <div class="line"></div>
+  </div>
+  <div class="achievements">
+    <span class="ach">🏆 Стипендиат Авито 2026</span>
+    <span class="ach">🏆 Стипендиат Сбера 2025</span>
+    <span class="ach">🏆 Стипендиат Т-Банка 2025</span>
+    <span class="ach">🏆 Стипендиат Reksoft 2025</span>
+    <span class="ach">🏆 Стипендиат Мосбиржи 2024</span>
+    <span class="ach">🥇 Победитель Дататон 2.0</span>
+    <span class="ach">🎤 Ментор DEADLINE 2025</span>
+    <span class="ach">🎨 Автор CU:/dev/art</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-header">
+    <h2>Контакты</h2>
+    <div class="line"></div>
+  </div>
+  <div class="contact-grid">
+    <a class="contact-card fade-in" href="mailto:m.gov@internet.ru">
+      <div class="contact-icon">✉️</div>
+      <h3>Email</h3>
+      <span>m.gov@internet.ru</span>
+    </a>
+    <a class="contact-card fade-in" href="https://t.me/serdukmark">
+      <div class="contact-icon">💬</div>
+      <h3>Telegram</h3>
+      <span>@serdukmark</span>
+    </a>
+    <a class="contact-card fade-in" href="tel:+79529977440">
+      <div class="contact-icon">📱</div>
+      <h3>Телефон</h3>
+      <span>+7 952 997-74-40</span>
+    </a>
+  </div>
+</section>
+
+<footer>© 2026 Марк Сердюк</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
