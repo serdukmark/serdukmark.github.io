@@ -187,9 +187,9 @@ footer { position: relative; z-index: 1; text-align: center; padding: 32px; colo
     </div>
   </div>
   <div class="stats-row">
-    <div class="stat fade-in"><div class="stat-num">>200</div><div class="stat-label">глубинных интервью</div></div>
-    <div class="stat fade-in"><div class="stat-num">>1000</div><div class="stat-label">слайдов презентаций</div></div>
-    <div class="stat fade-in"><div class="stat-num">16</div><div class="stat-label">человек в командах</div></div>
+    <div class="stat fade-in"><div class="stat-num">>200</div><div class="stat-label">провел глубинных интервью</div></div>
+    <div class="stat fade-in"><div class="stat-num">>1000</div><div class="stat-label">нарисовал слайдов презентаций</div></div>
+    <div class="stat fade-in"><div class="stat-num">16</div><div class="stat-label">человек в командах, где я менеджер</div></div>
     <div class="stat fade-in"><div class="stat-num">∞</div><div class="stat-label">желания развиваться и развивать</div></div>
   </div>
 </section>
@@ -239,9 +239,9 @@ footer { position: relative; z-index: 1; text-align: center; padding: 32px; colo
 <section id="contact" class="contact-section">
   <div class="section-header"><h2>Контакты</h2><div class="line"></div></div>
   <div class="contact-grid">
-    <a class="contact-card fade-in" href="/cdn-cgi/l/email-protection#adc0edc0dec8dfc9d4d8c683dfd8">
+    <a class="contact-card fade-in" href="mailto:m@mserdyuk.ru">
       <div class="contact-card-icon cci-mail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-      <h3>Email</h3><span><span class="__cf_email__" data-cfemail="2c416c415f495e48555947025e59">[email&#160;protected]</span></span>
+      <h3>Email</h3><span>m@mserdyuk.ru</span>
     </a>
     <a class="contact-card fade-in" href="https://t.me/serdukmark" target="_blank">
       <div class="contact-card-icon cci-tg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></div>
@@ -255,8 +255,16 @@ footer { position: relative; z-index: 1; text-align: center; padding: 32px; colo
 </section>
 
 <footer>&copy; 2026 Марк Сердюк</footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
-      set
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
