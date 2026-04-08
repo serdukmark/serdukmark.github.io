@@ -156,7 +156,16 @@ footer { position: relative; z-index: 1; text-align: center; padding: 32px; colo
     <div class="about-card fade-in">
       <div class="about-icon edu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg></div>
       <h3>Образование</h3>
-      <p>Центральный Университет, Москва — Математика и компьютерные науки, трек «Бизнес и аналитика» (2024–2028). Корпоративный университет Газпром нефти — Руководитель проектов (2025).</p>
+      <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <span style="color:rgba(240,240,245,0.4);font-size:0.85rem;font-weight:600;white-space:nowrap;">2024–2028</span>
+          <img src="cu.svg" alt="Центральный Университет" style="height:32px;filter:brightness(0) invert(1);opacity:0.85;">
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <span style="color:rgba(240,240,245,0.4);font-size:0.85rem;font-weight:600;white-space:nowrap;">2025</span>
+          <img src="gpn_university.png" alt="Корпоративный университет Газпром нефти" style="height:32px;">
+        </div>
+      </div>
     </div>
     <div class="about-card fade-in">
       <div class="about-icon exp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg></div>
@@ -222,9 +231,9 @@ footer { position: relative; z-index: 1; text-align: center; padding: 32px; colo
 <section id="contact" class="contact-section">
   <div class="section-header"><h2>Контакты</h2><div class="line"></div></div>
   <div class="contact-grid">
-    <a class="contact-card fade-in" href="mailto:m.gov@internet.ru">
+    <a class="contact-card fade-in" href="/cdn-cgi/l/email-protection#177a39707861577e79637265797263396562">
       <div class="contact-card-icon cci-mail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-      <h3>Email</h3><span>m.gov@internet.ru</span>
+      <h3>Email</h3><span><span class="__cf_email__" data-cfemail="e984c78e869fa980879d8c9b878c9dc79b9c">[email&#160;protected]</span></span>
     </a>
     <a class="contact-card fade-in" href="https://t.me/serdukmark" target="_blank">
       <div class="contact-card-icon cci-tg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></div>
@@ -238,16 +247,8 @@ footer { position: relative; z-index: 1; text-align: center; padding: 32px; colo
 </section>
 
 <footer>&copy; 2026 Марк Сердюк</footer>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 80);
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.15 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
-</body>
-</html>
+ 
