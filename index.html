@@ -134,31 +134,47 @@ footer { position: relative; z-index: 1; text-align: center; padding: 32px; colo
   .project { grid-template-columns: 48px 1fr; } .project-date { grid-column: 1 / -1; }
   .contact-grid { grid-template-columns: 1fr; }
 }
+/* Custom cursor */
+*, *::before, *::after { cursor: none !important; }
+#cursor { position: fixed; width: 12px; height: 12px; background: var(--lime); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%,-50%); transition: transform 0.1s ease, background 0.2s ease; }
+#cursor-ring { position: fixed; width: 36px; height: 36px; border: 2px solid rgba(205,255,80,0.5); border-radius: 50%; pointer-events: none; z-index: 99998; transform: translate(-50%,-50%); transition: left 0.12s ease, top 0.12s ease, width 0.2s ease, height 0.2s ease, border-color 0.2s ease; }
+body:has(a:hover) #cursor, body:has(button:hover) #cursor { transform: translate(-50%,-50%) scale(2.5); background: var(--pink); }
+body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52px; height: 52px; border-color: rgba(255,107,157,0.5); }
+
+/* Lang switcher */
+.lang-switch { display: flex; gap: 4px; background: rgba(255,255,255,0.06); border-radius: 100px; padding: 4px; border: 1px solid rgba(255,255,255,0.08); }
+.lang-btn { background: none; border: none; color: rgba(240,240,245,0.5); font-size: 0.8rem; font-weight: 600; padding: 4px 12px; border-radius: 100px; cursor: pointer; transition: all 0.2s; font-family: 'Manrope', sans-serif; }
+.lang-btn.active { background: var(--lime); color: var(--dark); }
+
+/* Counter */
+.stat-num[data-count] { display: block; }
 </style>
 </head>
 <body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
 <div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div>
-<nav><div class="nav-logo">МС</div><div class="nav-links"><a href="#about">Обо мне</a><a href="#projects">Проекты</a><a href="#contact">Контакты</a></div></nav>
+<nav><div class="nav-logo" data-ru="МС" data-en="MS">МС</div><div class="nav-links"><a href="#about" data-ru="Обо мне" data-en="About">Обо мне</a><a href="#projects" data-ru="Проекты" data-en="Projects">Проекты</a><a href="#contact" data-ru="Контакты" data-en="Contacts">Контакты</a></div><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ru')">RU</button><button class="lang-btn" onclick="setLang('en')">EN</button></div></nav>
 
 <section class="hero" id="hero">
   <div class="hero-content">
-    <div class="hero-tag">Продакт-менеджер</div>
+    <div class="hero-tag" data-ru="Продакт-менеджер" data-en="Product Manager">Продакт-менеджер</div>
     <h1>Марк<br><span class="accent">Сердюк</span><span class="accent2">.</span></h1>
-    <p class="hero-sub">Строю продукты на стыке бизнеса, аналитики и технологий. От стратегии образования в Правительстве РФ до партнёрских платформ в Т-Банке.</p>
+    <p class="hero-sub" data-ru="Строю продукты на стыке бизнеса, аналитики и технологий. От стратегии образования в Правительстве РФ до партнёрских платформ в Т-Банке." data-en="Building products at the intersection of business, analytics and technology. From Russia's education strategy to partner platforms at T-Bank.">Строю продукты на стыке бизнеса, аналитики и технологий. От стратегии образования в Правительстве РФ до партнёрских платформ в Т-Банке.</p>
     <div class="hero-badges">
       <span class="badge highlight">CustDev</span><span class="badge">Agile</span><span class="badge">SQL</span>
-      <span class="badge">Figma</span><span class="badge">A/B-тесты</span><span class="badge">JTBD</span><span class="badge">CJM</span>
+      <span class="badge">Figma</span><span class="badge" data-ru="A/B-тесты" data-en="A/B Tests">A/B-тесты</span><span class="badge">JTBD</span><span class="badge">CJM</span>
     </div>
   </div>
   <img class="hero-photo" src="photo.jpg" alt="Марк Сердюк">
 </section>
 
 <section id="about">
-  <div class="section-header"><h2>Обо мне</h2><div class="line"></div></div>
+  <div class="section-header"><h2 data-ru="Обо мне" data-en="About Me">Обо мне</h2><div class="line"></div></div>
   <div class="about-grid">
     <div class="about-card fade-in">
       <div class="about-icon edu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg></div>
-      <h3>Образование</h3>
+      <h3 data-ru="Образование" data-en="Education">Образование</h3>
       <div style="display:flex;flex-direction:column;gap:28px;margin-top:12px;">
         <div style="display:flex;align-items:center;gap:16px;">
           <span style="width:10px;height:10px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime),0 0 20px rgba(205,255,80,0.3);flex-shrink:0;"></span>
@@ -174,7 +190,7 @@ footer { position: relative; z-index: 1; text-align: center; padding: 32px; colo
     </div>
     <div class="about-card fade-in">
       <div class="about-icon exp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg></div>
-      <h3>Опыт</h3>
+      <h3 data-ru="Опыт" data-en="Experience">Опыт</h3>
       <div style="display:flex;flex-wrap:wrap;gap:28px 40px;margin-top:16px;align-items:center;">
         <img src="gpn_bs.png" alt="Газпромнефть" style="height:48px;">
         <img src="x5group.png" alt="X5 Group" style="height:48px;">
@@ -185,80 +201,81 @@ footer { position: relative; z-index: 1; text-align: center; padding: 32px; colo
     </div>
     <div class="about-card wide fade-in">
       <div class="about-icon fun"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-      <h3>Не только продакт</h3>
-      <p>Основал крупнейший студенческий спортивный клуб, выиграл 4 премии за виртуозную игру на пианино, автор выставки генеративного искусства CU:/dev/art, держал ферму из 100+ кроликов.</p>
+      <h3 data-ru="Не только продакт" data-en="Beyond Product">Не только продакт</h3>
+      <p data-ru="Основал крупнейший студенческий спортивный клуб, выиграл 4 премии за виртуозную игру на пианино, автор выставки генеративного искусства CU:/dev/art, держал ферму из 100+ кроликов." data-en="Founded the largest student sports club, won 4 awards for virtuoso piano playing, created the generative art exhibition CU:/dev/art, ran a farm of 100+ rabbits.">Основал крупнейший студенческий спортивный клуб, выиграл 4 премии за виртуозную игру на пианино, автор выставки генеративного искусства CU:/dev/art, держал ферму из 100+ кроликов.</p>
     </div>
   </div>
   <div class="stats-row">
-    <div class="stat fade-in"><div class="stat-num">>200</div><div class="stat-label">провел глубинных интервью</div></div>
-    <div class="stat fade-in"><div class="stat-num">>1000</div><div class="stat-label">нарисовал слайдов презентаций</div></div>
-    <div class="stat fade-in"><div class="stat-num">16</div><div class="stat-label">человек в командах, где я менеджер</div></div>
-    <div class="stat fade-in"><div class="stat-num">∞</div><div class="stat-label">желания развиваться и развивать</div></div>
+    <div class="stat fade-in"><div class="stat-num" data-count="200" data-prefix=">">>200</div><div class="stat-label" data-ru="провел глубинных интервью" data-en="in-depth interviews conducted">провел глубинных интервью</div></div>
+    <div class="stat fade-in"><div class="stat-num" data-count="1000" data-prefix=">">>1000</div><div class="stat-label" data-ru="нарисовал слайдов презентаций" data-en="presentation slides created">нарисовал слайдов презентаций</div></div>
+    <div class="stat fade-in"><div class="stat-num" data-count="16">16</div><div class="stat-label" data-ru="человек в командах, где я менеджер" data-en="people in teams I manage">человек в командах, где я менеджер</div></div>
+    <div class="stat fade-in"><div class="stat-num">∞</div><div class="stat-label" data-ru="желания развиваться и развивать" data-en="desire to grow and develop">желания развиваться и развивать</div></div>
   </div>
 </section>
 
 <section id="projects">
-  <div class="section-header"><h2>Проекты</h2><div class="line"></div></div>
+  <div class="section-header"><h2 data-ru="Проекты" data-en="Projects">Проекты</h2><div class="line"></div></div>
   <div class="projects-grid">
     <div class="project fade-in">
       <div class="project-icon pi-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-      <div><div class="company-logo logo-gazprom">ГАЗПРОМНЕФТЬ</div><h3>Руководитель проекта</h3><p>CustDev среди 10 дочерних обществ, апробация LLM для работы с документами и ERP, калькулятор эффектов роботизации, запуск перехода к продуктовому подходу.</p></div>
-      <div class="project-date">Июл–Сен 2025</div>
+      <div><div class="company-logo logo-gazprom" data-ru="ГАЗПРОМНЕФТЬ" data-en="GAZPROMNEFT">ГАЗПРОМНЕФТЬ</div><h3 data-ru="Руководитель проекта" data-en="Project Lead">Руководитель проекта</h3><p data-ru="CustDev среди 10 дочерних обществ, апробация LLM для работы с документами и ERP, калькулятор эффектов роботизации, запуск перехода к продуктовому подходу." data-en="CustDev across 10 subsidiaries, LLM piloting for documents & ERP, robotization ROI calculator, launching product approach transition.">CustDev среди 10 дочерних обществ, апробация LLM для работы с документами и ERP, калькулятор эффектов роботизации, запуск перехода к продуктовому подходу.</p></div>
+      <div class="project-date" data-ru="Июл–Сен 2025" data-en="Jul–Sep 2025">Июл–Сен 2025</div>
     </div>
     <div class="project fade-in">
       <div class="project-icon pi-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></svg></div>
-      <div><div class="company-logo logo-x5">X5 GROUP</div><h3>Система полномочий директоров-партнёров</h3><p>Гемба в 9 регионах, 50+ предложений по улучшению системы, CJM директоров-партнёров.</p></div>
-      <div class="project-date">Мар–Сен 2025</div>
+      <div><div class="company-logo logo-x5" data-ru="X5 GROUP" data-en="X5 GROUP">X5 GROUP</div><h3 data-ru="Система полномочий директоров-партнёров" data-en="Partner Directors Authority System">Система полномочий директоров-партнёров</h3><p data-ru="Гемба в 9 регионах, 50+ предложений по улучшению системы, CJM директоров-партнёров." data-en="Gemba in 9 regions, 50+ system improvement proposals, partner directors CJM.">Гемба в 9 регионах, 50+ предложений по улучшению системы, CJM директоров-партнёров.</p></div>
+      <div class="project-date" data-ru="Мар–Сен 2025" data-en="Mar–Sep 2025">Мар–Сен 2025</div>
     </div>
     <div class="project fade-in">
       <div class="project-icon pi-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.8 3.8 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div>
-      <div><div class="company-logo logo-tbank">Т-БАНК</div><h3>Партнёрское привлечение</h3><p>131 глубинное интервью, лендинг для привлечения партнёров, база для подключения автосервисов в 5 регионах.</p></div>
-      <div class="project-date">Июн–Окт 2025</div>
+      <div><div class="company-logo logo-tbank" data-ru="Т-БАНК" data-en="T-BANK">Т-БАНК</div><h3 data-ru="Партнёрское привлечение" data-en="Partner Acquisition">Партнёрское привлечение</h3><p data-ru="131 глубинное интервью, лендинг для привлечения партнёров, база для подключения автосервисов в 5 регионах." data-en="131 in-depth interviews, partner acquisition landing page, auto-service onboarding pipeline across 5 regions.">131 глубинное интервью, лендинг для привлечения партнёров, база для подключения автосервисов в 5 регионах.</p></div>
+      <div class="project-date" data-ru="Июн–Окт 2025" data-en="Jun–Oct 2025">Июн–Окт 2025</div>
     </div>
     <div class="project fade-in">
       <div class="project-icon pi-4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/></svg></div>
-      <div><div class="company-logo logo-gov">ПРАВИТЕЛЬСТВО РФ</div><h3>Стратегия образования 2040</h3><p>Руководитель рабочей группы, управление командой из 8 госслужащих, мнения 100+ экспертов.</p></div>
-      <div class="project-date">Дек 2024–2025</div>
+      <div><div class="company-logo logo-gov" data-ru="ПРАВИТЕЛЬСТВО РФ" data-en="GOVT OF RUSSIA">ПРАВИТЕЛЬСТВО РФ</div><h3 data-ru="Стратегия образования 2040" data-en="Education Strategy 2040">Стратегия образования 2040</h3><p data-ru="Руководитель рабочей группы, управление командой из 8 госслужащих, мнения 100+ экспертов." data-en="Working group lead, managed a team of 8 civil servants, gathered input from 100+ experts.">Руководитель рабочей группы, управление командой из 8 госслужащих, мнения 100+ экспертов.</p></div>
+      <div class="project-date" data-ru="Дек 2024–2025" data-en="Dec 2024–2025">Дек 2024–2025</div>
     </div>
     <div class="project fade-in">
       <div class="project-icon pi-5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
-      <div><div class="company-logo logo-brics">БРИКС</div><h3>Доклад в Бразилии</h3><p>Аналитика по розничным инвесторам стран БРИКС. Предложение по трансформации системы платежей — экономия до $30 млрд ежегодно.</p></div>
-      <div class="project-date">Май 2025</div>
+      <div><div class="company-logo logo-brics" data-ru="БРИКС" data-en="BRICS">БРИКС</div><h3 data-ru="Доклад в Бразилии" data-en="Report in Brazil">Доклад в Бразилии</h3><p data-ru="Аналитика по розничным инвесторам стран БРИКС. Предложение по трансформации системы платежей — экономия до $30 млрд ежегодно." data-en="Retail investor analytics across BRICS countries. Payment system transformation proposal — up to $30B in annual savings.">Аналитика по розничным инвесторам стран БРИКС. Предложение по трансформации системы платежей — экономия до $30 млрд ежегодно.</p></div>
+      <div class="project-date" data-ru="Май 2025" data-en="May 2025">Май 2025</div>
     </div>
   </div>
-  <div class="section-header" style="padding-top:60px;"><h2>Достижения</h2><div class="line"></div></div>
+  <div class="section-header" style="padding-top:60px;"><h2 data-ru="Достижения" data-en="Achievements">Достижения</h2><div class="line"></div></div>
   <div class="achievements">
-    <span class="ach ach-award"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>Стипендиат Авито 2026</span>
-    <span class="ach ach-award"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>Стипендиат Сбера 2025</span>
-    <span class="ach ach-award"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>Стипендиат Т-Банка 2025</span>
-    <span class="ach ach-award"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>Стипендиат Reksoft 2025</span>
-    <span class="ach ach-award"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>Стипендиат Мосбиржи 2024</span>
-    <span class="ach ach-special"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 9 8 9 8h0"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17 4 15 8 15 8h0"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>Победитель Дататон 2.0</span>
-    <span class="ach ach-special"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>Ментор DEADLINE 2025, 2026</span>
-    <span class="ach ach-special"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></svg>Автор CU:/dev/art</span>
+    <span class="ach ach-award"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg><span data-ru="Стипендиат Авито 2026" data-en="Avito Scholar 2026">Стипендиат Авито 2026</span></span>
+    <span class="ach ach-award"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg><span data-ru="Стипендиат Сбера 2025" data-en="Sber Scholar 2025">Стипендиат Сбера 2025</span></span>
+    <span class="ach ach-award"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg><span data-ru="Стипендиат Т-Банка 2025" data-en="T-Bank Scholar 2025">Стипендиат Т-Банка 2025</span></span>
+    <span class="ach ach-award"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg><span data-ru="Стипендиат Reksoft 2025" data-en="Reksoft Scholar 2025">Стипендиат Reksoft 2025</span></span>
+    <span class="ach ach-award"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg><span data-ru="Стипендиат Мосбиржи 2024" data-en="MOEX Scholar 2024">Стипендиат Мосбиржи 2024</span></span>
+    <span class="ach ach-special"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 9 8 9 8h0"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17 4 15 8 15 8h0"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg><span data-ru="Победитель Дататон 2.0" data-en="Datathon 2.0 Winner">Победитель Дататон 2.0</span></span>
+    <span class="ach ach-special"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg><span data-ru="Ментор DEADLINE 2025, 2026" data-en="DEADLINE Mentor 2025, 2026">Ментор DEADLINE 2025, 2026</span></span>
+    <span class="ach ach-special"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></svg><span data-ru="Автор CU:/dev/art" data-en="Creator CU:/dev/art">Автор CU:/dev/art</span></span>
   </div>
 </section>
 
 <section id="contact" class="contact-section">
-  <div class="section-header"><h2>Контакты</h2><div class="line"></div></div>
+  <div class="section-header"><h2 data-ru="Контакты" data-en="Contacts">Контакты</h2><div class="line"></div></div>
   <div class="contact-grid">
-    <a class="contact-card fade-in" href="/cdn-cgi/l/email-protection#0b664b66786e796f727e6025797e">
+    <a class="contact-card fade-in" href="mailto:m@mserdyuk.ru">
       <div class="contact-card-icon cci-mail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-      <h3>Email</h3><span><span class="__cf_email__" data-cfemail="107d507d6375627469657b3e6265">[email&#160;protected]</span></span>
+      <h3 data-ru="Email" data-en="Email">Email</h3><span>m@mserdyuk.ru</span>
     </a>
     <a class="contact-card fade-in" href="https://t.me/serdukmark" target="_blank">
       <div class="contact-card-icon cci-tg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></div>
-      <h3>Telegram</h3><span>@serdukmark</span>
+      <h3 data-ru="Telegram" data-en="Telegram">Telegram</h3><span>@serdukmark</span>
     </a>
     <a class="contact-card fade-in" href="tel:+79529977440">
       <div class="contact-card-icon cci-phone"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-      <h3>Телефон</h3><span>+7 952 997-74-40</span>
+      <h3 data-ru="Телефон" data-en="Phone">Телефон</h3><span>+7 952 997-74-40</span>
     </a>
   </div>
 </section>
 
-<footer>&copy; 2026 Марк Сердюк</footer>
+<footer><span data-ru="© 2026 Марк Сердюк" data-en="© 2026 Mark Serdyuk">© 2026 Марк Сердюк</span></footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Fade-in observer
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
@@ -268,6 +285,48 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+function animateRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animateRing); }
+animateRing();
+
+// Counter animation
+function animateCounter(el) {
+  const target = parseInt(el.dataset.count);
+  const prefix = el.dataset.prefix || '';
+  const duration = 1800;
+  const start = performance.now();
+  function update(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = prefix + Math.floor(eased * target);
+    if (progress < 1) requestAnimationFrame(update);
+    else el.textContent = prefix + target;
+  }
+  requestAnimationFrame(update);
+}
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && e.target.dataset.count) {
+      animateCounter(e.target);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num[data-count]').forEach(el => counterObserver.observe(el));
+
+// Language switcher
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+  document.querySelectorAll('[data-ru][data-en]').forEach(el => {
+    el.textContent = el.dataset[lang];
+  });
+  document.documentElement.lang = lang;
+}
 </script>
 </body>
 </html>
