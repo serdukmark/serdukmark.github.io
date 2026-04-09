@@ -160,19 +160,23 @@ footer { position: relative; z-index: 1; text-align: center; padding: 32px; colo
   .stack-items { gap: 8px; }
   .stack-item { font-size: 0.8rem; padding: 6px 12px; }
   #game > div[style*="grid-template-columns"] { display: flex !important; flex-direction: column !important; }
-  #g-canvas { height: 140px !important; }
-  #g-overlay { gap: 8px !important; padding: 12px !important; justify-content: center !important; overflow-y: visible !important; }
-  #g-overlay > div:first-child { font-size: 1.2rem !important; }
-  #g-overlay p { font-size: 0.8rem !important; margin: 0 !important; }
-  #g-overlay input { padding: 6px 12px !important; font-size: 0.8rem !important; width: 120px !important; }
-  #g-overlay button { padding: 7px 18px !important; font-size: 0.8rem !important; }
+  #g-canvas { height: 260px !important; }
+  #g-overlay { gap: 10px !important; padding: 16px !important; overflow: hidden !important; }
+  #g-overlay > div:first-child { font-size: 1.3rem !important; }
+  #g-overlay p { font-size: 0.82rem !important; margin: 0 !important; }
+  #g-overlay input { padding: 6px 12px !important; font-size: 0.82rem !important; width: 130px !important; }
+  #g-overlay button { padding: 8px 20px !important; font-size: 0.82rem !important; }
   .achievements { gap: 8px; }
   .lang-switch { margin-left: auto; }
 }
 /* Custom cursor */
+@media (hover: none) and (pointer: coarse) {
+  #cursor, #cursor-ring { display: none !important; }
+  *, *::before, *::after { cursor: auto !important; }
+}
 *, *::before, *::after { cursor: none !important; }
 #cursor { position: fixed; width: 12px; height: 12px; background: var(--lime); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%,-50%); transition: transform 0.1s ease, background 0.2s ease; }
-#cursor-ring { position: fixed; width: 36px; height: 36px; border: 2px solid rgba(205,255,80,0.5); border-radius: 50%; pointer-events: none; z-index: 99998; transform: translate(-50%,-50%); transition: left 0.12s ease, top 0.12s ease, width 0.2s ease, height 0.2s ease, border-color 0.2s ease; }
+#cursor-ring { position: fixed; width: 36px; height: 36px; border: 2px solid rgba(205,255,80,0.5); border-radius: 50%; pointer-events: none; z-index: 99998; transform: translate(-50%,-50%); }
 body:has(a:hover) #cursor, body:has(button:hover) #cursor { transform: translate(-50%,-50%) scale(2.5); background: var(--pink); }
 body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52px; height: 52px; border-color: rgba(255,107,157,0.5); }
 
@@ -196,7 +200,19 @@ body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52p
 /* Clickable contact cards */
 .contact-card.copyable { cursor: pointer; }
 
-/* Stack section */
+/* PM IQ */
+.dm-option { display:flex; align-items:flex-start; gap:12px; padding:14px 18px; border-radius:14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); cursor:pointer; transition:all 0.2s; text-align:left; width:100%; font-family:'Manrope',sans-serif; color:var(--light); font-size:0.9rem; line-height:1.5; }
+.dm-option:hover:not(:disabled) { border-color:rgba(205,255,80,0.4); background:rgba(205,255,80,0.06); }
+.dm-option.correct { border-color:#CDFF50; background:rgba(205,255,80,0.12); }
+.dm-option.wrong { border-color:#E24B4A; background:rgba(226,75,74,0.1); }
+.dm-option:disabled { cursor:default; }
+.dm-option-letter { width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; flex-shrink:0; background:rgba(255,255,255,0.08); color:rgba(240,240,245,0.5); margin-top:1px; }
+.dm-option.correct .dm-option-letter { background:#CDFF50; color:#1A1A2E; }
+.dm-option.wrong .dm-option-letter { background:#E24B4A; color:#fff; }
+.dm-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.15); transition:background 0.3s; flex-shrink:0; }
+.dm-dot.answered-correct { background:#CDFF50; }
+.dm-dot.answered-wrong { background:#E24B4A; }
+.dm-dot.active { background:rgba(255,255,255,0.5); box-shadow:0 0 6px rgba(255,255,255,0.3); }
 .stack-section { margin-top: 60px; }
 .stack-categories { display: flex; flex-direction: column; gap: 32px; }
 .stack-category h4 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: rgba(240,240,245,0.35); margin-bottom: 14px; }
@@ -213,12 +229,13 @@ body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52p
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
 </button>
 <div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div>
-<nav><div class="nav-logo" data-ru="МС" data-en="MS">МС</div><div class="nav-links"><a href="#about" data-ru="Обо мне" data-en="About">Обо мне</a><a href="#projects" data-ru="Проекты" data-en="Projects">Проекты</a><a href="#contact" data-ru="Контакты" data-en="Contacts">Контакты</a><a href="#game" data-ru="Игра" data-en="Game">Игра</a></div><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ru')">RU</button><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button></nav>
+<nav><div class="nav-logo" data-ru="МС" data-en="MS">МС</div><div class="nav-links"><a href="#about" data-ru="Обо мне" data-en="About">Обо мне</a><a href="#projects" data-ru="Проекты" data-en="Projects">Проекты</a><a href="#contact" data-ru="Контакты" data-en="Contacts">Контакты</a><a href="#game" data-ru="Раннер" data-en="Runner">Раннер</a><a href="#decision" data-ru="Квиз" data-en="Quiz">Квиз</a></div><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ru')">RU</button><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button></nav>
 <div class="mobile-menu" id="mobile-menu">
   <a href="#about" data-ru="Обо мне" data-en="About" onclick="closeMenu()">Обо мне</a>
   <a href="#projects" data-ru="Проекты" data-en="Projects" onclick="closeMenu()">Проекты</a>
   <a href="#contact" data-ru="Контакты" data-en="Contacts" onclick="closeMenu()">Контакты</a>
-  <a href="#game" data-ru="Игра" data-en="Game" onclick="closeMenu()">Игра</a>
+  <a href="#game" data-ru="Раннер" data-en="Runner" onclick="closeMenu()">Раннер</a>
+  <a href="#decision" data-ru="Квиз" data-en="Quiz" onclick="closeMenu()">Квиз</a>
 </div>
 
 <section class="hero" id="hero">
@@ -409,7 +426,7 @@ body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52p
       <div style="position:relative;border:1px solid rgba(255,255,255,0.08);border-radius:20px;overflow:visible;">
         <canvas id="g-canvas" height="200" style="display:block;width:100%;background:#12121f;border-radius:20px;"></canvas>
         <div id="g-msg" style="position:absolute;top:12px;left:50%;transform:translateX(-50%);font-size:13px;font-weight:600;color:#fff;background:rgba(0,0,0,0.6);padding:4px 14px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity 0.2s;white-space:nowrap;"></div>
-        <div id="g-overlay" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(18,18,31,0.85);border-radius:20px;overflow-y:auto;padding:20px;">
+        <div id="g-overlay" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(18,18,31,0.85);border-radius:20px;overflow:hidden;padding:20px;">
           <div style="font-family:'Dela Gothic One',cursive;font-size:1.8rem;background:linear-gradient(135deg,#CDFF50,#4ECDC4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">PM Runner</div>
           <p id="g-desc" style="font-size:0.88rem;color:rgba(240,240,245,0.6);text-align:center;max-width:280px;line-height:1.6;">Прыгай через баги, дедлайны и недовольных стейкхолдеров. Собирай кофе — +10 очков!</p>
           <button id="g-start" style="background:#CDFF50;color:#1A1A2E;border:none;border-radius:100px;padding:10px 32px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;">Запустить спринт</button>
@@ -426,6 +443,58 @@ body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52p
       <div id="lb-list" style="display:flex;flex-direction:column;gap:8px;">
         <div style="font-size:0.8rem;color:rgba(240,240,245,0.3);text-align:center;padding:20px 0;" id="lb-loading" data-ru="Загрузка..." data-en="Loading...">Загрузка...</div>
       </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="decision">
+  <div class="section-header"><h2 data-ru="PM IQ" data-en="PM IQ">PM IQ</h2><div class="line"></div></div>
+  <p style="color:rgba(240,240,245,0.5);font-size:0.9rem;margin-bottom:28px;" data-ru="10 реальных PM-ситуаций. Узнай свой PM IQ — и как мыслит сильный продакт." data-en="10 real PM situations. Find out your PM IQ — explanation after every answer.">10 реальных PM-ситуаций. Узнай свой PM IQ — и как мыслит сильный продакт.</p>
+
+  <div id="dm-wrap" style="max-width:720px;">
+
+    <div id="dm-start" style="border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:40px;background:rgba(255,255,255,0.03);text-align:center;">
+      <div style="font-size:3rem;margin-bottom:16px;">🧠</div>
+      <h3 id="dm-start-title" style="font-family:'Dela Gothic One',cursive;font-size:1.6rem;margin-bottom:12px;background:linear-gradient(135deg,#CDFF50,#4ECDC4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">PM IQ</h3>
+      <p id="dm-start-desc" style="color:rgba(240,240,245,0.5);font-size:0.9rem;margin-bottom:28px;line-height:1.7;">10 вопросов · Узнай свой PM IQ · После каждого ответа — объяснение</p>
+      <button id="dm-start-btn" onclick="dmStart()" style="background:#CDFF50;color:#1A1A2E;border:none;border-radius:100px;padding:12px 36px;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;">Начать игру</button>
+    </div>
+
+    <div id="dm-game" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:8px;">
+        <div style="display:flex;gap:6px;" id="dm-dots"></div>
+        <div style="font-size:13px;color:rgba(240,240,245,0.5);">
+          <span data-ru="Очки: " data-en="Score: ">Очки: </span><span id="dm-score" style="font-weight:700;color:#CDFF50;">0</span>
+        </div>
+      </div>
+      <div id="dm-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;background:rgba(255,255,255,0.03);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+          <span id="dm-tag" style="font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:1px;"></span>
+          <span id="dm-num" style="font-size:0.8rem;color:rgba(240,240,245,0.35);"></span>
+        </div>
+        <p id="dm-q" style="font-size:1.05rem;font-weight:600;line-height:1.6;margin-bottom:24px;color:var(--light);"></p>
+        <div id="dm-options" style="display:flex;flex-direction:column;gap:10px;"></div>
+      </div>
+      <div id="dm-explanation" style="display:none;margin-top:16px;border-radius:16px;padding:20px 24px;">
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <span id="dm-expl-icon" style="font-size:1.4rem;flex-shrink:0;"></span>
+          <div>
+            <div id="dm-expl-verdict" style="font-weight:700;font-size:0.9rem;margin-bottom:6px;"></div>
+            <div id="dm-expl-text" style="font-size:0.88rem;color:rgba(240,240,245,0.7);line-height:1.6;"></div>
+          </div>
+        </div>
+        <button id="dm-next-btn" onclick="dmNext()" style="margin-top:16px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:var(--light);border-radius:100px;padding:9px 24px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:'Manrope',sans-serif;"></button>
+      </div>
+    </div>
+
+    <div id="dm-result" style="display:none;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:40px;background:rgba(255,255,255,0.03);text-align:center;">
+      <div id="dm-result-emoji" style="font-size:3.5rem;margin-bottom:16px;"></div>
+      <div id="dm-result-title" style="font-family:'Dela Gothic One',cursive;font-size:1.8rem;margin-bottom:8px;"></div>
+      <div id="dm-result-score" style="font-size:1.1rem;color:rgba(240,240,245,0.6);margin-bottom:6px;"></div>
+      <div id="dm-result-label" style="font-size:2.5rem;font-weight:700;color:#CDFF50;margin-bottom:20px;"></div>
+      <div id="dm-result-desc" style="font-size:0.9rem;color:rgba(240,240,245,0.5);margin-bottom:28px;line-height:1.6;max-width:480px;margin-left:auto;margin-right:auto;"></div>
+      <button onclick="dmRestart()" style="background:#CDFF50;color:#1A1A2E;border:none;border-radius:100px;padding:12px 36px;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;" id="dm-restart-btn">Сыграть снова</button>
     </div>
 
   </div>
@@ -448,12 +517,20 @@ document.querySelectorAll('.fade-in').forEach(el => {
 });
 
 // Custom cursor
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
-function animateRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animateRing); }
-animateRing();
+window.addEventListener('load', () => {
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  if (!cursor || !ring) return;
+  let mx = 0, my = 0, rx = 0, ry = 0, ready = false;
+  cursor.style.visibility = 'hidden';
+  ring.style.visibility = 'hidden';
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+    if (!ready) { ready = true; rx = mx; ry = my; cursor.style.visibility = 'visible'; ring.style.visibility = 'visible'; }
+  });
+  (function loop() { rx += (mx-rx)*0.12; ry += (my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
+});
 
 // Counter animation
 function animateCounter(el) {
@@ -511,7 +588,361 @@ function closeMenu() {
   document.getElementById('mobile-menu').classList.remove('open');
 }
 
-// Language switcher
+// ─── PM DECISION MAKER ───────────────────────────────────────────────
+const DM_QUESTIONS = [
+  {
+    tag: { ru:'Приоритизация', en:'Prioritization' },
+    q: { ru: 'Бэклог вырос до 200+ задач. Стейкхолдеры требуют взять всё в следующий спринт. Что делаешь?', en: 'The backlog has grown to 200+ items. Stakeholders demand everything in the next sprint. What do you do?' },
+    options: { ru: ['Проводишь сессию приоритизации с командой и стейкхолдерами', 'Просишь команду работать сверхурочно', 'Берёшь всё — стейкхолдеры важнее роадмапа', 'Берёшь только задачи с наибольшим весом в Jira'], en: ['Run a prioritization session with team and stakeholders', 'Ask the team to work overtime', 'Take it all — stakeholders trump the roadmap', 'Take only the highest-weight items in Jira'] },
+    correct: 0,
+    explanation: { ru: 'Совместная сессия выравнивает ожидания и создаёт прозрачность. Стейкхолдеры участвуют в выборе, а не диктуют — это снимает конфликт.', en: 'A joint session aligns expectations and creates transparency. Stakeholders participate in choosing, not dictate — this resolves conflict.' }
+  },
+  {
+    tag: { ru:'CustDev', en:'CustDev' },
+    q: { ru: 'Пользователь говорит: «Мне нужна кнопка экспорта в Excel». Что делаешь первым?', en: 'A user says: "I need an Excel export button." What do you do first?' },
+    options: { ru: ['Ставишь задачу в спринт', 'Спрашиваешь: зачем тебе эти данные в Excel?', 'Проводишь опрос среди всех пользователей', 'Изучаешь как это сделано у конкурентов'], en: ['Put it in the sprint', 'Ask: why do you need this data in Excel?', 'Run a survey among all users', 'Study how competitors do it'] },
+    correct: 1,
+    explanation: { ru: 'Пользователи формулируют решение, а не проблему. За «кнопкой экспорта» может скрываться совсем другая потребность — например, сделать отчёт для руководства.', en: 'Users state solutions, not problems. Behind "export button" might be a completely different need — like creating a report for management.' }
+  },
+  {
+    tag: { ru:'Метрики', en:'Metrics' },
+    q: { ru: 'DAU растёт, но Revenue падает. Как это объяснить?', en: 'DAU is growing but Revenue is falling. How do you explain this?' },
+    options: { ru: ['Это невозможно — рост DAU всегда ведёт к росту выручки', 'Нужно срочно поднять цены', 'Монетизация плохо настроена или привлекаются нецелевые пользователи', 'Проблема в команде продаж'], en: ['Impossible — DAU growth always leads to revenue growth', 'Prices need to be raised immediately', 'Monetization is poorly configured or non-target users are being acquired', 'The problem is with the sales team'] },
+    correct: 2,
+    explanation: { ru: 'DAU и Revenue — разные метрики. Рост DAU при падении Revenue — признак плохого product-market fit в монетизации или роста неплатящей аудитории.', en: 'DAU and Revenue are different metrics. DAU growth with falling Revenue signals poor monetization PMF or growth in non-paying audiences.' }
+  },
+  {
+    tag: { ru:'A/B тесты', en:'A/B tests' },
+    q: { ru: 'A/B тест показал рост конверсии на 12%, p-value = 0.03. Стоит ли раскатывать вариант B?', en: 'An A/B test shows 12% conversion lift, p-value = 0.03. Should you roll out variant B?' },
+    options: { ru: ['Да, однозначно — результат значим и lift большой', 'Нет — 12% слишком большой lift, скорее всего ошибка', 'Нет — нужен p-value ниже 0.01', 'Да, но только после проверки на сегментах и анализа guardrail-метрик'], en: ['Yes, definitely — result is significant and lift is large', 'No — 12% lift is too large, probably an error', 'No — need p-value below 0.01', 'Yes, but only after checking segments and guardrail metrics'] },
+    correct: 3,
+    explanation: { ru: 'p-value 0.03 — хороший результат, но перед раскаткой нужно проверить: нет ли просадки по другим метрикам (retention, revenue), как ведут себя разные сегменты.', en: 'p-value 0.03 is good, but before rolling out check: no drops in other metrics (retention, revenue), how different segments behave.' }
+  },
+  {
+    tag: { ru:'Команда', en:'Team' },
+    q: { ru: 'Разработчик говорит, что задача займёт 3 недели. По твоей оценке — максимум 3 дня. Что делаешь?', en: 'A developer says the task will take 3 weeks. In your view it is 3 days at most. What do you do?' },
+    options: { ru: ['Просишь разработчика объяснить, что именно займёт столько времени', 'Настаиваешь на своей оценке — ты знаешь продукт лучше', 'Берёшь среднее — 1.5 недели', 'Эскалируешь к тимлиду'], en: ['Ask the developer to explain what exactly will take that long', 'Insist on your estimate — you know the product better', 'Take the average — 1.5 weeks', 'Escalate to the team lead'] },
+    correct: 0,
+    explanation: { ru: 'PM не оценивает разработку — он помогает команде уточнить задачу. Возможно, разработчик видит скрытую сложность. Диалог важнее правоты.', en: 'PMs don't estimate development — they help the team clarify tasks. The developer may see hidden complexity. Dialogue matters more than being right.' }
+  },
+  {
+    tag: { ru:'Запуск', en:'Launch' },
+    q: { ru: 'Фича готова. QA прошло успешно. Но ты чувствуешь интуитивно, что что-то не так. Как поступишь?', en: 'The feature is ready. QA passed. But you intuitively feel something is off. What do you do?' },
+    options: { ru: ['Релизишь — интуиция не аргумент', 'Формулируешь свои опасения, проверяешь конкретные риски и только потом решаешь', 'Откладываешь релиз на неделю без объяснений', 'Просишь команду переделать всё с нуля'], en: ['Ship it — intuition is not an argument', 'Articulate your concerns, check specific risks, then decide', 'Delay the release a week without explanation', 'Ask the team to redo everything from scratch'] },
+    correct: 1,
+    explanation: { ru: 'Интуиция опытного PM — это паттерн-матчинг. Её стоит уважать, но проверять конкретно: что именно беспокоит? Какой риск? Это превращает ощущение в гипотезу.', en: 'Experienced PM intuition is pattern-matching. Worth respecting but validating specifically: what exactly worries you? What is the risk? This turns a feeling into a hypothesis.' }
+  },
+  {
+    tag: { ru:'Стратегия', en:'Strategy' },
+    q: { ru: 'Ваш продукт растёт. Конкурент выпустил аналог бесплатно. Какая реакция верная?', en: 'Your product is growing. A competitor released a free alternative. What is the right response?' },
+    options: { ru: ['Срочно сделать freemium-модель', 'Поднять маркетинговый бюджет', 'Проанализировать, в чём вы реально лучше, и укрепить это преимущество', 'Снизить цену до нуля тоже'], en: ['Urgently create a freemium model', 'Increase the marketing budget', 'Analyze where you are genuinely better and reinforce that advantage', 'Lower your price to zero as well'] },
+    correct: 2,
+    explanation: { ru: 'Конкурент бесплатный — не значит лучший. Сначала поймите: почему ваши пользователи платят? Это ваш ров. Копировать конкурента означает играть на его поле.', en: 'Free competitor doesn't mean better. First understand: why do your users pay? That is your moat. Copying the competitor means playing on their turf.' }
+  },
+  {
+    tag: { ru:'Роадмап', en:'Roadmap' },
+    q: { ru: 'Три разных стейкхолдера просят три разные «самые важные» фичи одновременно. Что делаешь?', en: 'Three different stakeholders each ask for their own "most important" feature simultaneously. What do you do?' },
+    options: { ru: ['Берёшь задачу от самого старшего по должности', 'Откладываешь все три до следующего квартала', 'Делаешь все три параллельно, распределив команду', 'Организуешь совместную сессию, где они объясняют проблемы пользователей, а не решения'], en: ['Take the task from the most senior person', 'Postpone all three until next quarter', 'Do all three in parallel, splitting the team', 'Organize a joint session where they explain user problems, not solutions'] },
+    correct: 3,
+    explanation: { ru: 'Когда все «самые важные» — значит нет общего понимания целей. Совместная сессия с фокусом на проблемах пользователей помогает найти точки пересечения.', en: 'When everything is "most important," it means there is no shared understanding of goals. A joint session focused on user problems helps find common ground.' }
+  },
+  {
+    tag: { ru:'Данные', en:'Data' },
+    q: { ru: 'Ты видишь аномальный спайк активности в воскресенье. Нет явных причин. Первый шаг?', en: 'You see an anomalous activity spike on Sunday. No obvious cause. First step?' },
+    options: { ru: ['Проверяешь, не было ли технической аномалии в логах или трекинге', 'Срочно пишешь отчёт топ-менеджменту', 'Запускаешь пуш-нотификации, чтобы закрепить успех', 'Ждёшь следующего воскресенья, чтобы подтвердить паттерн'], en: ['Check if there was a technical anomaly in logs or tracking', 'Urgently write a report to top management', 'Launch push notifications to capitalize on the success', 'Wait for next Sunday to confirm the pattern'] },
+    correct: 0,
+    explanation: { ru: 'Спайк в данных — первым делом проверь инструментарий. Частая причина «роста» — баг в трекинге. Радоваться рано, пока не убедился в качестве данных.', en: 'Data spike — first check your instrumentation. A common cause of "growth" is a tracking bug. Don't celebrate until you've verified data quality.' }
+  },
+  {
+    tag: { ru:'Пользователи', en:'Users' },
+    q: { ru: 'Пользователи просят добавить тёмную тему. Это должно быть в роадмапе?', en: 'Users are asking for a dark theme. Should this be on the roadmap?' },
+    options: { ru: ['Да, если это один из топ-3 запросов по volume', 'Зависит от того, влияет ли это на ключевые бизнес-метрики и насколько затратна реализация', 'Нет — это дизайнерская задача, не продуктовая', 'Да всегда — UX-запросы в приоритете'], en: ['Yes, if it is one of the top 3 requests by volume', 'Depends on whether it affects key business metrics and how costly it is to implement', 'No — this is a design task, not a product task', 'Always yes — UX requests are high priority'] },
+    correct: 1,
+    explanation: { ru: 'Volume запросов — не единственный критерий. Нужно оценить impact на retention/conversion, стоимость и альтернативные издержки. Популярный запрос ≠ приоритетный.', en: 'Request volume is not the only criterion. Assess impact on retention/conversion, cost, and opportunity cost. Popular request ≠ priority.' }
+  },
+  {
+    tag: { ru:'CustDev', en:'CustDev' },
+    q: { ru: 'На интервью пользователь говорит: «Ваш продукт отличный, мне всё нравится». Что это значит?', en: 'In an interview a user says: "Your product is great, I like everything." What does this mean?' },
+    options: { ru: ['Продукт действительно хорош — можно прекращать исследование', 'Нужно записать это как подтверждение текущей стратегии', 'Пользователь вежлив, но не даёт полезной информации — нужно копать глубже', 'Пользователь не является целевой аудиторией'], en: ['The product is genuinely great — you can stop researching', 'Record this as confirmation of current strategy', 'The user is being polite but giving no useful info — dig deeper', 'The user is not the target audience'] },
+    correct: 2,
+    explanation: { ru: 'Это социальная желательность — люди не хотят обидеть. Хороший интервьюер не принимает общие похвалы, а спрашивает: «Расскажи про последний раз, когда пользовался...»', en: 'This is social desirability — people don't want to offend. A good interviewer doesn't accept general praise and asks: "Tell me about the last time you used..."' }
+  },
+  {
+    tag: { ru:'Метрики', en:'Metrics' },
+    q: { ru: 'Ты запустил фичу. Retention вырос на 5%, но NPS упал на 8 пунктов. Что делаешь?', en: 'You launched a feature. Retention grew 5%, but NPS dropped 8 points. What do you do?' },
+    options: { ru: ['Считаешь запуск успешным — retention важнее NPS', 'Откатываешь фичу немедленно', 'Игнорируешь NPS — это устаревшая метрика', 'Исследуешь причину расхождения — возможно, фича удерживает, но раздражает'], en: ['Call the launch a success — retention beats NPS', 'Roll back the feature immediately', 'Ignore NPS — it', 'Investigate the divergence — the feature may retain but annoy users'] },
+    correct: 3,
+    explanation: { ru: 'Противоречие метрик — сигнал для исследования. Фича может удерживать пользователей механически (например, принуждением), но снижать удовлетворённость. Долгосрочно это опасно.', en: 'Conflicting metrics signal investigation. A feature may mechanically retain users (e.g. through friction) but reduce satisfaction. Long-term this is dangerous.' }
+  },
+  {
+    tag: { ru:'Гипотезы', en:'Hypotheses' },
+    q: { ru: 'Конверсия в покупку упала на 10%. У тебя 5 гипотез. Как выбрать первую для проверки?', en: 'Purchase conversion dropped 10%. You have 5 hypotheses. How do you choose which to test first?' },
+    options: { ru: ['Ту, где потенциальный impact максимален при минимальных затратах на проверку', 'Ту, которую предложил CEO', 'Ту, которую легче всего проверить', 'Ту, в которую веришь больше всего интуитивно'], en: ['The one with maximum potential impact at minimum testing cost', 'The one the CEO suggested', 'The easiest to test', 'The one you believe in most intuitively'] },
+    correct: 0,
+    explanation: { ru: 'ICE-score: Impact × Confidence ÷ Ease. Не самая лёгкая и не самая очевидная, а та, которая даст максимум информации при минимальных ресурсах.', en: 'ICE score: Impact × Confidence ÷ Ease. Not the easiest or most obvious, but the one that gives maximum information at minimum resources.' }
+  },
+  {
+    tag: { ru:'Продукт', en:'Product' },
+    q: { ru: 'Ты PM в стартапе. Инвесторы давят: нужен рост любой ценой. Команда выгорает. Что делаешь?', en: 'You are PM at a startup. Investors push for growth at any cost. The team is burning out. What do you do?' },
+    options: { ru: ['Подчиняешься инвесторам — они платят', 'Открыто говоришь с инвесторами о рисках выгорания для долгосрочного роста', 'Игнорируешь команду — стартап важнее', 'Нанимаешь больше людей и распределяешь нагрузку'], en: ['Comply with investors — they pay', 'Openly discuss burnout risks with investors for long-term growth', 'Ignore the team — the startup matters more', 'Hire more people and distribute the load'] },
+    correct: 1,
+    explanation: { ru: 'Краткосрочный рост за счёт команды разрушает продукт долгосрочно. Хороший PM защищает устойчивость. Инвесторы понимают аргументы о рисках лучше, чем просьбы замедлиться.', en: 'Short-term growth at team expense destroys the product long-term. A good PM protects sustainability. Investors understand risk arguments better than requests to slow down.' }
+  },
+  {
+    tag: { ru:'Приоритизация', en:'Prioritization' },
+    q: { ru: 'Что из этого НЕ является задачей продакт-менеджера?', en: 'Which of these is NOT a product manager's job?' },
+    options: { ru: ['Писать user stories', 'Проводить custdev-интервью', 'Лично писать код для MVP', 'Принимать решения о приоритетах'], en: ['Writing user stories', 'Conducting custdev interviews', 'Personally writing code for the MVP', 'Making prioritization decisions'] },
+    correct: 2,
+    explanation: { ru: 'PM отвечает за «что» и «зачем», а не за «как». Написание кода — задача разработчика. PM, который пишет код, перестаёт заниматься продуктом.', en: 'PM owns the "what" and "why", not the "how". Writing code is the developer's job. A PM who writes code stops doing product work.' }
+  },
+  {
+    tag: { ru:'Запуск', en:'Launch' },
+    q: { ru: 'Ты выпустил фичу. Через 2 часа пришёл критический баг у 2% пользователей. Действия?', en: 'You released a feature. Two hours later a critical bug hit 2% of users. What do you do?' },
+    options: { ru: ['Ждёшь — 2% это мало', 'Пишешь извинения в соцсетях', 'Немедленно откатываешь для всех', 'Оцениваешь критичность: какие 2%? Что именно сломано? При необходимости — хотфикс или откат'], en: ['Wait — 2% is not much', 'Post an apology on social media', 'Immediately roll back for everyone', 'Assess severity: which 2%? What exactly broke? If needed — hotfix or rollback'] },
+    correct: 3,
+    explanation: { ru: '2% могут быть premium-клиентами или конкретным платформой. Важна не цифра, а impact. Быстрая оценка → решение. Паника и промедление одинаково опасны.', en: '2% might be premium clients or a specific platform. What matters is not the number but the impact. Quick assessment → decision. Panic and delay are equally dangerous.' }
+  },
+  {
+    tag: { ru:'Данные', en:'Data' },
+    q: { ru: 'Твой продакт-аналитик говорит, что данных недостаточно для решения. Что делаешь?', en: 'Your product analyst says there is not enough data to make a decision. What do you do?' },
+    options: { ru: ['Принимаешь решение на основе имеющихся данных + экспертного суждения, явно фиксируя неопределённость', 'Ждёшь, пока данных станет достаточно', 'Игнорируешь аналитика и решаешь интуитивно', 'Передаёшь решение стейкхолдерам'], en: ['Decide based on available data + expert judgment, explicitly noting uncertainty', 'Wait until there is enough data', 'Ignore the analyst and decide intuitively', 'Pass the decision to stakeholders'] },
+    correct: 0,
+    explanation: { ru: 'Ожидание идеальных данных — ловушка. PM принимает решения в условиях неопределённости. Ключевое — явно зафиксировать допущения и запланировать проверку гипотезы.', en: 'Waiting for perfect data is a trap. PMs make decisions under uncertainty. Key is explicitly documenting assumptions and planning to validate the hypothesis.' }
+  },
+  {
+    tag: { ru:'Пользователи', en:'Users' },
+    q: { ru: 'Пользователи жалуются на медленную загрузку. Команда говорит, что скорость в норме по метрикам. Кто прав?', en: 'Users complain about slow loading. The team says speed metrics are normal. Who is right?' },
+    options: { ru: ['Метрики объективны — значит проблемы нет', 'Возможно оба: метрики могут не отражать восприятие. Нужно изучить перцептивную скорость', 'Пользователи всегда правы — нужно ускоряться', 'Жалобы единичны — игнорируй'], en: ['Metrics are objective — so there is no problem', 'Possibly both: metrics may not reflect perception. Study perceived speed', 'Users are always right — speed up', 'Complaints are isolated — ignore them'] },
+    correct: 1,
+    explanation: { ru: 'Технические метрики (TTFB, LCP) и субъективное восприятие скорости — разные вещи. Даже быстрый продукт может ощущаться медленным из-за отсутствия progress-индикаторов.', en: 'Technical metrics (TTFB, LCP) and subjective speed perception are different things. Even a fast product can feel slow without progress indicators.' }
+  },
+  {
+    tag: { ru:'Команда', en:'Team' },
+    q: { ru: 'Дизайнер предлагает решение, которое технически невозможно в этом спринте. Как реагируешь?', en: 'A designer proposes a solution that is technically impossible this sprint. How do you respond?' },
+    options: { ru: ['Отклоняешь идею сразу', 'Просишь дизайнера согласовать с разработчиком напрямую', 'Объясняешь ограничения и вместе ищешь решение в рамках возможного', 'Берёшь идею в бэклог без срока'], en: ['Reject the idea immediately', ', ', 'Explain constraints and find a solution together within what', ', '] },
+    correct: 2,
+    explanation: { ru: 'Отличные идеи не должны умирать из-за технических ограничений текущего спринта. PM помогает найти MVP-версию идеи, которую можно реализовать сейчас.', en: 'Great ideas should not die because of current sprint constraints. PM helps find an MVP version of the idea that can be implemented now.' }
+  },
+  {
+    tag: { ru:'Стратегия', en:'Strategy' },
+    q: { ru: 'Твой продукт занимает 15% рынка. Инвестор хочет выйти на новый сегмент. Правильный первый шаг?', en: 'Your product has 15% market share. An investor wants to expand to a new segment. Correct first step?' },
+    options: { ru: ['Нанять продажников под новый сегмент', 'Провести маркетинговое исследование нового сегмента', 'Сразу запустить пилот в новом сегменте', 'Понять, почему у вас 15%, а не больше на текущем рынке'], en: ['Hire salespeople for the new segment', 'Conduct market research of the new segment', 'Launch a pilot in the new segment immediately', 'Understand why you have 15% and not more in the current market'] },
+    correct: 3,
+    explanation: { ru: 'Расширение до того, как решена проблема роста на текущем рынке — классическая ошибка. Сначала разберитесь, что мешает расти с 15% до 30%.', en: 'Expanding before solving the growth problem in the current market is a classic mistake. First understand what prevents growing from 15% to 30%.' }
+  },
+  {
+    tag: { ru:'PMF', en:'PMF' },
+    q: { ru: 'Как понять, что у продукта есть product-market fit?', en: 'How do you know a product has product-market fit?' },
+    options: { ru: ['Органический рост и пользователи расстраиваются при мысли об уходе из продукта', 'Выручка растёт три месяца подряд', 'Инвесторы дают следующий раунд', 'NPS выше 50'], en: ['Organic growth and users are upset at the thought of leaving the product', 'Revenue grows three months in a row', 'Investors fund the next round', 'NPS above 50'] },
+    correct: 0,
+    explanation: { ru: 'Классический тест Шона Эллиса: «Как бы вы себя почувствовали, если бы продукт исчез?» Если >40% отвечают «очень расстроен» — PMF есть. Деньги инвесторов и NPS — косвенные признаки.', en: 'Classic Sean Ellis test: "How would you feel if the product disappeared?" If >40% say "very disappointed" — PMF exists. Investor money and NPS are indirect signals.' }
+  },
+  {
+    tag: { ru:'Коммуникация', en:'Communication' },
+    q: { ru: 'Тебе нужно отказать стейкхолдеру в фиче. Лучший способ?', en: 'You need to say no to a stakeholder's feature request. Best approach?' },
+    options: { ru: ['«Нет, у нас нет на это времени»', '«Да, возьмём в следующем квартале»', '«Давай разберём, какую проблему это решает, и найдём лучший способ»', '«Обсудим это на следующем sprint review»'], en: ['"No, we don't have time for this"', '"Yes, we'll take it next quarter"', '"Let's explore what problem this solves and find the best approach"', '"Let's discuss this at the next sprint review"'] },
+    correct: 2,
+    explanation: { ru: 'Лучший отказ — не отказ, а переформулирование. Когда ты фокусируешься на проблеме, а не решении, стейкхолдер чувствует, что его услышали, даже если конкретная фича не войдёт в спринт.', en: 'The best "no" is not a refusal but a reframe. When you focus on the problem rather than the solution, the stakeholder feels heard even if the specific feature does not make it to the sprint.' }
+  },
+  {
+    tag: { ru:'Метрики', en:'Metrics' },
+    q: { ru: 'Какая из этих метрик является leading indicator (опережающим индикатором)?', en: 'Which of these metrics is a leading indicator?' },
+    options: { ru: ['Чистая прибыль', 'Годовая выручка', 'Количество активаций новых пользователей за неделю', 'Churn rate за квартал'], en: ['Net profit', 'Annual revenue', 'Number of new user activations per week', 'Quarterly churn rate'] },
+    correct: 2,
+    explanation: { ru: 'Leading indicators предсказывают будущее — активации сегодня дают retention через месяц. Прибыль и чурн — lagging indicators, они показывают то, что уже произошло.', en: 'Leading indicators predict the future — activations today drive retention next month. Profit and churn are lagging indicators that show what has already happened.' }
+  },
+  {
+    tag: { ru:'CustDev', en:'CustDev' },
+    q: { ru: 'Сколько интервью нужно провести, чтобы выйти на качественное насыщение (saturation)?', en: 'How many interviews are needed to reach qualitative saturation?' },
+    options: { ru: ['Минимум 100', 'Зависит только от бюджета', 'Ровно 30 — статистический минимум', 'Обычно 5–8 на один сегмент, при повторении паттернов'], en: ['At least 100', 'Depends only on budget', 'Exactly 30 — statistical minimum', 'Usually 5–8 per segment when patterns repeat'] },
+    correct: 3,
+    explanation: { ru: 'По исследованиям Nielsen и Nielsen Norman Group: после 5 интервью обнаруживается 85% ключевых паттернов. 8–12 интервью — уже очень высокое насыщение для одного сегмента.', en: 'Per Nielsen and Nielsen Norman Group research: after 5 interviews, 85% of key patterns emerge. 8–12 interviews gives very high saturation for one segment.' }
+  },
+  {
+    tag: { ru:'Приоритизация', en:'Prioritization' },
+    q: { ru: 'В чём главный недостаток фреймворка RICE?', en: 'What is the main drawback of the RICE framework?' },
+    options: { ru: ['Оценки Reach, Impact, Confidence субъективны и могут искажаться в пользу «удобных» решений', 'Он слишком сложный для обычной команды', 'Он не учитывает технический долг', 'Его придумали в Google, а не в продуктовых компаниях'], en: ['Reach, Impact, Confidence scores are subjective and can be gamed toward "convenient" solutions', 'It is too complex for a normal team', 'It does not account for technical debt', 'It was invented at Google, not at product companies'] },
+    correct: 0,
+    explanation: { ru: 'RICE — полезный инструмент, но его оценки легко подогнать под желаемый результат. Осознание этого ограничения делает его применение честнее.', en: 'RICE is useful but its scores are easy to manipulate toward desired outcomes. Recognizing this limitation makes its application more honest.' }
+  },
+];
+
+
+let dmLang = 'ru';
+let dmCurrent = 0;
+let dmScore = 0;
+let dmAnswers = [];
+let dmQuestions = [];
+
+function dmShuffled() {
+  return [...DM_QUESTIONS].sort(() => Math.random() - 0.5);
+}
+
+function dmStart() {
+  dmCurrent = 0; dmScore = 0; dmAnswers = [];
+  dmQuestions = dmShuffled();
+  document.getElementById('dm-start').style.display = 'none';
+  document.getElementById('dm-result').style.display = 'none';
+  document.getElementById('dm-game').style.display = 'block';
+  dmRenderDots();
+  dmRenderQuestion();
+}
+
+function dmRestart() {
+  document.getElementById('dm-result').style.display = 'none';
+  dmStart();
+}
+
+function dmRenderDots() {
+  const el = document.getElementById('dm-dots');
+  el.innerHTML = dmQuestions.map((_,i) => `<div class="dm-dot${i===dmCurrent?' active':''}" id="dm-dot-${i}"></div>`).join('');
+}
+
+function dmRenderQuestion() {
+  const q = dmQuestions[dmCurrent];
+  const l = dmLang;
+  const tagColors = {
+    'Приоритизация':'rgba(205,255,80,0.15)','Prioritization':'rgba(205,255,80,0.15)',
+    'CustDev':'rgba(78,205,196,0.15)',
+    'Метрики':'rgba(55,138,221,0.15)','Metrics':'rgba(55,138,221,0.15)',
+    'Команда':'rgba(255,107,157,0.15)','Team':'rgba(255,107,157,0.15)',
+    'Стратегия':'rgba(127,119,221,0.15)','Strategy':'rgba(127,119,221,0.15)',
+    'Запуск':'rgba(255,140,66,0.15)','Launch':'rgba(255,140,66,0.15)',
+    'Аналитика':'rgba(78,205,196,0.15)','Analytics':'rgba(78,205,196,0.15)',
+    'Пользователи':'rgba(212,83,126,0.15)','Users':'rgba(212,83,126,0.15)',
+    'Роадмап':'rgba(205,255,80,0.15)','Roadmap':'rgba(205,255,80,0.15)',
+    'Гипотезы':'rgba(255,221,45,0.15)','Hypotheses':'rgba(255,221,45,0.15)'
+  };
+  const tagText = q.tag[l];
+  const tagColor = tagColors[tagText] || 'rgba(255,255,255,0.1)';
+  const tagBorder = tagColor.replace('0.15','0.4');
+
+  document.getElementById('dm-tag').textContent = tagText;
+  document.getElementById('dm-tag').style.background = tagColor;
+  document.getElementById('dm-tag').style.border = `1px solid ${tagBorder}`;
+  document.getElementById('dm-tag').style.color = 'rgba(240,240,245,0.85)';
+  document.getElementById('dm-num').textContent = `${dmCurrent+1} / ${dmQuestions.length}`;
+  document.getElementById('dm-q').textContent = q.q[l];
+  document.getElementById('dm-explanation').style.display = 'none';
+
+  const letters = ['A','B','C','D'];
+  document.getElementById('dm-options').innerHTML = q.options[l].map((opt,i) => `
+    <button class="dm-option" onclick="dmAnswer(${i})">
+      <span class="dm-option-letter">${letters[i]}</span>
+      <span>${opt}</span>
+    </button>`).join('');
+}
+
+function dmAnswer(idx) {
+  const q = dmQuestions[dmCurrent];
+  const l = dmLang;
+  const correct = q.correct === idx;
+  if (correct) dmScore += 10;
+  dmAnswers.push(correct);
+
+  document.querySelectorAll('.dm-option').forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.correct) btn.classList.add('correct');
+    else if (i === idx && !correct) btn.classList.add('wrong');
+  });
+
+  const dot = document.getElementById(`dm-dot-${dmCurrent}`);
+  if (dot) dot.classList.add(correct ? 'answered-correct' : 'answered-wrong');
+  document.getElementById('dm-score').textContent = dmScore;
+
+  const expl = document.getElementById('dm-explanation');
+  expl.style.display = 'block';
+  expl.style.background = correct ? 'rgba(205,255,80,0.08)' : 'rgba(226,75,74,0.08)';
+  expl.style.border = `1px solid ${correct ? 'rgba(205,255,80,0.2)' : 'rgba(226,75,74,0.2)'}`;
+  document.getElementById('dm-expl-icon').textContent = correct ? '✅' : '❌';
+  document.getElementById('dm-expl-verdict').textContent = correct
+    ? (l === 'en' ? 'Correct!' : 'Верно!')
+    : (l === 'en' ? 'Not quite.' : 'Не совсем.');
+  document.getElementById('dm-expl-verdict').style.color = correct ? '#CDFF50' : '#E24B4A';
+  document.getElementById('dm-expl-text').textContent = q.explanation[l];
+
+  const isLast = dmCurrent === dmQuestions.length - 1;
+  document.getElementById('dm-next-btn').textContent = isLast
+    ? (l === 'en' ? 'See results →' : 'Смотреть результат →')
+    : (l === 'en' ? 'Next question →' : 'Следующий вопрос →');
+
+  expl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function dmNext() {
+  if (dmCurrent === dmQuestions.length - 1) { dmShowResult(); return; }
+  dmCurrent++;
+  document.getElementById('dm-explanation').style.display = 'none';
+  document.querySelectorAll('.dm-dot').forEach((d,i) => {
+    d.classList.toggle('active', i === dmCurrent);
+  });
+  dmRenderQuestion();
+  document.getElementById('dm-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function dmShowResult() {
+  document.getElementById('dm-game').style.display = 'none';
+  document.getElementById('dm-result').style.display = 'block';
+  const l = dmLang;
+  const pct = Math.round(dmAnswers.filter(Boolean).length / dmQuestions.length * 100);
+  const correct = dmAnswers.filter(Boolean).length;
+
+  let emoji, title, desc;
+  const iq = 80 + Math.round(pct * 0.7) + (correct === dmQuestions.length ? 10 : 0);
+
+  if (pct >= 90) {
+    emoji = '🧠';
+    title = l === 'en' ? 'Your PM IQ:' : 'Твой PM IQ:';
+    desc = l === 'en'
+      ? `${iq} PM IQ — Senior PM level. Outstanding product thinking: you consider user problems, data, and team dynamics simultaneously.`
+      : `${iq} PM IQ — уровень Senior PM. Отличное продуктовое мышление: ты одновременно учитываешь проблемы пользователей, данные и динамику команды.`;
+  } else if (pct >= 70) {
+    emoji = '🎯';
+    title = l === 'en' ? 'Your PM IQ:' : 'Твой PM IQ:';
+    desc = l === 'en'
+      ? `${iq} PM IQ — Middle PM level. Solid product intuition. Small gaps in analytics and stakeholder management separate good from great.`
+      : `${iq} PM IQ — уровень Middle PM. Хорошая продуктовая интуиция. Пробелы в аналитике и работе со стейкхолдерами отличают хорошего PM от отличного.`;
+  } else if (pct >= 50) {
+    emoji = '📈';
+    title = l === 'en' ? 'Your PM IQ:' : 'Твой PM IQ:';
+    desc = l === 'en'
+      ? `${iq} PM IQ — Junior PM level. Good foundation, but product thinking is still developing. Focus on metrics, validation, and communication.`
+      : `${iq} PM IQ — уровень Junior PM. Хорошая база, но продуктовое мышление ещё формируется. Фокус на метриках, валидации гипотез и коммуникации.`;
+  } else {
+    emoji = '🌱';
+    title = l === 'en' ? 'Your PM IQ:' : 'Твой PM IQ:';
+    desc = l === 'en'
+      ? `${iq} PM IQ — Intern level. Product management is a skill built through practice. Study CustDev, prioritization, metrics — and try again!`
+      : `${iq} PM IQ — уровень Intern. Продакт-менеджмент — навык, который строится практикой. Изучи CustDev, приоритизацию, метрики — и попробуй снова!`;
+  }
+
+  document.getElementById('dm-result-emoji').textContent = emoji;
+  document.getElementById('dm-result-title').textContent = title;
+  document.getElementById('dm-result-title').style.background = 'none';
+  document.getElementById('dm-result-title').style.webkitTextFillColor = 'rgba(240,240,245,0.5)';
+  document.getElementById('dm-result-title').style.fontSize = '1rem';
+  document.getElementById('dm-result-label').textContent = `${iq}`;
+  document.getElementById('dm-result-label').style.fontSize = '4rem';
+  document.getElementById('dm-result-score').textContent = l === 'en'
+    ? `${correct} out of ${dmQuestions.length} correct · ${dmScore} pts`
+    : `${correct} из ${dmQuestions.length} правильных · ${dmScore} очков`;
+  document.getElementById('dm-result-desc').textContent = desc;
+  document.getElementById('dm-restart-btn').textContent = l === 'en' ? 'Play again' : 'Сыграть снова';
+  document.getElementById('dm-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+window.setDMLang = function(l) {
+  dmLang = l;
+  const startDesc = document.getElementById('dm-start-desc');
+  if (startDesc) startDesc.textContent = l === 'en'
+    ? '10 questions · Find out your PM IQ · Explanation after every answer'
+    : '10 вопросов · Узнай свой PM IQ · После каждого ответа — объяснение';
+  const startBtn = document.getElementById('dm-start-btn');
+  if (startBtn) startBtn.textContent = l === 'en' ? 'Start game' : 'Начать игру';
+  if (document.getElementById('dm-game').style.display !== 'none') dmRenderQuestion();
+};
+// ─────────────────────────────────────────────────────────────────────
+
 function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
   document.querySelectorAll('[data-ru][data-en]').forEach(el => {
@@ -520,6 +951,7 @@ function setLang(lang) {
   document.documentElement.lang = lang;
   document.querySelector('.nav-logo').textContent = lang === 'en' ? 'MS' : 'МС';
   if (typeof setGameLang === 'function') setGameLang(lang);
+  if (typeof setDMLang === 'function') setDMLang(lang);
 }
 
 // PM Runner Game
