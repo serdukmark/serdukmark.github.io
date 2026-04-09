@@ -128,13 +128,40 @@ footer { position: relative; z-index: 1; text-align: center; padding: 32px; colo
 .fade-in { opacity: 1; transform: translateY(0); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-in.animate { opacity: 0; transform: translateY(30px); }
 .fade-in.animate.visible { opacity: 1; transform: translateY(0); }
+/* Burger menu */
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.burger span { display: block; width: 22px; height: 2px; background: var(--light); border-radius: 2px; transition: all 0.3s; }
+.burger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+.mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(18,18,31,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.08); z-index: 99; padding: 20px 24px; flex-direction: column; gap: 4px; }
+.mobile-menu a { color: rgba(240,240,245,0.7); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s; }
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: var(--lime); }
+.mobile-menu.open { display: flex; }
+
 @media (max-width: 768px) {
-  nav { padding: 16px 20px; } .nav-links { gap: 18px; } .nav-links a { font-size: 0.8rem; }
-  section { padding: 0 20px; } .hero { flex-direction: column-reverse; gap: 32px; text-align: center; }
-  .hero-photo { width: 200px; height: 200px; } .hero-badges { justify-content: center; }
-  .about-grid { grid-template-columns: 1fr; } .stats-row { grid-template-columns: repeat(2, 1fr); }
-  .project { grid-template-columns: 48px 1fr; } .project-date { grid-column: 1 / -1; }
+  .burger { display: flex; }
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  section { padding: 0 16px; }
+  .hero { flex-direction: column-reverse; gap: 24px; text-align: center; padding-top: 80px; }
+  .hero-photo { width: 180px; height: 180px; }
+  .hero h1 { font-size: clamp(2.4rem, 12vw, 3.5rem); }
+  .hero-sub { font-size: 1rem; margin-bottom: 24px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-card { overflow: hidden; }
+  .about-card img { max-width: 100%; height: auto !important; max-height: 48px; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .project { grid-template-columns: 40px 1fr; gap: 12px; padding: 20px; }
+  .project-date { grid-column: 1 / -1; }
   .contact-grid { grid-template-columns: 1fr; }
+  .section-header { padding-top: 48px; }
+  .stack-items { gap: 8px; }
+  .stack-item { font-size: 0.8rem; padding: 6px 12px; }
+  #game > div[style*="grid-template-columns"] { display: flex !important; flex-direction: column !important; }
+  .achievements { gap: 8px; }
+  .lang-switch { margin-left: auto; }
 }
 /* Custom cursor */
 *, *::before, *::after { cursor: none !important; }
@@ -180,12 +207,18 @@ body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52p
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
 </button>
 <div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div>
-<nav><div class="nav-logo" data-ru="МС" data-en="MS">МС</div><div class="nav-links"><a href="#about" data-ru="Обо мне" data-en="About">Обо мне</a><a href="#projects" data-ru="Проекты" data-en="Projects">Проекты</a><a href="#contact" data-ru="Контакты" data-en="Contacts">Контакты</a><a href="#game" data-ru="Игра" data-en="Game">Игра</a></div><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ru')">RU</button><button class="lang-btn" onclick="setLang('en')">EN</button></div></nav>
+<nav><div class="nav-logo" data-ru="МС" data-en="MS">МС</div><div class="nav-links"><a href="#about" data-ru="Обо мне" data-en="About">Обо мне</a><a href="#projects" data-ru="Проекты" data-en="Projects">Проекты</a><a href="#contact" data-ru="Контакты" data-en="Contacts">Контакты</a><a href="#game" data-ru="Игра" data-en="Game">Игра</a></div><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ru')">RU</button><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button></nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" data-ru="Обо мне" data-en="About" onclick="closeMenu()">Обо мне</a>
+  <a href="#projects" data-ru="Проекты" data-en="Projects" onclick="closeMenu()">Проекты</a>
+  <a href="#contact" data-ru="Контакты" data-en="Contacts" onclick="closeMenu()">Контакты</a>
+  <a href="#game" data-ru="Игра" data-en="Game" onclick="closeMenu()">Игра</a>
+</div>
 
 <section class="hero" id="hero">
   <div class="hero-content">
     <div class="hero-tag" data-ru="Продакт-менеджер" data-en="Product Manager">Продакт-менеджер</div>
-    <h1>Марк<br><span class="accent">Сердюк</span><span class="accent2">.</span></h1>
+    <h1><span id="hero-first" data-ru="Марк" data-en="Mark">Марк</span><br><span class="accent" id="hero-last" data-ru="Сердюк" data-en="Serdyuk">Сердюк</span><span class="accent2">.</span></h1>
     <p class="hero-sub" data-ru="Строю продукты на стыке бизнеса, аналитики и технологий. От стратегии образования в Правительстве РФ до партнёрских платформ в Т-Банке." data-en="Building products at the intersection of business, analytics and technology. From Russia's education strategy to partner platforms at T-Bank.">Строю продукты на стыке бизнеса, аналитики и технологий. От стратегии образования в Правительстве РФ до партнёрских платформ в Т-Банке.</p>
   </div>
   <img class="hero-photo" src="photo.jpg" alt="Марк Сердюк">
@@ -460,6 +493,18 @@ function copyText(card, text) {
   });
 }
 
+// Burger menu
+function toggleMenu() {
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobile-menu');
+  burger.classList.toggle('open');
+  menu.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('burger').classList.remove('open');
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+
 // Language switcher
 function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
@@ -467,6 +512,7 @@ function setLang(lang) {
     el.textContent = el.dataset[lang];
   });
   document.documentElement.lang = lang;
+  document.querySelector('.nav-logo').textContent = lang === 'en' ? 'MS' : 'МС';
   if (typeof setGameLang === 'function') setGameLang(lang);
 }
 
