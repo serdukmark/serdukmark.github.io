@@ -563,11 +563,12 @@ function setLang(lang) {
 
   let state='idle', score=0, hi=0, frame=0, speed=3.5;
   let player, obsList, bonusList, particles, rafId=null;
+  let lastFrameTime=0, timeAccum=0;
 
   function initPlayer() { return {x:80,y:GROUND-40,w:30,h:40,vy:0,onGround:true,jumps:0}; }
   function reset() {
     if (rafId) { cancelAnimationFrame(rafId); rafId=null; }
-    score=0; frame=0; speed=3.5;
+    score=0; frame=0; speed=3.5; lastFrameTime=0; timeAccum=0;
     player=initPlayer(); obsList=[]; bonusList=[]; particles=[];
     const l = gameLang;
     speedEl.textContent = l==='en' ? 'Speed: normal' : 'Скорость: нормальная';
@@ -632,11 +633,16 @@ function setLang(lang) {
     ctx.fillText(gameLang==='en'?'COFFEE':'КОФЕ', b.x+14, b.y+30);
   }
 
-  function gameLoop() {
+  function gameLoop(ts) {
     if(state!=='running') return;
-    frame++; score++;
+    rafId = requestAnimationFrame(gameLoop);
+    const dt = lastFrameTime ? Math.min((ts - lastFrameTime) / 16.67, 2) : 1;
+    lastFrameTime = ts;
+    frame++;
+    timeAccum += dt;
+    score = Math.floor(timeAccum);
 
-    if(score%300===0){
+    if(timeAccum > 0 && Math.floor(timeAccum / 300) > Math.floor((timeAccum - dt) / 300)){
       speed=Math.min(speed+0.4,8);
       const ru=['нормальная','быстрая','очень быстрая','огонь!','ХАОС'];
       const en=['normal','fast','very fast','fire!','CHAOS'];
@@ -654,11 +660,11 @@ function setLang(lang) {
       }
     }
 
-    player.vy+=0.6; player.y+=player.vy;
-    if(player.y>=GROUND-player.h){player.y=GROUND-player.h;player.vy=0;player.onGround=true;player.jumps=0;}
+    player.vy += 0.6 * dt; player.y += player.vy * dt;
+    if(player.y >= GROUND - player.h){player.y=GROUND-player.h;player.vy=0;player.onGround=true;player.jumps=0;}
 
-    obsList.forEach(o=>o.x-=speed);
-    bonusList.forEach(b=>b.x-=speed);
+    obsList.forEach(o=>o.x -= speed * dt);
+    bonusList.forEach(b=>b.x -= speed * dt);
     particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.life-=0.06;});
     obsList=obsList.filter(o=>o.x>-80);
     bonusList=bonusList.filter(b=>b.x>-50);
@@ -669,7 +675,7 @@ function setLang(lang) {
     }
     bonusList=bonusList.filter(b=>{
       if(collides(player,b.x,b.y,28,28)){
-        score+=10; addParticles(b.x+14,b.y+14,LIME);
+        timeAccum += 10; addParticles(b.x+14,b.y+14,LIME);
         showMsg(gameLang==='en'?'+10 coffee ☕':'+10 кофе ☕'); return false;
       }
       return true;
@@ -682,26 +688,42 @@ function setLang(lang) {
     particles.forEach(p=>{ctx.globalAlpha=p.life;ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,3,0,Math.PI*2);ctx.fill();});
     ctx.globalAlpha=1;
     obsList.forEach(drawObs); bonusList.forEach(drawBonus); drawPlayer(player);
-    rafId = requestAnimationFrame(gameLoop);
   }
 
   const FB_URL = 'https://mserdyuk-site-default-rtdb.europe-west1.firebasedatabase.app';
 
   function loadLeaderboard() {
-    fetch(`${FB_URL}/leaderboard.json?orderBy="score"&limitToLast=10`)
+    fetch(`${FB_URL}/leaderboard.json`)
       .then(r => r.json())
       .then(data => {
         const list = document.getElementById('lb-list');
-        if (!data) { list.innerHTML = `<div style="font-size:0.8rem;color:rgba(240,240,245,0.3);text-align:center;padding:20px 0;" id="lb-loading">${gameLang==='en'?'No scores yet':'Пока нет результатов'}</div>`; return; }
-        const entries = Object.values(data).sort((a,b) => b.score - a.score).slice(0,10);
+        if (!data || typeof data !== 'object') {
+          list.innerHTML = `<div style="font-size:0.8rem;color:rgba(240,240,245,0.3);text-align:center;padding:20px 0;">${gameLang==='en'?'No scores yet':'Пока нет результатов'}</div>`;
+          return;
+        }
+        const best = {};
+        Object.values(data)
+          .filter(e => e && e.name && e.score)
+          .forEach(e => {
+            const key = e.name.trim().toLowerCase();
+            if (!best[key] || e.score > best[key].score)
+              best[key] = { name: e.name, score: e.score };
+          });
+        const entries = Object.values(best)
+          .sort((a,b) => b.score - a.score)
+          .slice(0, 5);
+        if (!entries.length) {
+          list.innerHTML = `<div style="font-size:0.8rem;color:rgba(240,240,245,0.3);text-align:center;padding:20px 0;">${gameLang==='en'?'No scores yet':'Пока нет результатов'}</div>`;
+          return;
+        }
         const medals = ['🥇','🥈','🥉'];
         list.innerHTML = entries.map((e,i) => `
           <div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
-            <span style="font-size:13px;min-width:20px;text-align:center;">${medals[i]||`<span style="color:rgba(240,240,245,0.3);font-size:12px;">${i+1}</span>`}</span>
+            <span style="font-size:13px;min-width:20px;text-align:center;">${medals[i] || `<span style="color:rgba(240,240,245,0.3);font-size:12px;">${i+1}</span>`}</span>
             <span style="flex:1;font-size:13px;color:rgba(240,240,245,0.85);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${e.name}</span>
             <span style="font-size:13px;font-weight:700;color:#CDFF50;">${e.score}</span>
           </div>`).join('');
-      }).catch(() => {});
+      }).catch(err => console.error('Leaderboard error:', err));
   }
 
   function saveScore(name, score) {
@@ -741,7 +763,7 @@ function setLang(lang) {
     gameLang = document.documentElement.lang || 'ru';
     reset(); state='running';
     overlay.style.display='none';
-    gameLoop();
+    rafId = requestAnimationFrame(gameLoop);
   }
 
   startBtn.addEventListener('click', startGame);
