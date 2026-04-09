@@ -56,7 +56,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; padding: 20px 40px; display: f
 .nav-links a { color: rgba(240,240,245,0.6); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
 .nav-links a:hover { color: var(--lime); }
 section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 32px; }
-.hero { min-height: 100vh; display: flex; align-items: center; gap: 60px; padding-top: 100px; }
+.hero { min-height: 100vh; display: flex; align-items: center; gap: 60px; padding-top: 100px; padding-bottom: 0; }
 .hero-content { flex: 1; }
 .hero-photo { width: 280px; height: 280px; border-radius: 24px; object-fit: cover; border: 3px solid rgba(205,255,80,0.3); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 80px rgba(205,255,80,0.08); animation: fadeUp 0.8s ease 0.5s both; flex-shrink: 0; }
 .hero-tag { display: inline-block; background: linear-gradient(135deg, var(--lime), var(--blue)); color: var(--dark); font-weight: 700; font-size: 0.8rem; padding: 6px 16px; border-radius: 100px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 24px; width: fit-content; animation: fadeUp 0.8s ease both; }
@@ -68,7 +68,8 @@ section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; pad
 .badge { padding: 8px 18px; border-radius: 100px; font-size: 0.82rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.12); background: var(--card); backdrop-filter: blur(10px); transition: all 0.3s; }
 .badge:hover { border-color: var(--lime); transform: translateY(-2px); }
 .badge.highlight { background: linear-gradient(135deg, rgba(205,255,80,0.15), rgba(78,205,196,0.15)); border-color: var(--lime); color: var(--lime); }
-.section-header { margin-bottom: 48px; padding-top: 120px; }
+.section-header { margin-bottom: 48px; padding-top: 60px; }
+#projects { padding-top: 30px; }
 .section-header h2 { font-family: 'Dela Gothic One', cursive; font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 12px; }
 .section-header .line { height: 4px; width: 60px; border-radius: 2px; background: linear-gradient(90deg, var(--lime), var(--blue)); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -124,8 +125,9 @@ section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; pad
 .contact-card span { color: rgba(240,240,245,0.5); font-size: 0.85rem; }
 footer { position: relative; z-index: 1; text-align: center; padding: 32px; color: rgba(240,240,245,0.25); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.04); }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in { opacity: 1; transform: translateY(0); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in.animate { opacity: 0; transform: translateY(30px); }
+.fade-in.animate.visible { opacity: 1; transform: translateY(0); }
 @media (max-width: 768px) {
   nav { padding: 16px 20px; } .nav-links { gap: 18px; } .nav-links a { font-size: 0.8rem; }
   section { padding: 0 20px; } .hero { flex-direction: column-reverse; gap: 32px; text-align: center; }
@@ -160,6 +162,15 @@ body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52p
 
 /* Clickable contact cards */
 .contact-card.copyable { cursor: pointer; }
+
+/* Stack section */
+.stack-section { margin-top: 60px; }
+.stack-categories { display: flex; flex-direction: column; gap: 32px; }
+.stack-category h4 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: rgba(240,240,245,0.35); margin-bottom: 14px; }
+.stack-items { display: flex; flex-wrap: wrap; gap: 10px; }
+.stack-item { display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 12px; background: var(--card); border: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem; font-weight: 600; color: rgba(240,240,245,0.8); transition: all 0.25s; }
+.stack-item:hover { border-color: var(--lime); color: var(--lime); transform: translateY(-2px); }
+.stack-item svg { width: 18px; height: 18px; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -176,10 +187,6 @@ body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52p
     <div class="hero-tag" data-ru="Продакт-менеджер" data-en="Product Manager">Продакт-менеджер</div>
     <h1>Марк<br><span class="accent">Сердюк</span><span class="accent2">.</span></h1>
     <p class="hero-sub" data-ru="Строю продукты на стыке бизнеса, аналитики и технологий. От стратегии образования в Правительстве РФ до партнёрских платформ в Т-Банке." data-en="Building products at the intersection of business, analytics and technology. From Russia's education strategy to partner platforms at T-Bank.">Строю продукты на стыке бизнеса, аналитики и технологий. От стратегии образования в Правительстве РФ до партнёрских платформ в Т-Банке.</p>
-    <div class="hero-badges">
-      <span class="badge highlight">CustDev</span><span class="badge">Agile</span><span class="badge">SQL</span>
-      <span class="badge">Figma</span><span class="badge" data-ru="A/B-тесты" data-en="A/B Tests">A/B-тесты</span><span class="badge">JTBD</span><span class="badge">CJM</span>
-    </div>
   </div>
   <img class="hero-photo" src="photo.jpg" alt="Марк Сердюк">
 </section>
@@ -226,6 +233,62 @@ body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52p
     <div class="stat fade-in"><div class="stat-num" data-count="16">16</div><div class="stat-label" data-ru="человек в командах, где я менеджер" data-en="people in teams I manage">человек в командах, где я менеджер</div></div>
     <div class="stat fade-in"><div class="stat-num">∞</div><div class="stat-label" data-ru="желания развиваться и развивать" data-en="desire to grow and develop">желания развиваться и развивать</div></div>
   </div>
+
+  <div class="stack-section">
+    <div class="section-header" style="margin-bottom:32px;"><h2 data-ru="Стек" data-en="Stack">Стек</h2><div class="line"></div></div>
+    <div class="stack-categories">
+
+      <div class="stack-category">
+        <h4 data-ru="Инструменты" data-en="Tools">Инструменты</h4>
+        <div class="stack-items">
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M9 12h6M9 8h6M9 16h4"/></svg><span>Figma</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg><span>Miro</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg><span>Notion</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span data-ru="Яндекс Метрика" data-en="Yandex Metrica">Яндекс Метрика</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg><span>Jira</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Slack</span></div>
+        </div>
+      </div>
+
+      <div class="stack-category">
+        <h4 data-ru="Методологии" data-en="Methodologies">Методологии</h4>
+        <div class="stack-items">
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>CustDev</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span>Agile</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg><span>JTBD</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg><span>CJM</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span>Empathy Map</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg><span data-ru="A/B-тесты" data-en="A/B Tests">A/B-тесты</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 12h10M7 8h10M7 16h6"/></svg><span>User Persona</span></div>
+        </div>
+      </div>
+
+      <div class="stack-category">
+        <h4 data-ru="Фреймворки" data-en="Frameworks">Фреймворки</h4>
+        <div class="stack-items">
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span>JTBD</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 3H3v7h18V3zM21 14H3v7h18v-7z"/></svg><span>PMF</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>SWOT</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg><span>PESTEL</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg><span data-ru="5 сил Портера" data-en="Porter's 5 Forces">5 сил Портера</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg><span data-ru="Матрица Ансоффа" data-en="Ansoff Matrix">Матрица Ансоффа</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg><span>3C</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v4H4zM4 10h16v4H4zM4 16h16v4H4z"/></svg><span>4P</span></div>
+        </div>
+      </div>
+
+      <div class="stack-category">
+        <h4 data-ru="Данные и аналитика" data-en="Data & Analytics">Данные и аналитика</h4>
+        <div class="stack-items">
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg><span>SQL</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg><span data-ru="P&L проекта" data-en="Project P&L">P&L проекта</span></div>
+          <div class="stack-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg><span data-ru="A/B-тесты" data-en="A/B Tests">A/B-тесты</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </section>
 
 <section id="projects">
@@ -276,7 +339,7 @@ body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52p
     <div class="contact-card fade-in copyable" onclick="copyText(this, 'm@mserdyuk.ru')">
       <div class="copy-tooltip">Скопировано!</div>
       <div class="contact-card-icon cci-mail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-      <h3 data-ru="Email" data-en="Email">Email</h3><span>m@mserdyuk.ru</span>
+      <h3 data-ru="Email" data-en="Email">Email</h3><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="05684568766077617c706e2b7770">[email&#160;protected]</a></span>
     </div>
     <a class="contact-card fade-in" href="https://t.me/serdukmark" target="_blank">
       <div class="contact-card-icon cci-tg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></div>
@@ -291,7 +354,7 @@ body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52p
 </section>
 
 <footer><span data-ru="© 2026 Марк Сердюк" data-en="© 2026 Mark Serdyuk">© 2026 Марк Сердюк</span></footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Fade-in observer
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
@@ -301,7 +364,10 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade-in').forEach(el => {
+  el.classList.add('animate');
+  observer.observe(el);
+});
 
 // Custom cursor
 const cursor = document.getElementById('cursor');
