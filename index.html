@@ -180,7 +180,7 @@ body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52p
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
 </button>
 <div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div>
-<nav><div class="nav-logo" data-ru="МС" data-en="MS">МС</div><div class="nav-links"><a href="#about" data-ru="Обо мне" data-en="About">Обо мне</a><a href="#projects" data-ru="Проекты" data-en="Projects">Проекты</a><a href="#contact" data-ru="Контакты" data-en="Contacts">Контакты</a></div><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ru')">RU</button><button class="lang-btn" onclick="setLang('en')">EN</button></div></nav>
+<nav><div class="nav-logo" data-ru="МС" data-en="MS">МС</div><div class="nav-links"><a href="#about" data-ru="Обо мне" data-en="About">Обо мне</a><a href="#projects" data-ru="Проекты" data-en="Projects">Проекты</a><a href="#contact" data-ru="Контакты" data-en="Contacts">Контакты</a><a href="#game" data-ru="Игра" data-en="Game">Игра</a></div><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ru')">RU</button><button class="lang-btn" onclick="setLang('en')">EN</button></div></nav>
 
 <section class="hero" id="hero">
   <div class="hero-content">
@@ -353,6 +353,45 @@ body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 52p
   </div>
 </section>
 
+<section id="game">
+  <div class="section-header"><h2 data-ru="PM Runner" data-en="PM Runner">PM Runner</h2><div class="line"></div></div>
+  <p style="color:rgba(240,240,245,0.5);font-size:0.9rem;margin-bottom:24px;" data-ru="Прыгай через баги, дедлайны и стейкхолдеров. Пробел или тап — прыжок. Двойной прыжок доступен." data-en="Jump over bugs, deadlines and stakeholders. Space or tap to jump. Double jump available.">Прыгай через баги, дедлайны и стейкхолдеров. Пробел или тап — прыжок. Двойной прыжок доступен.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 280px;gap:24px;align-items:start;">
+
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <div style="display:flex;gap:20px;">
+          <span style="font-size:13px;color:rgba(240,240,245,0.5);" data-ru="Очки: " data-en="Score: ">Очки: <span id="g-score" style="font-weight:700;color:#CDFF50;">0</span></span>
+          <span style="font-size:13px;color:rgba(240,240,245,0.5);" data-ru="Рекорд: " data-en="Best: ">Рекорд: <span id="g-hi" style="font-weight:700;color:#4ECDC4;">0</span></span>
+        </div>
+        <span id="g-speed" style="font-size:13px;color:rgba(240,240,245,0.5);" data-ru="Скорость: нормальная" data-en="Speed: normal">Скорость: нормальная</span>
+      </div>
+      <div style="position:relative;border:1px solid rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;">
+        <canvas id="g-canvas" height="200" style="display:block;width:100%;background:#12121f;"></canvas>
+        <div id="g-msg" style="position:absolute;top:12px;left:50%;transform:translateX(-50%);font-size:13px;font-weight:600;color:#fff;background:rgba(0,0,0,0.6);padding:4px 14px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity 0.2s;white-space:nowrap;"></div>
+        <div id="g-overlay" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(18,18,31,0.85);border-radius:20px;">
+          <div style="font-family:'Dela Gothic One',cursive;font-size:1.8rem;background:linear-gradient(135deg,#CDFF50,#4ECDC4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">PM Runner</div>
+          <p id="g-desc" style="font-size:0.88rem;color:rgba(240,240,245,0.6);text-align:center;max-width:280px;line-height:1.6;">Прыгай через баги, дедлайны и недовольных стейкхолдеров. Собирай кофе — +10 очков!</p>
+          <button id="g-start" style="background:#CDFF50;color:#1A1A2E;border:none;border-radius:100px;padding:10px 32px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;">Запустить спринт</button>
+          <div id="g-hint" style="font-size:0.75rem;color:rgba(240,240,245,0.3);">Пробел / тап — прыжок · двойной прыжок доступен</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:20px;background:rgba(255,255,255,0.03);">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CDFF50" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        <span id="lb-title" style="font-size:0.85rem;font-weight:700;color:#CDFF50;" data-ru="Топ игроков" data-en="Top Players">Топ игроков</span>
+      </div>
+      <div id="lb-list" style="display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:0.8rem;color:rgba(240,240,245,0.3);text-align:center;padding:20px 0;" id="lb-loading" data-ru="Загрузка..." data-en="Loading...">Загрузка...</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <footer><span data-ru="© 2026 Марк Сердюк" data-en="© 2026 Mark Serdyuk">© 2026 Марк Сердюк</span></footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Fade-in observer
@@ -428,7 +467,292 @@ function setLang(lang) {
     el.textContent = el.dataset[lang];
   });
   document.documentElement.lang = lang;
+  if (typeof setGameLang === 'function') setGameLang(lang);
 }
+
+// PM Runner Game
+(function() {
+  const canvas = document.getElementById('g-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const overlay = document.getElementById('g-overlay');
+  const scoreEl = document.getElementById('g-score');
+  const hiEl = document.getElementById('g-hi');
+  const speedEl = document.getElementById('g-speed');
+  const msgEl = document.getElementById('g-msg');
+  const startBtn = document.getElementById('g-start');
+  const descEl = document.getElementById('g-desc');
+  const hintEl = document.getElementById('g-hint');
+
+  const W = 700, H = 200;
+  canvas.width = W; canvas.height = H;
+  const GROUND = H - 46;
+  const LIME = '#CDFF50', DARK = '#1A1A2E';
+
+  let gameLang = 'ru';
+  window.setGameLang = function(l) {
+    gameLang = l;
+    descEl.textContent = l==='en'
+      ? 'Jump over bugs, deadlines and stakeholders. Collect coffee for +10 points!'
+      : 'Прыгай через баги, дедлайны и недовольных стейкхолдеров. Собирай кофе — +10 очков!';
+    startBtn.textContent = l==='en' ? 'Start sprint' : 'Запустить спринт';
+    hintEl.textContent = l==='en'
+      ? 'Space / tap — jump · double jump available'
+      : 'Пробел / тап — прыжок · двойной прыжок доступен';
+    speedEl.textContent = l==='en' ? 'Speed: normal' : 'Скорость: нормальная';
+    const scoreLabel = document.querySelector('#game span[data-ru="Очки: "]');
+    const hiLabel = document.querySelector('#game span[data-ru="Рекорд: "]');
+    if (scoreLabel) scoreLabel.firstChild.textContent = l==='en' ? 'Score: ' : 'Очки: ';
+    if (hiLabel) hiLabel.firstChild.textContent = l==='en' ? 'Best: ' : 'Рекорд: ';
+  };
+
+  const OBSTACLES = [
+    { type:'bug', ru:'БАГ', en:'BUG', color:'#E24B4A', w:28, h:36,
+      draw(x,y,w,h,c) {
+        ctx.fillStyle=c; ctx.beginPath(); ctx.ellipse(x+w/2,y+h/2-2,w/2-3,h/2-6,0,0,Math.PI*2); ctx.fill();
+        ctx.strokeStyle='#fff'; ctx.lineWidth=1.5;
+        ctx.beginPath(); ctx.moveTo(x+w/2-6,y+h/2-4); ctx.lineTo(x+w/2+6,y+h/2-4); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(x+w/2-5,y+h/2+2); ctx.lineTo(x+w/2+5,y+h/2+2); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(x+4,y+6); ctx.lineTo(x+w/2-3,y+h/2-8); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(x+w-4,y+6); ctx.lineTo(x+w/2+3,y+h/2-8); ctx.stroke();
+      }
+    },
+    { type:'deadline', ru:'ДЕДЛАЙН', en:'DEADLINE', color:'#FF8C42', w:26, h:48,
+      draw(x,y,w,h,c) {
+        ctx.strokeStyle=c; ctx.lineWidth=2; ctx.fillStyle='transparent';
+        ctx.beginPath(); ctx.roundRect(x+2,y+4,w-4,h-6,3); ctx.stroke();
+        ctx.fillStyle=c; ctx.beginPath(); ctx.roundRect(x+7,y+1,w-14,6,2); ctx.fill();
+        ctx.strokeStyle=c; ctx.lineWidth=1.5;
+        ctx.beginPath(); ctx.moveTo(x+w/2,y+14); ctx.lineTo(x+w/2,y+h/2+2); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(x+w/2,y+h/2+2); ctx.lineTo(x+w/2+6,y+h/2+8); ctx.stroke();
+        ctx.fillStyle=c;
+        for(let r=0;r<3;r++) for(let col=0;col<3;col++) {
+          if(r===0&&col===0) continue;
+          ctx.beginPath(); ctx.arc(x+7+col*5,y+22+r*6,1.5,0,Math.PI*2); ctx.fill();
+        }
+      }
+    },
+    { type:'stakeholder', ru:'СТЕЙКХОЛДЕР', en:'STAKEHOLDER', color:'#7F77DD', w:36, h:42,
+      draw(x,y,w,h,c) {
+        ctx.fillStyle=c; ctx.beginPath(); ctx.arc(x+w/2,y+10,9,0,Math.PI*2); ctx.fill();
+        ctx.fillStyle='rgba(255,255,255,0.3)'; ctx.beginPath(); ctx.arc(x+w/2,y+10,5,Math.PI,0); ctx.fill();
+        ctx.fillStyle=c; ctx.beginPath(); ctx.moveTo(x+4,y+h-2); ctx.quadraticCurveTo(x+w/2,y+24,x+w-4,y+h-2); ctx.fill();
+        ctx.strokeStyle='#fff'; ctx.lineWidth=2;
+        ctx.beginPath(); ctx.moveTo(x+w/2-5,y+32); ctx.lineTo(x+w/2+5,y+32); ctx.stroke();
+      }
+    },
+    { type:'meeting', ru:'МИТИНГ', en:'MEETING', color:'#378ADD', w:36, h:32,
+      draw(x,y,w,h,c) {
+        ctx.strokeStyle=c; ctx.lineWidth=2;
+        ctx.beginPath(); ctx.roundRect(x+2,y+2,w-4,h-12,4); ctx.stroke();
+        ctx.fillStyle=c; ctx.beginPath(); ctx.moveTo(x+w-12,y+h-12); ctx.lineTo(x+w-4,y+h-2); ctx.lineTo(x+w-20,y+h-12); ctx.fill();
+        ctx.strokeStyle=c; ctx.lineWidth=1.5;
+        [y+9,y+15,y+21].forEach(ly => { ctx.beginPath(); ctx.moveTo(x+8,ly); ctx.lineTo(x+w-8,ly); ctx.stroke(); });
+      }
+    },
+    { type:'pivot', ru:'ПИВОТ', en:'PIVOT', color:'#D4537E', w:34, h:34,
+      draw(x,y,w,h,c) {
+        ctx.strokeStyle=c; ctx.lineWidth=2.5;
+        ctx.beginPath(); ctx.arc(x+w/2,y+h/2,12,Math.PI*0.2,Math.PI*1.8); ctx.stroke();
+        ctx.fillStyle=c;
+        ctx.beginPath(); ctx.moveTo(x+w/2+10,y+h/2-14); ctx.lineTo(x+w/2+18,y+h/2-6); ctx.lineTo(x+w/2+2,y+h/2-6); ctx.fill();
+        ctx.beginPath(); ctx.arc(x+w/2,y+h/2,4,0,Math.PI*2); ctx.fill();
+      }
+    },
+  ];
+
+  let state='idle', score=0, hi=0, frame=0, speed=3.5;
+  let player, obsList, bonusList, particles, rafId=null;
+
+  function initPlayer() { return {x:80,y:GROUND-40,w:30,h:40,vy:0,onGround:true,jumps:0}; }
+  function reset() {
+    if (rafId) { cancelAnimationFrame(rafId); rafId=null; }
+    score=0; frame=0; speed=3.5;
+    player=initPlayer(); obsList=[]; bonusList=[]; particles=[];
+    const l = gameLang;
+    speedEl.textContent = l==='en' ? 'Speed: normal' : 'Скорость: нормальная';
+    scoreEl.textContent = '0';
+  }
+
+  function jump() {
+    if(state!=='running') return;
+    if(player.jumps<2){player.vy=-10;player.onGround=false;player.jumps++;}
+  }
+  function showMsg(text) {
+    msgEl.textContent=text; msgEl.style.opacity='1';
+    setTimeout(()=>msgEl.style.opacity='0',900);
+  }
+  function addParticles(x,y,color) {
+    for(let i=0;i<8;i++) particles.push({x,y,vx:(Math.random()-0.5)*5,vy:(Math.random()-0.5)*5,life:1,color});
+  }
+  function collides(a,bx,by,bw,bh) {
+    const p=5;
+    return a.x+p<bx+bw-p&&a.x+a.w-p>bx+p&&a.y+p<by+bh-p&&a.y+a.h-p>by+p;
+  }
+
+  function drawBg() {
+    ctx.fillStyle='#12121f'; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='rgba(205,255,80,0.025)';
+    for(let i=0;i<3;i++){
+      const bx=((frame*(speed*0.3+i*0.2))%(W+200))-100;
+      ctx.beginPath(); ctx.arc(bx+i*200,40+i*15,60+i*20,0,Math.PI*2); ctx.fill();
+    }
+  }
+  function drawGround() {
+    ctx.fillStyle='#2a2a3e'; ctx.fillRect(0,GROUND,W,H-GROUND);
+    ctx.fillStyle=LIME; ctx.fillRect(0,GROUND,W,2);
+  }
+  function drawPlayer(p) {
+    ctx.save();
+    ctx.translate(p.x+p.w/2,p.y+p.h/2);
+    if(!p.onGround) ctx.rotate(Math.sin(frame*0.3)*0.12);
+    ctx.fillStyle=LIME; ctx.beginPath(); ctx.roundRect(-p.w/2,-p.h/2,p.w,p.h,7); ctx.fill();
+    ctx.fillStyle=DARK; ctx.font='bold 13px Manrope,sans-serif';
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText(gameLang==='en'?'PM':'ПМ',0,0);
+    ctx.restore();
+  }
+  function drawObs(o) {
+    o.draw(o.x,o.y,o.w,o.h,o.color);
+    ctx.fillStyle=o.color;
+    ctx.font='bold 13px Manrope,sans-serif';
+    ctx.textAlign='center'; ctx.textBaseline='top';
+    ctx.fillText(gameLang==='en'?o.en:o.ru, o.x+o.w/2, o.y+o.h+5);
+  }
+  function drawBonus(b) {
+    ctx.fillStyle='rgba(205,255,80,0.12)';
+    ctx.beginPath(); ctx.arc(b.x+14,b.y+14,15,0,Math.PI*2); ctx.fill();
+    ctx.strokeStyle='#a07040'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.ellipse(b.x+14,b.y+18,7,5,0,0,Math.PI*2); ctx.stroke();
+    ctx.fillStyle='#c8a060'; ctx.beginPath(); ctx.ellipse(b.x+14,b.y+13,7,5,0,0,Math.PI*2); ctx.fill();
+    ctx.strokeStyle='#8b5e3c'; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(b.x+14,b.y+8); ctx.quadraticCurveTo(b.x+10,b.y+4,b.x+12,b.y+2); ctx.stroke();
+    ctx.fillStyle=LIME; ctx.font='bold 13px Manrope,sans-serif';
+    ctx.textAlign='center'; ctx.textBaseline='top';
+    ctx.fillText(gameLang==='en'?'COFFEE':'КОФЕ', b.x+14, b.y+30);
+  }
+
+  function gameLoop() {
+    if(state!=='running') return;
+    frame++; score++;
+
+    if(score%300===0){
+      speed=Math.min(speed+0.4,8);
+      const ru=['нормальная','быстрая','очень быстрая','огонь!','ХАОС'];
+      const en=['normal','fast','very fast','fire!','CHAOS'];
+      const idx=Math.min(Math.floor((speed-3.5)/0.8),4);
+      speedEl.textContent=(gameLang==='en'?'Speed: ':'Скорость: ')+(gameLang==='en'?en:ru)[idx];
+      showMsg(gameLang==='en'?'Speed up! 🚀':'Скорость растёт! 🚀');
+    }
+
+    const lastObs=obsList[obsList.length-1];
+    if(!lastObs||lastObs.x<W-Math.max(160,280-score*0.05)){
+      if(Math.random()<0.6){
+        const obs=OBSTACLES[Math.floor(Math.random()*OBSTACLES.length)];
+        obsList.push({...obs,x:W+20,y:GROUND-obs.h});
+        if(Math.random()<0.3) bonusList.push({x:W+20,y:GROUND-90-Math.random()*20});
+      }
+    }
+
+    player.vy+=0.6; player.y+=player.vy;
+    if(player.y>=GROUND-player.h){player.y=GROUND-player.h;player.vy=0;player.onGround=true;player.jumps=0;}
+
+    obsList.forEach(o=>o.x-=speed);
+    bonusList.forEach(b=>b.x-=speed);
+    particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.life-=0.06;});
+    obsList=obsList.filter(o=>o.x>-80);
+    bonusList=bonusList.filter(b=>b.x>-50);
+    particles=particles.filter(p=>p.life>0);
+
+    for(const o of obsList){
+      if(collides(player,o.x,o.y,o.w,o.h)){endGame(o);return;}
+    }
+    bonusList=bonusList.filter(b=>{
+      if(collides(player,b.x,b.y,28,28)){
+        score+=10; addParticles(b.x+14,b.y+14,LIME);
+        showMsg(gameLang==='en'?'+10 coffee ☕':'+10 кофе ☕'); return false;
+      }
+      return true;
+    });
+
+    scoreEl.textContent=score;
+    if(score>hi){hi=score;hiEl.textContent=hi;}
+
+    drawBg(); drawGround();
+    particles.forEach(p=>{ctx.globalAlpha=p.life;ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,3,0,Math.PI*2);ctx.fill();});
+    ctx.globalAlpha=1;
+    obsList.forEach(drawObs); bonusList.forEach(drawBonus); drawPlayer(player);
+    rafId = requestAnimationFrame(gameLoop);
+  }
+
+  const FB_URL = 'https://mserdyuk-site-default-rtdb.europe-west1.firebasedatabase.app';
+
+  function loadLeaderboard() {
+    fetch(`${FB_URL}/leaderboard.json?orderBy="score"&limitToLast=10`)
+      .then(r => r.json())
+      .then(data => {
+        const list = document.getElementById('lb-list');
+        if (!data) { list.innerHTML = `<div style="font-size:0.8rem;color:rgba(240,240,245,0.3);text-align:center;padding:20px 0;" id="lb-loading">${gameLang==='en'?'No scores yet':'Пока нет результатов'}</div>`; return; }
+        const entries = Object.values(data).sort((a,b) => b.score - a.score).slice(0,10);
+        const medals = ['🥇','🥈','🥉'];
+        list.innerHTML = entries.map((e,i) => `
+          <div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+            <span style="font-size:13px;min-width:20px;text-align:center;">${medals[i]||`<span style="color:rgba(240,240,245,0.3);font-size:12px;">${i+1}</span>`}</span>
+            <span style="flex:1;font-size:13px;color:rgba(240,240,245,0.85);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${e.name}</span>
+            <span style="font-size:13px;font-weight:700;color:#CDFF50;">${e.score}</span>
+          </div>`).join('');
+      }).catch(() => {});
+  }
+
+  function saveScore(name, score) {
+    fetch(`${FB_URL}/leaderboard.json`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ name, score, ts: Date.now() })
+    }).then(() => loadLeaderboard());
+  }
+
+  function endGame(obs) {
+    state='dead'; if(score>hi) hi=score;
+    const label = gameLang==='en' ? obs.en : obs.ru;
+    const isEN = gameLang==='en';
+    overlay.innerHTML=`
+      <div style="font-family:'Dela Gothic One',cursive;font-size:1.5rem;color:#FF6B9D;">${isEN?'Sprint failed':'Спринт провален'} 💀</div>
+      <p style="font-size:0.88rem;color:rgba(240,240,245,0.7);text-align:center;line-height:1.6;">${isEN?'Knocked out by':'Тебя снёс'} <strong style="color:#FF6B9D">${label}</strong>!<br>${isEN?'Score':'Очки'}: <strong style="color:#CDFF50">${score}</strong> &nbsp;·&nbsp; ${isEN?'Best':'Рекорд'}: <strong style="color:#4ECDC4">${hi}</strong></p>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <input id="g-name" maxlength="20" placeholder="${isEN?'Your name':'Твоё имя'}" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:8px 16px;font-size:0.85rem;color:#fff;outline:none;font-family:'Manrope',sans-serif;width:150px;" />
+        <button id="g-save" style="background:rgba(205,255,80,0.15);color:#CDFF50;border:1px solid rgba(205,255,80,0.3);border-radius:100px;padding:8px 16px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;">${isEN?'Save':'Сохранить'}</button>
+      </div>
+      <button id="g-start-new" style="background:#CDFF50;color:#1A1A2E;border:none;border-radius:100px;padding:10px 32px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;">${isEN?'New sprint':'Новый спринт'}</button>
+    `;
+    overlay.style.display='flex';
+    document.getElementById('g-save').addEventListener('click', () => {
+      const name = document.getElementById('g-name').value.trim();
+      if (!name) return;
+      saveScore(name, score);
+      document.getElementById('g-save').textContent = isEN ? 'Saved!' : 'Сохранено!';
+      document.getElementById('g-save').disabled = true;
+    });
+    document.getElementById('g-name').addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('g-save').click(); });
+    document.getElementById('g-start-new').addEventListener('click', startGame);
+  }
+
+  function startGame() {
+    gameLang = document.documentElement.lang || 'ru';
+    reset(); state='running';
+    overlay.style.display='none';
+    gameLoop();
+  }
+
+  startBtn.addEventListener('click', startGame);
+  document.addEventListener('keydown', e=>{if(e.code==='Space'&&state==='running'){e.preventDefault();jump();}});
+  canvas.addEventListener('click', jump);
+  canvas.addEventListener('touchstart', e=>{e.preventDefault();jump();});
+
+  drawBg(); drawGround();
+  loadLeaderboard();
+  setInterval(loadLeaderboard, 15000);
+})();
 </script>
 </body>
 </html>
