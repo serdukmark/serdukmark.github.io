@@ -26,7 +26,7 @@ When adding milestones, use a unique stable `id`, a truthful period and both tra
 
 Set `metricaId` in `assets/config.js` to the numeric ID of the owner's Yandex Metrica counter. `0` disables the provider entirely. Local previews never load Metrica. The supplied counter is 112974030. Session replay is enabled, matching the code supplied by the owner.
 
-Create JavaScript-event goals with these identifiers in Metrica:
+The following eight JavaScript-event goals were created in counter 112974030 on 2026-09-23:
 
 | Identifier | What it records |
 | --- | --- |
@@ -56,3 +56,15 @@ Project details use the original portfolio and owner-provided context. Diagrams 
 ## Release
 
 Review both languages, light/dark themes, mobile layouts and project pages before merging the redesign branch to `main`. Merging to the branch configured for GitHub Pages publishes the site. No hosting migration is required.
+
+## Search and AI discovery
+
+Each indexable page has a unique title and description, a self-canonical URL, reciprocal RU/EN/x-default links and server-rendered text. The homepage connects ProfilePage, Person and WebSite entities. Project pages connect WebPage, CreativeWork, author and visible BreadcrumbList. Stable entity IDs are shared across translations. The schema describes this personal portfolio, not a local business.
+
+The FAQ is visible HTML with links to projects, the CV and RSS. It does not promise FAQ rich results. No special AI-only files, keyword lists or invented endorsements are necessary. Keep factual claims consistent between visible content and JSON-LD.
+
+`robots.txt` permits crawling and points to the sitemap. GitHub Pages redirects HTTP and the github.io hostname to the HTTPS custom domain. Missing routes return HTTP 404; the custom error page has noindex and no canonical/profile markup. The sitemap includes only the eight indexable pages. Search verification files are retained.
+
+After publishing, submit `https://mserdyuk.ru/sitemap.xml` in Google Search Console and Yandex Webmaster under a verified property. Inspect the homepage and project URLs, then request indexing/re-crawl. Repository access alone cannot confirm property ownership, index coverage or search impressions. A public `site:` query is not a reliable coverage report.
+
+Monitor organic landing pages and the existing contact/CV goals in Metrica. Compare search impressions, clicks and indexed URLs in the webmaster tools before drawing conclusions. Public mentions and referral links from relevant professional profiles can support discovery; do not create a local business listing for a personal portfolio without an eligible business.
