@@ -1114,23 +1114,51 @@ input[type=range] {
   transform:translate(-50%,0)
 }
 .easter-egg {
-  padding-block:24px
+  padding-block:24px 64px
+}
+.easter-egg>details {
+  border:1px solid var(--accent);
+  border-radius:8px;
+  padding:28px;
+  background:var(--panel)
 }
 .easter-egg>details>summary {
   display:flex;
-  gap:20px;
+  gap:24px;
   align-items:center;
-  justify-content:space-between;
-  font-size:12px;
-  padding:12px 0
+  justify-content:space-between
 }
-.easter-egg summary b {
-  font-weight:500;
-  margin:0 15px 0 6px
+.game-promo {
+  display:grid;
+  gap:10px
 }
-.easter-egg summary>span:last-child {
-  color:var(--accent);
-  font-size:20px
+.game-promo b {
+  font-family:var(--display);
+  font-size:32px;
+  font-weight:500
+}
+.game-promo .muted {
+  font-size:14px;
+  line-height:1.6
+}
+.game-cta {
+  flex:none;
+  padding:15px 24px;
+  border-radius:4px;
+  background:var(--accent);
+  color:var(--bg);
+  font-size:14px;
+  font-weight:600
+}
+.game-cta-close,
+#game-details[open] .game-cta-play {
+  display:none
+}
+#game-details[open] .game-cta-close {
+  display:inline
+}
+.easter-egg summary:hover .game-cta {
+  box-shadow:0 0 0 3px var(--bg),0 0 0 4px var(--accent)
 }
 .game-content {
   padding:25px 0
@@ -1862,8 +1890,16 @@ input[type=range] {
     font-size:25px;
     margin:0
   }
-  .easter-egg summary .muted {
-    display:none
+  .easter-egg>details {
+    padding:22px
+  }
+  .easter-egg>details>summary {
+    align-items:flex-start;
+    flex-direction:column
+  }
+  .game-cta {
+    text-align:center;
+    width:100%
   }
   .game__layout {
     grid-template-columns:1fr
