@@ -131,7 +131,7 @@ def hero_title():
  robot='<rect x="4" y="7" width="16" height="14" rx="4"/><path d="M12 3v4M1 12v5m22-5v5M9 17h6"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/>'
  def word(label,kind,paths):
   return f'<span class="hero-word">{label}<svg class="hero-icon hero-icon--{kind}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{paths}</svg></span>'
- return t('Работаю с ','Working with ')+word(t('людьми','humans'),'people',people)+'<br> '+t('и ','and ')+word(t('нелюдьми','non-humans'),'robot',robot)+'<br> <em>'+t('на одном языке','in the same language')+'</em>'
+ return t('Работаю с ','Working with ')+word(t('людьми','humans'),'people',people)+'<br> '+t('и ','and ')+word(t('нелюдями','non-humans'),'robot',robot)+'<br> <em>'+t('на одном языке','in the same language')+'</em>'
 
 def homepage():
  title=t('Марк Сердюк — продуктовый менеджер AI и B2B','Mark Serdyuk — AI & B2B Product Manager')
