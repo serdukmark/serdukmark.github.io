@@ -17,16 +17,18 @@
   const boardList = document.getElementById('lb-list');
   const statusEl = document.getElementById('g-status');
   const FB = 'https://mserdyuk-site-default-rtdb.europe-west1.firebasedatabase.app';
-  let W=700, H=200, GROUND=156, state='idle', rafId=0, lastFrame=0, accumulator=0;
-  let score=0, hi=0, speed=5.2, t=0, jumps=0, player, obstacles=[], coffees=[];
-  let nextObstacle=70, nextCoffee=130, lastBoard=0, boardLoading=false;
+  let W=700, H=200, GROUND=154, state='idle', rafId=0, lastFrame=0, accumulator=0;
+  let score=0, hi=0, speed=3.5, t=0, jumps=0, player, obstacles=[], coffees=[];
+  let lastBoard=0, boardLoading=false;
   let palette;
   try { hi = Math.max(0, Number(localStorage.getItem('pmrunner-hi')) || 0); } catch (_) {}
   hiEl.textContent=String(hi);
   const OBSTACLES=[
-    {ru:'БАГ',en:'BUG',w:32,h:28,kind:'bug'},
-    {ru:'ДЕДЛАЙН',en:'DEADLINE',w:30,h:38,kind:'deadline'},
-    {ru:'СТЕЙКХОЛДЕР',en:'STAKEHOLDER',w:26,h:46,kind:'stakeholder'}
+    {ru:'БАГ',en:'BUG',w:28,h:36,kind:'bug'},
+    {ru:'ДЕДЛАЙН',en:'DEADLINE',w:26,h:48,kind:'deadline'},
+    {ru:'СТЕЙКХОЛДЕР',en:'STAKEHOLDER',w:36,h:42,kind:'stakeholder'},
+    {ru:'МИТИНГ',en:'MEETING',w:36,h:32,kind:'meeting'},
+    {ru:'ПИВОТ',en:'PIVOT',w:34,h:34,kind:'pivot'}
   ];
   function colors() {
     const s=getComputedStyle(root);
@@ -35,20 +37,22 @@
   }
   function fit() {
     const dpr=Math.min(window.devicePixelRatio||1,2);
-    W=Math.max(240,Math.round(canvas.clientWidth)||700);
-    canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    if(player) player.x=Math.min(66,W*.18);
+    // Keep the original 700-unit field: mobile screens must not shorten reaction time.
+    W=700;
+    const scale=(Math.round(canvas.clientWidth)||700)/W;
+    canvas.width=Math.round(W*scale*dpr); canvas.height=Math.round(H*dpr);
+    ctx.setTransform(dpr*scale,0,0,dpr,0,0);
+    if(player) player.x=95;
     colors();draw();
   }
   function reset() {
-    score=0;speed=5.2;t=0;jumps=0;nextObstacle=70;nextCoffee=130;
-    player={x:Math.min(66,W*.18),y:GROUND,vy:0};obstacles=[];coffees=[];
+    score=0;speed=3.5;t=0;jumps=0;
+    player={x:95,y:GROUND,vy:0};obstacles=[];coffees=[];
     scoreEl.textContent='0';speedEl.textContent=tr('Скорость: нормальная','Speed: normal');
   }
   function jump() {
     if(state!=='running'||jumps>=2)return;
-    player.vy=jumps===0?-12.4:-10.6;jumps++;
+    player.vy=-10;jumps++;
   }
     function drawGround(ink, faint) {
       ctx.strokeStyle = faint; ctx.lineWidth = 1;
@@ -184,6 +188,13 @@
         ctx.fillText('!', cx, y - (h - 10) / 2 + 1);
         ctx.textAlign = 'start'; ctx.textBaseline = 'alphabetic';
 
+      } else if(o.kind==='meeting'||o.kind==='pivot') {
+        ctx.strokeStyle=ink;ctx.fillStyle=accent;ctx.lineWidth=2;
+        rrect(x,y-h,w,h,4);ctx.stroke();
+        ctx.font='bold 22px Inter, system-ui, sans-serif';
+        ctx.textAlign='center';ctx.textBaseline='middle';
+        ctx.fillText(o.kind==='meeting'?'…':'↻',cx,y-h/2);
+        ctx.textAlign='start';ctx.textBaseline='alphabetic';
       } else {
         var hr = 7, hy = y - h + hr + 1;
         // head
@@ -253,22 +264,27 @@
     if(player)drawPlayer(palette.ink,palette.accent);
   }
   function update() {
-    t++;score+=1/3;speed=5.2+Math.min(score/87,6.5);
-    player.vy+=.66;player.y+=player.vy;
-    if(player.y>=GROUND){player.y=GROUND;player.vy=0;jumps=0;}
-    if(--nextObstacle<=0){
+    // April 9, 2026 rules (ed6649f), the last version before September.
+    t++;score+=1;
+    speed=Math.min(3.5+Math.floor(score/300)*.4,8);
+    const last=obstacles[obstacles.length-1];
+    if((!last||last.x<W-Math.max(160,280-Math.floor(score)*.05))&&Math.random()<.6){
       const spec=OBSTACLES[Math.floor(Math.random()*OBSTACLES.length)];
-      obstacles.push({...spec,x:W+20});nextObstacle=Math.ceil((260+Math.random()*160)/speed);
+      obstacles.push({...spec,x:W+20});
+      if(Math.random()<.3)coffees.push({x:W+20,y:GROUND-90-Math.random()*20+28});
     }
-    if(--nextCoffee<=0){coffees.push({x:W+20,y:GROUND-46-Math.random()*26});nextCoffee=110+Math.random()*150;}
+    player.vy+=.6;player.y+=player.vy;
+    if(player.y>=GROUND){player.y=GROUND;player.vy=0;jumps=0;}
     obstacles.forEach(o=>o.x-=speed);coffees.forEach(c=>c.x-=speed);
-    obstacles=obstacles.filter(o=>o.x+o.w>-20);coffees=coffees.filter(c=>c.x>-30);
-    const collision=obstacles.find(o=>overlaps(player.x-8,player.y-36,16,36,o.x+3,GROUND-o.h,o.w-6,o.h));
+    obstacles=obstacles.filter(o=>o.x>-80);coffees=coffees.filter(c=>c.x>-50);
+    const collision=obstacles.find(o=>overlaps(player.x-10,player.y-35,20,30,o.x+5,GROUND-o.h+5,o.w-10,o.h-10));
     if(collision){endGame(collision);return;}
-    coffees=coffees.filter(c=>{if(overlaps(player.x-8,player.y-36,16,36,c.x,c.y-16,18,16)){score+=10;return false;}return true;});
+    coffees=coffees.filter(c=>{if(overlaps(player.x-10,player.y-35,20,30,c.x+5,c.y-23,18,18)){score+=10;return false;}return true;});
     scoreEl.textContent=String(Math.floor(score));
-    speedEl.textContent=speed>9?tr('Скорость: аврал','Speed: crunch'):tr('Скорость: нормальная','Speed: normal');
+    const level=Math.min(Math.floor((speed-3.5)/.8),4);
+    speedEl.textContent=tr('Скорость: ','Speed: ')+tr(['нормальная','быстрая','очень быстрая','огонь!','ХАОС'][level],['normal','fast','very fast','fire!','CHAOS'][level]);
   }
+
   function loop(now) {
     if(state!=='running')return;
     if(!lastFrame)lastFrame=now;

@@ -3,7 +3,7 @@ const {join}=require('node:path');
 const vm=require('node:vm');
 const assert=require('node:assert/strict');
 const source=readFileSync(join(__dirname,'../assets/game.js'),'utf8');
-function setup(){
+function setup(inspectRules=false){
   class Element {
     constructor(tag='div'){this.tagName=tag;this.children=[];this.textContent='';this.hidden=false;this.events={};this.value='';this.open=true;this.clientWidth=700;this.attrs={};}
     append(...children){this.children.push(...children);}
@@ -24,11 +24,28 @@ function setup(){
     requestAnimationFrame:fn=>{frames.set(++frameID,fn);return frameID;},cancelAnimationFrame:id=>frames.delete(id),
     fetch:async(url,opts={})=>{if(opts.method==='POST'){posts.push(JSON.parse(opts.body));return {ok:postOk};}return {ok:true,json:async()=>({a:{name:'Test',score:100},b:{name:'test',score:120}})}}
   };
-  vm.runInNewContext(source,context);
+  if(inspectRules)context.Math=Object.assign(Object.create(Math),{random:()=>1});
+  const testedSource=inspectRules?source.replace('  reset();fit();loadBoard();', '  window.testRules={step:update,jump,snapshot:()=>({score,speed,vy:player.vy,y:player.y,W,x:player.x,obstacles:OBSTACLES})}; reset();fit();loadBoard();'):source;
+  vm.runInNewContext(testedSource,context);
   function tick(now){const batch=[...frames.values()];frames.clear();batch.forEach(fn=>fn(now));}
   return {ids,frames,document,window,docEvents,tick,posts,failPost:()=>postOk=false,allowPost:()=>postOk=true};
 }
 (async()=>{
+  const rules=setup(true);rules.ids['g-start'].click();
+  const probe=rules.window.testRules;
+  assert.equal(probe.snapshot().speed,3.5);
+  for(let n=1;n<=3600;n++){
+    probe.step();
+    if([60,300,500,2600,3600].includes(n)){
+      assert.equal(probe.snapshot().score,n,'Summer scoring: one point per simulation tick');
+      assert.equal(probe.snapshot().speed,Math.min(3.5+Math.floor(n/300)*.4,8),'Summer speed curve');
+    }
+  }
+  probe.jump();assert.equal(probe.snapshot().vy,-10);probe.step();assert.equal(probe.snapshot().vy,-9.4);
+  probe.jump();assert.equal(probe.snapshot().vy,-10,'Both jumps use the summer impulse');
+  assert.equal(probe.snapshot().W,700);assert.equal(probe.snapshot().x,95);
+  assert.equal(probe.snapshot().obstacles.length,5);
+  console.log('PASS: summer scoring, speed at 60/300/500/2600/3600 points, gravity, double jump and original field.');
   const a=setup();assert.equal(a.frames.size,0,'Idle game must not animate');
   await a.ids['g-start'].click();assert.equal(a.frames.size,1);
   a.tick(100);a.tick(117);a.window.__pmRunner.pause();assert.equal(a.frames.size,0,'Pause must cancel animation');
