@@ -45,5 +45,26 @@ function setup(){
   s.allowPost();await save.click();assert.equal(save.textContent,'Saved');assert.equal(input.disabled,true);
   assert.equal(s.posts.length,2);assert.equal(s.posts[1].name,'Player');assert.ok(Number.isSafeInteger(s.posts[1].score));
   await Promise.resolve();await Promise.resolve();
+  function finished(){const g=setup();g.ids['g-start'].click();for(let n=0;n<500&&g.frames.size;n++)g.tick(100+n*1000/60);assert.equal(g.frames.size,0);return g;}
+  const auto=finished(),autoRow=auto.ids['g-overlay'].children[2];
+  autoRow.children[0].value=' Auto player ';
+  await auto.ids['g-overlay'].children[3].click();
+  assert.equal(auto.posts.length,1,'New sprint must save a supplied nickname');
+  assert.equal(auto.posts[0].name,'Auto player');assert.equal(auto.frames.size,1);
+  const failed=finished(),failedRow=failed.ids['g-overlay'].children[2],restart=failed.ids['g-overlay'].children[3];
+  failedRow.children[0].value='Keep me';failed.failPost();await restart.click();
+  assert.equal(failed.frames.size,0,'Failed auto-save must not discard the finished sprint');
+  assert.equal(failedRow.children[0].value,'Keep me');assert.equal(failedRow.children[0].disabled,false);assert.equal(restart.disabled,false);
+  failed.allowPost();await restart.click();assert.equal(failed.frames.size,1);
+  const empty=finished();empty.ids['g-overlay'].children[2].children[0].value='   ';
+  await empty.ids['g-overlay'].children[3].click();assert.equal(empty.posts.length,0);assert.equal(empty.frames.size,1);
+  const race=finished(),raceRow=race.ids['g-overlay'].children[2],raceAgain=race.ids['g-overlay'].children[3];
+  raceRow.children[0].value='Once';
+  await Promise.all([raceRow.children[1].click(),raceAgain.click()]);
+  assert.equal(race.posts.length,1,'Post score and New sprint must share one pending save');assert.equal(race.frames.size,1);
+  const once=finished(),onceRow=once.ids['g-overlay'].children[2];onceRow.children[0].value='Already saved';
+  await onceRow.children[1].click();await once.ids['g-overlay'].children[3].click();
+  assert.equal(once.posts.length,1,'Restart after successful save must not post twice');
+  console.log('PASS: auto-save on restart, blank nickname, failure recovery, concurrent clicks and duplicate prevention.');
   console.log('PASS: idle/hidden/pause lifecycle, refresh-rate independence, failed-save retry and confirmed-save UI. No live writes.');
 })().catch(err=>{console.error(err);process.exitCode=1;});

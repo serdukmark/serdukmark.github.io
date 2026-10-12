@@ -297,19 +297,32 @@
     const desc=document.createElement('p');desc.className='game__desc';desc.textContent=tr('Тебя снёс ','Taken out by ')+(en?o.en:o.ru)+' · '+tr('Очки: ','Score: ')+final;
     const row=document.createElement('div');row.className='game__row';
     const input=document.createElement('input');input.type='text';input.maxLength=20;input.autocomplete='nickname';input.placeholder=tr('Публичный ник','Public nickname');input.setAttribute('aria-label',tr('Публичный ник в рейтинге','Public nickname on the leaderboard'));
-    const save=button(tr('В рейтинг','Post score'),async()=>{
-      const name=input.value.trim().slice(0,20);if(!name){input.focus();return;}
+    let saved=false,pendingSave=null;
+    async function saveScore(){
+      if(saved)return true;
+      if(pendingSave)return pendingSave;
+      pendingSave=submitScore();
+      try{return await pendingSave;}finally{pendingSave=null;}
+    }
+    async function submitScore(){
+      const name=input.value.trim().slice(0,20);if(!name){input.focus();return false;}
+      input.disabled=true;
       save.disabled=true;save.textContent=tr('Сохраняю…','Saving…');statusEl.textContent='';
       try{
         const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),8000);
         let response;
         try{response=await fetch(FB+'/leaderboard.json',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,score:final,ts:Date.now()}),signal:controller.signal});}finally{clearTimeout(timeout);}
         if(!response.ok)throw new Error('Save failed');
-        save.textContent=tr('Сохранено','Saved');input.disabled=true;statusEl.textContent=tr('Результат опубликован в рейтинге.','Your score is now on the leaderboard.');loadBoard(true);
-      }catch(_){save.disabled=false;save.textContent=tr('Повторить','Retry');statusEl.textContent=tr('Не удалось подтвердить сохранение. Проверь рейтинг перед повтором.','Could not confirm the save. Check the leaderboard before retrying.');}
-    },false);
+        saved=true;save.textContent=tr('Сохранено','Saved');input.disabled=true;statusEl.textContent=tr('Результат опубликован в рейтинге.','Your score is now on the leaderboard.');loadBoard(true);return true;
+      }catch(_){input.disabled=false;save.disabled=false;save.textContent=tr('Повторить','Retry');statusEl.textContent=tr('Не удалось подтвердить сохранение. Проверь рейтинг перед повтором.','Could not confirm the save. Check the leaderboard before retrying.');return false;}
+    }
+    const save=button(tr('В рейтинг','Post score'),saveScore,false);
     input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();save.click();}});
-    row.append(input,save);const again=button(tr('Новый спринт','New sprint'),start);
+    row.append(input,save);const again=button(tr('Новый спринт','New sprint'),async()=>{
+      again.disabled=true;
+      if(input.value.trim()&&!await saveScore()){again.disabled=false;return;}
+      start();
+    });
     overlay.append(title,desc,row,again);overlay.hidden=false;statusEl.textContent=tr('Спринт завершён. Очки: ','Sprint complete. Score: ')+final;again.focus({preventScroll:true});draw();
   }
   function renderBoard(entries){
