@@ -304,6 +304,21 @@ summary::-webkit-details-marker {
   letter-spacing:-.045em;
   margin:25px 0 25px
 }
+.hero-word {
+  white-space:nowrap
+}
+.hero-icon {
+  display:inline-block;
+  width:.56em;
+  height:.56em;
+  margin-left:.13em;
+  vertical-align:.15em;
+  color:var(--accent);
+  transform:rotate(-12deg)
+}
+.hero-icon--robot {
+  transform:rotate(12deg)
+}
 .hero-lead {
   color:var(--muted);
   font-size:17px;
