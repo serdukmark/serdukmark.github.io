@@ -15,7 +15,7 @@ class Page(HTMLParser):
   if tag=='html':self.lang=a.get('lang')
   if tag=='h1':self.h1+=1
   if tag=='title':self.title=True
-  if tag=='meta':self.meta[a.get('name',a.get('property'))]=a.get('content','')
+  if tag=='meta':self.meta[a.get('name',a.get('property',a.get('http-equiv')))]=a.get('content','')
   if tag=='title' or (tag=='script' and a.get('type')=='application/ld+json'):
    self.capture=tag;self.buffer=''
   if tag=='link' and a.get('rel')=='canonical':self.canonical=a['href']
@@ -40,7 +40,12 @@ for path,p in pages.items():
  if p.h1!=1:errors.append(f'{rel}: expected one h1')
  if len(set(p.ids))!=len(p.ids):errors.append(f'{rel}: duplicate IDs')
  if p.lang!=('en' if rel.parts[0]=='en' else 'ru'):errors.append(f'{rel}: wrong language')
- if rel.as_posix()=='404.html':
+ if rel.as_posix()=='max/index.html':
+  if 'noindex' not in p.meta.get('robots','') or p.canonical or p.schemas:errors.append('MAX redirect must be noindex without canonical or schema')
+  destination=p.meta.get('refresh','').removeprefix('0;url=')
+  u=urlsplit(destination)
+  if u.scheme!='https' or u.netloc!='max.ru' or not u.path.startswith('/u/') or destination not in p.refs:errors.append('MAX redirect needs a valid profile destination and matching fallback link')
+ elif rel.as_posix()=='404.html':
   if 'noindex' not in p.meta.get('robots','') or p.canonical or p.schemas:errors.append('404 must be noindex, without canonical or profile schema')
  else:
   url='https://mserdyuk.ru/'+str(rel).removesuffix('index.html')
@@ -67,7 +72,7 @@ for path,p in pages.items():
   if not dest.exists():errors.append(f'{rel}: missing {ref}')
   elif u.fragment and dest in pages and unquote(u.fragment) not in pages[dest].ids:errors.append(f'{rel}: missing fragment {ref}')
 for file in ['sitemap.xml','feed.xml','en/feed.xml']:ET.parse(ROOT/file)
-indexed=[p for path,p in pages.items() if path.name!='404.html']
+indexed=[p for path,p in pages.items() if 'noindex' not in p.meta.get('robots','')]
 for attr in ['title_text']:
  values=[getattr(p,attr) for p in indexed]
  if len(values)!=len(set(values)):errors.append(f'duplicate {attr}')
