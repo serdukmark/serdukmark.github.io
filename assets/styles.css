@@ -1031,6 +1031,61 @@ input[type=range] {
   color:var(--muted);
   margin-top:10px
 }
+.follow-section {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+  padding-block:55px 70px
+}
+.follow-section h2 {
+  font-size:clamp(26px,3vw,38px);
+  margin:18px 0
+}
+.follow-section p:not(.eyebrow) {
+  color:var(--muted);
+  max-width:430px;
+  font-size:14px
+}
+.follow-links {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px
+}
+.follow-card {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:24px 20px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--panel)
+}
+.follow-card:hover {
+  border-color:var(--accent)
+}
+.follow-card strong,.follow-card small {
+  display:block
+}
+.follow-card strong {
+  font-size:20px
+}
+.follow-card small {
+  font-size:11px;
+  color:var(--muted);
+  margin-top:8px;
+  overflow-wrap:anywhere
+}
+.follow-card>span:last-child {
+  color:var(--accent)
+}
+@media(max-width:900px) {
+  .follow-section {grid-template-columns:1fr;gap:24px}
+}
+@media(max-width:400px) {
+  .follow-links {grid-template-columns:1fr}
+}
 .contact-section {
   background:var(--panel);
   border-block:1px solid var(--line);
