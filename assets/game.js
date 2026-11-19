@@ -293,10 +293,10 @@
     draw();if(state==='running')rafId=requestAnimationFrame(loop);
   }
   function run(){lastFrame=0;accumulator=0;cancelAnimationFrame(rafId);rafId=requestAnimationFrame(loop);}
-  function start(){fit();reset();state='running';overlay.hidden=true;pauseBtn.hidden=false;pauseBtn.textContent=tr('Пауза','Pause');statusEl.textContent='';canvas.focus({preventScroll:true});run();}
+  function start(){fit();reset();state='running';overlay.className='game__overlay';overlay.hidden=true;pauseBtn.hidden=false;pauseBtn.textContent=tr('Пауза','Pause');statusEl.textContent='';canvas.focus({preventScroll:true});run();}
   function resume(){
     if(state!=='paused'||!details.open||document.hidden)return;
-    state='countdown';overlay.replaceChildren();overlay.hidden=false;pauseBtn.hidden=false;
+    state='countdown';overlay.className='game__overlay game__overlay--countdown';overlay.replaceChildren();overlay.hidden=false;pauseBtn.hidden=false;
     const count=document.createElement('p');count.className='game__countdown';count.textContent='3';
     count.setAttribute('role','status');count.setAttribute('aria-live','polite');
     const hint=document.createElement('p');hint.textContent=tr('Приготовься!','Get ready!');
@@ -307,7 +307,7 @@
       if(document.hidden||!details.open){pause();return;}
       if(began===null)began=now;
       const remaining=3-Math.floor((now-began)/1000);
-      if(remaining<=0){state='running';overlay.hidden=true;statusEl.textContent='';run();return;}
+      if(remaining<=0){state='running';overlay.className='game__overlay';overlay.hidden=true;statusEl.textContent='';run();return;}
       if(count.textContent!==String(remaining))count.textContent=String(remaining);
       rafId=requestAnimationFrame(countdown);
     }
@@ -316,14 +316,14 @@
   function button(text,fn,primary=true){const b=document.createElement('button');b.type='button';b.className='button'+(primary?' primary':'');b.textContent=text;b.addEventListener('click',fn);return b;}
   function pause(){
     if(state!=='running'&&state!=='countdown')return;
-    state='paused';cancelAnimationFrame(rafId);pauseBtn.hidden=true;overlay.replaceChildren();
+    state='paused';overlay.className='game__overlay';cancelAnimationFrame(rafId);pauseBtn.hidden=true;overlay.replaceChildren();
     const title=document.createElement('p');title.className='game__title';title.textContent=tr('Пауза','Paused');
     const resumeBtn=button(tr('Продолжить','Resume'),resume);
     overlay.append(title,resumeBtn);overlay.hidden=false;draw();
     if(details.open&&!document.hidden&&canvas.getBoundingClientRect().bottom>0)resumeBtn.focus({preventScroll:true});
   }
   function endGame(o){
-    state='dead';cancelAnimationFrame(rafId);pauseBtn.hidden=true;
+    state='dead';overlay.className='game__overlay';cancelAnimationFrame(rafId);pauseBtn.hidden=true;
     const final=Math.floor(score);scoreEl.textContent=String(final);
     if(final>hi){hi=final;try{localStorage.setItem('pmrunner-hi',String(hi));}catch(_){}}
     hiEl.textContent=String(hi);overlay.replaceChildren();

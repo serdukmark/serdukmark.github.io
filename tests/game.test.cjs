@@ -54,6 +54,7 @@ function setup(inspectRules=false){
   const countdown=setup();countdown.ids['g-start'].click();countdown.tick(100);countdown.tick(117);
   countdown.window.__pmRunner.pause();countdown.ids['g-overlay'].children[1].click();
   const heldScore=countdown.ids['g-score'].textContent;
+  assert.equal(countdown.ids['g-overlay'].className,'game__overlay game__overlay--countdown','Countdown must leave the field visible');
   countdown.tick(1000);assert.equal(countdown.ids['g-overlay'].children[0].textContent,'3');
   countdown.tick(1999);assert.equal(countdown.ids['g-overlay'].children[0].textContent,'3');
   countdown.tick(2000);assert.equal(countdown.ids['g-overlay'].children[0].textContent,'2');
@@ -63,7 +64,7 @@ function setup(inspectRules=false){
   countdown.tick(4000);assert.equal(countdown.ids['g-overlay'].hidden,true,'Resume only after all three seconds');
   countdown.tick(4017);countdown.tick(4034);assert.ok(Number(countdown.ids['g-score'].textContent)>Number(heldScore));
   countdown.window.__pmRunner.pause();countdown.ids['g-overlay'].children[1].click();countdown.tick(5000);
-  countdown.ids['g-pause'].click();assert.equal(countdown.frames.size,0);assert.equal(countdown.ids['g-overlay'].children[0].textContent,'Paused');
+  countdown.ids['g-pause'].click();assert.equal(countdown.ids['g-overlay'].className,'game__overlay');assert.equal(countdown.frames.size,0);assert.equal(countdown.ids['g-overlay'].children[0].textContent,'Paused');
   countdown.ids['g-overlay'].children[1].click();countdown.tick(6000);assert.equal(countdown.ids['g-overlay'].children[0].textContent,'3','Interrupted countdown starts fresh');
   countdown.ids['game-details'].open=false;countdown.ids['game-details'].events.toggle();assert.equal(countdown.frames.size,0);
   console.log('PASS: 3-2-1 resume timing, frozen simulation, cancellation and fresh countdown after interruption.');

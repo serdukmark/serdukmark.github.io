@@ -46,3 +46,8 @@ img.logo-gazprom{transform:scale(1.6)}img.logo-yandex{transform:scale(1.12)}
 :root[data-theme=light] .education-logo .cu-logo-light{display:none}
 :root[data-theme=light] .education-logo .cu-logo-dark{display:block}
 .game__countdown{font-size:64px;font-weight:700;line-height:1;color:var(--accent);margin:0}
+
+/* Keep the frozen field and approaching obstacles visible during resume. */
+.game__overlay--countdown{inset:8px 0 auto;background:transparent;pointer-events:none;padding:0;flex-direction:row;gap:10px;align-items:center}
+.game__overlay--countdown .game__countdown{font-size:34px;line-height:40px}
+.game__overlay--countdown>p:last-child{font-size:13px;color:var(--muted)}
