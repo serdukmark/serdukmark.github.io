@@ -8,8 +8,6 @@
     const light = root.dataset.theme === 'light';
     themeButton?.setAttribute('aria-pressed', String(light));
     themeButton?.setAttribute('aria-label', light ? tr('Включить тёмную тему', 'Switch to dark theme') : tr('Включить светлую тему', 'Switch to light theme'));
-    const icon = themeButton?.querySelector('.theme-icon');
-    if (icon) icon.textContent = light ? '☾' : '☀';
     const color = document.querySelector('#theme-color');
     if (color) color.content = light ? '#f6f7f2' : '#0b0e11';
     window.dispatchEvent(new Event('themechange'));
@@ -27,7 +25,6 @@
     menu.hidden = true;
     menuButton.setAttribute('aria-expanded', 'false');
     menuButton.setAttribute('aria-label', tr('Открыть меню', 'Open menu'));
-    menuButton.firstElementChild.textContent = '☰';
     if (focus) menuButton.focus();
   }
   menuButton?.addEventListener('click', () => {
@@ -36,7 +33,6 @@
     menu.hidden = false;
     menuButton.setAttribute('aria-expanded', 'true');
     menuButton.setAttribute('aria-label', tr('Закрыть меню', 'Close menu'));
-    menuButton.firstElementChild.textContent = '×';
   });
   menu?.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu?.hidden) closeMenu(true); });

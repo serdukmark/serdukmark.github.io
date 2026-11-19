@@ -14,7 +14,7 @@ of people and AI.
 I bring research, teams and AI together
 to create business value.
 
-[Explore my work ](https://mserdyuk.ru/en/#work) [CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[Explore my work ](https://mserdyuk.ru/en/#work) [CV · PDF (Russian)](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 +
 
@@ -233,7 +233,7 @@ more to learn.
 Mathematics and Computer Science.
 Specialisation in Product Management.
 
-[Full CV ↓](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[Full CV ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 9
 
@@ -286,13 +286,13 @@ together.
 
 Let’s discuss a product role,
 an AI challenge or a new idea.
-[Message me ](https://t.me/serdukmark) [CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[Message me ](https://t.me/serdukmark) [CV · PDF (Russian)](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 [m.gov@internet.ru](mailto:m.gov@internet.ru) Copy [+7 952 997-74-40](tel:+79529977440)
 
 Serdyuk at his own pace [Telegram](https://t.me/mserdyuk) [MAX](https://max.ru/channel_mserdyuk)
 
-Ready to play? PM Runner Outrun deadlines, jump over bugs and collect coffee.  Play ↗  Collapse −
+Ready to play? PM Runner Outrun deadlines, jump over bugs and collect coffee.  Play  Collapse
 
 Jump over bugs and deadlines. Space, ↑ or tap to jump. Double jump is available. Coffee adds 10 points.
 

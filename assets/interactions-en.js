@@ -10,7 +10,7 @@ if (!cards.length) return;
 const dialog = document.createElement('dialog');
 dialog.className = 'case-portal';
 dialog.setAttribute('aria-labelledby', 'portal-title');
-dialog.innerHTML = `<canvas class="portal-dust" aria-hidden="true"></canvas><div class="portal-shell"><header class="portal-bar"><button class="portal-back">Close case</button><span>INSIDE THE PROJECT</span><button class="portal-theme" aria-label="Switch theme">◐</button></header><nav class="portal-companies" aria-label="Other projects"></nav><div class="portal-content"></div><footer class="portal-footer"><span>From challenge to outcome · my contribution</span><button class="portal-next">Next project</button></footer></div>`;
+dialog.innerHTML = `<canvas class="portal-dust" aria-hidden="true"></canvas><div class="portal-shell"><header class="portal-bar"><button class="portal-back">Close case</button><span>INSIDE THE PROJECT</span><button class="portal-theme" aria-label="Switch theme"><span class="theme-icon" aria-hidden="true">${document.querySelector('.theme-icon').innerHTML}</span></button></header><nav class="portal-companies" aria-label="Other projects"></nav><div class="portal-content"></div><footer class="portal-footer"><span>From challenge to outcome · my contribution</span><button class="portal-next">Next project</button></footer></div>`;
 document.body.append(dialog);
 let selected = 0, opener, frame, lensFrame = 0, closing = false;
 const escape = text => text.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

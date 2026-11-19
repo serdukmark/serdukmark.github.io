@@ -48,7 +48,7 @@ CustDev охватил десять дочерних обществ. Подго�
 [Магнит Tech](https://mserdyuk.ru/projects/magnit/) [X5 Group](https://mserdyuk.ru/projects/x5/)
 
 По резюме Марка Сердюка, ноябрь 2026.
-[Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[Резюме PDF](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 Следующий шаг
 
@@ -57,7 +57,7 @@ CustDev охватил десять дочерних обществ. Подго�
 
 Обсудить продуктовую роль,
 AI-задачу или новую идею.
-[Написать Марку ](https://t.me/serdukmark) [Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[Написать Марку ](https://t.me/serdukmark) [Резюме PDF](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 [m.gov@internet.ru](mailto:m.gov@internet.ru) Скопировать [+7 952 997-74-40](tel:+79529977440)
 

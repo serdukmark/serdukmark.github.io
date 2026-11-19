@@ -48,7 +48,7 @@ User research covered ten subsidiaries. I developed a calculator and dashboards 
 [Magnit Tech](https://mserdyuk.ru/en/projects/magnit/) [X5 Group](https://mserdyuk.ru/en/projects/x5/)
 
 Based on Mark Serdyuk’s resume, November 2026.
-[CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[CV · PDF (Russian)](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 The next step
 
@@ -57,7 +57,7 @@ together.
 
 Let’s discuss a product role,
 an AI challenge or a new idea.
-[Message me ](https://t.me/serdukmark) [CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[Message me ](https://t.me/serdukmark) [CV · PDF (Russian)](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 [m.gov@internet.ru](mailto:m.gov@internet.ru) Copy [+7 952 997-74-40](tel:+79529977440)
 
