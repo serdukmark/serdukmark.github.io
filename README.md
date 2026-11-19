@@ -19,6 +19,7 @@ python3 scripts/check.py
 node --check assets/app.js
 node --check assets/orbit.js
 node tests/game.test.cjs
+node tests/orbit.test.cjs
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
@@ -26,7 +27,7 @@ No npm install or external build service is required. Generated HTML is committe
 
 ## Interaction and accessibility
 
-Default is dark on a first visit; theme choice persists. Main content is server-rendered HTML. Desktop experience has a sticky globe that rotates with page scrolling and clickable company markers. Mouse users can drag the globe to pick a company. Mobile uses a linear layout. Motion respects reduced-motion preferences and has a pause control. There is no scroll hijacking or autoplay sound. Canvas stops redrawing when settled, off-screen or in a hidden tab.
+Default is dark on a first visit; theme choice persists. Main content is server-rendered HTML. Desktop experience has a sticky globe that rotates with page scrolling and clickable company markers. Mouse users can drag the globe to pick a company. Mobile uses a linear layout. Motion respects reduced-motion preferences and has a pause control. There is no scroll hijacking or autoplay sound. Canvas stops redrawing when settled, off-screen or in a hidden tab. The globe includes inline land data and an inline SVG fallback; its markers remain spread around the globe even when animation is unavailable. Canvas recovers on visibility, page restore and context restore, and resizing never clears an unchanged backing store. The project lens updates once per animation frame with no delayed clipping transition.
 
 ## Content and assets
 
@@ -42,7 +43,7 @@ PM Runner, scoring/difficulty, Firebase endpoint and restart auto-save behaviour
 
 ## Deployment and discovery
 
-GitHub Pages serves the `main` branch. Preserve CNAME, verification files and `.nojekyll`. No hosting migration. All 22 indexable pages have self-canonical URLs, reciprocal RU/EN links, metadata and JSON-LD. Existing project routes remain available. Sitemap and RSS feeds are regenerated. The 404 and private-profile redirect are noindex. Publishing does not confirm search-engine indexing.
+GitHub Pages serves the `main` branch. Preserve CNAME, verification files and `.nojekyll`. Hosting remains on GitHub Pages; these browser rendering fixes do not require a hosting migration. All 22 indexable pages have self-canonical URLs, reciprocal RU/EN links, metadata and JSON-LD. Existing project routes remain available. Sitemap and RSS feeds are regenerated. The 404 and private-profile redirect are noindex. Publishing does not confirm search-engine indexing.
 
 
 ## Search and AI discovery (November 19, 2026)

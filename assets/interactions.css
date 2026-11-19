@@ -1,4 +1,4 @@
-/* Local-only interaction study */
+/* Interactive case portals and project lens. */
 .portal-open{overflow:hidden}
 .case-portal{--case-color:#ff654f;position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:var(--bg);color:var(--ink);overflow:auto;overscroll-behavior:contain}
 .case-portal::backdrop{background:transparent}
@@ -34,7 +34,7 @@
 .xray-metrics strong{font-size:clamp(25px,3.5vw,46px);font-weight:500;letter-spacing:-.04em}
 .xray-metrics span{font-size:14px;color:var(--muted)}
 .surface-caption{font-size:12px;color:var(--muted);text-align:center}
-.xray-inside{background-color:#16251e;background-image:linear-gradient(#baf0b80a 1px,transparent 1px),linear-gradient(90deg,#baf0b80a 1px,transparent 1px);background-size:24px 24px;color:#f3f8ef;clip-path:circle(0 at var(--lx) var(--ly));transition:clip-path .2s ease;pointer-events:none}
+.xray-inside{background-color:#16251e;background-image:linear-gradient(#baf0b80a 1px,transparent 1px),linear-gradient(90deg,#baf0b80a 1px,transparent 1px);background-size:24px 24px;color:#f3f8ef;clip-path:circle(0 at var(--lx) var(--ly));pointer-events:none}
 .xray-inside .surface-label,.xray-inside .surface-caption{color:#b9cbbb}
 .has-pointer .xray-inside{clip-path:circle(var(--lens) at var(--lx) var(--ly))}
 .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;width:100%;position:relative}
