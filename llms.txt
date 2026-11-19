@@ -1,0 +1,32 @@
+# Mark Serdyuk / Марк Сердюк
+
+> Personal portfolio of an AI product manager. Russian and English pages cover work, research, teaching and speaking.
+
+## Pages
+
+- [Марк Сердюк – продуктовый менеджер AI-продуктов](https://mserdyuk.ru/): [Markdown](https://mserdyuk.ru/index.md)
+- [Корпоративный AI-ассистент в Магнит Tech – Марк Сердюк](https://mserdyuk.ru/projects/magnit/): [Markdown](https://mserdyuk.ru/projects/magnit/index.md)
+- [Подготовка сервиса «Грузчик без машины» в Яндексе – Марк Сердюк](https://mserdyuk.ru/projects/yandex/): [Markdown](https://mserdyuk.ru/projects/yandex/index.md)
+- [LLM и оценка эффектов автоматизации в Газпромнефть Бизнес-сервис – Марк Сердюк](https://mserdyuk.ru/projects/gazprom/): [Markdown](https://mserdyuk.ru/projects/gazprom/index.md)
+- [CustDev и привлечение партнёров автоуслуг в Т-Банке – Марк Сердюк](https://mserdyuk.ru/projects/tbank/): [Markdown](https://mserdyuk.ru/projects/tbank/index.md)
+- [Полевые исследования и CJM директоров-партнёров X5 Group – Марк Сердюк](https://mserdyuk.ru/projects/x5/): [Markdown](https://mserdyuk.ru/projects/x5/index.md)
+- [Рабочая группа по Стратегии образования до 2040 года – Марк Сердюк](https://mserdyuk.ru/projects/government/): [Markdown](https://mserdyuk.ru/projects/government/index.md)
+- [AI-продукты, discovery и бизнес-аналитика – Марк Сердюк](https://mserdyuk.ru/expertise/): [Markdown](https://mserdyuk.ru/expertise/index.md)
+- [Исследования БРИКС и преподавание – Марк Сердюк](https://mserdyuk.ru/research/): [Markdown](https://mserdyuk.ru/research/index.md)
+- [Выступления и публикации – Марк Сердюк](https://mserdyuk.ru/speaking/): [Markdown](https://mserdyuk.ru/speaking/index.md)
+- [Проекты и опыт – Марк Сердюк](https://mserdyuk.ru/projects/): [Markdown](https://mserdyuk.ru/projects/index.md)
+- [Mark Serdyuk – AI Product Manager](https://mserdyuk.ru/en/): [Markdown](https://mserdyuk.ru/en/index.md)
+- [Enterprise AI assistant at Magnit Tech – Mark Serdyuk](https://mserdyuk.ru/en/projects/magnit/): [Markdown](https://mserdyuk.ru/en/projects/magnit/index.md)
+- [Discovery for Yandex’s “Mover without a van” service – Mark Serdyuk](https://mserdyuk.ru/en/projects/yandex/): [Markdown](https://mserdyuk.ru/en/projects/yandex/index.md)
+- [LLMs and automation impact at Gazpromneft Business Service – Mark Serdyuk](https://mserdyuk.ru/en/projects/gazprom/): [Markdown](https://mserdyuk.ru/en/projects/gazprom/index.md)
+- [Auto-service partner research and acquisition at T-Bank – Mark Serdyuk](https://mserdyuk.ru/en/projects/tbank/): [Markdown](https://mserdyuk.ru/en/projects/tbank/index.md)
+- [Field research and partner-director CJM at X5 Group – Mark Serdyuk](https://mserdyuk.ru/en/projects/x5/): [Markdown](https://mserdyuk.ru/en/projects/x5/index.md)
+- [Working group on the Education Strategy 2040 – Mark Serdyuk](https://mserdyuk.ru/en/projects/government/): [Markdown](https://mserdyuk.ru/en/projects/government/index.md)
+- [AI products, discovery and business analysis – Mark Serdyuk](https://mserdyuk.ru/en/expertise/): [Markdown](https://mserdyuk.ru/en/expertise/index.md)
+- [BRICS research and teaching – Mark Serdyuk](https://mserdyuk.ru/en/research/): [Markdown](https://mserdyuk.ru/en/research/index.md)
+- [Speaking and publications – Mark Serdyuk](https://mserdyuk.ru/en/speaking/): [Markdown](https://mserdyuk.ru/en/speaking/index.md)
+- [Projects and experience – Mark Serdyuk](https://mserdyuk.ru/en/projects/): [Markdown](https://mserdyuk.ru/en/projects/index.md)
+
+## Full text
+
+- [All page text](https://mserdyuk.ru/llms-full.txt)

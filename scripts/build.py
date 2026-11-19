@@ -13,6 +13,8 @@ translations=json.loads((ROOT/'content/interaction-translations.json').read_text
 for original in sorted(translations,key=len,reverse=True):
  interaction_source=interaction_source.replace(original,translations[original])
 (ROOT/'assets/interactions-en.js').write_text(interaction_source)
+DISCOVERY=json.loads((ROOT/'content/discovery.json').read_text())
+from discovery import extra_pages, text_exports
 LANG='ru'
 def t(ru,en):return ru if LANG=='ru' else en
 def v(a):return a[0 if LANG=='ru' else 1]
@@ -28,23 +30,34 @@ def logo(c):
 def head(title,desc,path,case=None):
  url=DOMAIN+path; ru=path.replace('/en/','/'); en='/en'+ru
  graph=[{'@type':'WebSite','@id':DOMAIN+'/#website','url':DOMAIN+'/','name':'Марк Сердюк','inLanguage':['ru','en']},{'@type':'Person','@id':DOMAIN+'/#person','name':t('Марк Сердюк','Mark Serdyuk'),'url':DOMAIN+'/','jobTitle':t('Продуктовый менеджер AI-продуктов','AI Product Manager'),'image':DOMAIN+'/assets/img/mark-sweater.jpg','sameAs':['https://t.me/serdukmark','https://t.me/mserdyuk','https://max.ru/channel_mserdyuk'],'worksFor':{'@type':'Organization','name':'Магнит Tech'}}]
- graph.append({'@type':'WebPage' if case else 'ProfilePage','@id':url+'#webpage','url':url,'name':title,'description':desc,'inLanguage':LANG,'isPartOf':{'@id':DOMAIN+'/#website'},'about':{'@id':DOMAIN+'/#person'}})
+ graph.append({'@type':'ProfilePage' if path in ('/','/en/') else 'WebPage','@id':url+'#webpage','url':url,'name':title,'description':desc,'inLanguage':LANG,'isPartOf':{'@id':DOMAIN+'/#website'},'about':{'@id':DOMAIN+'/#person'}})
+ person=graph[1]
+ person.update({'alternateName':t('Mark Serdyuk','Марк Сердюк'),'knowsAbout':['AI product management','Business analysis','Customer development','LLM','Unit economics'],'description':t('Продуктовый менеджер AI-продуктов, исследователь и преподаватель.','AI product manager, researcher and educator.')})
+ page_node=graph[2]
+ page_node['dateModified']='2026-11-19'
+ if path in ('/','/en/'):
+  page_node['mainEntity']={'@id':DOMAIN+'/#person'}
+ elif not case:
+  graph.append({'@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':t('Главная','Home'),'item':DOMAIN+home()},{'@type':'ListItem','position':2,'name':title,'item':url}]})
  if case:
-  graph.extend([{'@type':'CreativeWork','@id':url+'#project','name':v(case['title']),'description':v(case['summary']),'contributor':{'@id':DOMAIN+'/#person'}},{'@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':t('Главная','Home'),'item':DOMAIN+home()},{'@type':'ListItem','position':2,'name':v(case['company']),'item':url}]}])
+  page_node['mainEntity']={'@id':url+'#project'}
+  graph.extend([{'@type':'CreativeWork','@id':url+'#project','name':v(case['title']),'description':v(case['summary']),'url':url,'inLanguage':LANG,'author':{'@id':DOMAIN+'/#person'},'about':{'@type':'Organization','name':v(case['company'])},'citation':DOMAIN+'/serdyuk-mark-cv.pdf'},{'@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':t('Главная','Home'),'item':DOMAIN+home()},{'@type':'ListItem','position':2,'name':t('Проекты','Projects'),'item':DOMAIN+home()+'projects/'},{'@type':'ListItem','position':3,'name':v(case['company']),'item':url}]}])
  return f'''<!doctype html><html lang="{LANG}" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)}</title><meta name="description" content="{esc(desc,quote=True)}"><meta name="author" content="Марк Сердюк"><meta name="theme-color" content="#0b0e11" id="theme-color">
+<title>{esc(title)}</title><meta name="description" content="{esc(desc,quote=True)}"><meta name="author" content="Марк Сердюк"><meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta name="theme-color" content="#0b0e11" id="theme-color">
 <link rel="canonical" href="{url}"><link rel="alternate" hreflang="ru" href="{DOMAIN+ru}"><link rel="alternate" hreflang="en" href="{DOMAIN+en}"><link rel="alternate" hreflang="x-default" href="{DOMAIN+ru}">
-<meta property="og:type" content="website"><meta property="og:title" content="{esc(title,quote=True)}"><meta property="og:description" content="{esc(desc,quote=True)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{DOMAIN}/assets/img/mark-sweater.jpg"><meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/atom+xml" title="RSS" href="{home()}feed.xml">
+<meta property="og:type" content="website"><meta property="og:title" content="{esc(title,quote=True)}"><meta property="og:description" content="{esc(desc,quote=True)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{DOMAIN}/assets/img/mark-sweater.jpg"><meta property="og:site_name" content="{t('Марк Сердюк','Mark Serdyuk')}"><meta property="og:locale" content="{t('ru_RU','en_US')}"><meta property="og:locale:alternate" content="{t('en_US','ru_RU')}"><meta property="og:image:alt" content="{t('Марк Сердюк – продуктовый менеджер AI-продуктов','Mark Serdyuk – AI Product Manager')}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title,quote=True)}"><meta name="twitter:description" content="{esc(desc,quote=True)}"><meta name="twitter:image" content="{DOMAIN}/assets/img/mark-sweater.jpg">
+<link rel="alternate" type="text/markdown" href="{path}index.md" title="Markdown"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/atom+xml" title="RSS" href="{home()}feed.xml">
 <link rel="preload" href="/assets/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark'}}catch(e){{}}</script>
-<link rel="stylesheet" href="{asset('assets/styles.css')}"><script src="{asset('assets/config.js')}" defer></script><script src="{asset('assets/app.js')}" data-game-src="{asset('assets/game.js')}" defer></script><script src="{asset('assets/orbit.js')}" defer></script><link rel="stylesheet" href="{asset('assets/interactions.css')}"><script src="{asset(t('assets/interactions.js','assets/interactions-en.js'))}" defer></script>
+<link rel="stylesheet" href="{asset('assets/styles.css')}"><link rel="stylesheet" href="{asset('assets/discovery.css')}"><script src="{asset('assets/config.js')}" defer></script><script src="{asset('assets/app.js')}" data-game-src="{asset('assets/game.js')}" defer></script><script src="{asset('assets/orbit.js')}" defer></script><link rel="stylesheet" href="{asset('assets/interactions.css')}"><script src="{asset(t('assets/interactions.js','assets/interactions-en.js'))}" defer></script>
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False)}</script></head><body><svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none"><defs><filter id="magnit-transparent" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 .9 0 0 0 0 .025 0 0 0 0 .08 0 -1 0 0 1"/><feComposite in2="SourceAlpha" operator="in"/></filter><filter id="x5-white-letters" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 -5 0 0 1" result="white"/><feComposite in="white" in2="SourceAlpha" operator="in" result="letters"/><feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="letters"/></feMerge></filter></defs></svg><a class="skip-link" href="#main">{t('К содержимому','Skip to content')}</a>'''
 def header(path=''):
  nav=''.join(f'<a href="{home()}#{id}">{name}</a>' for id,name in [('work',t('Опыт','Experience')),('research',t('Исследования','Research')),('about',t('Обо мне','About'))])
  alt=('/en'+path) if LANG=='ru' else path.replace('/en/','/')
  return f'''<header class="site-header"><a class="brand" href="{home()}" aria-label="{t('Марк Сердюк – главная','Mark Serdyuk – home')}">m<span class="brand-star">✳</span>s</a><nav class="desktop-nav" aria-label="{t('Навигация','Navigation')}">{nav}</nav><div class="header-tools"><a class="lang-link" href="{alt or '/en/'}" lang="{t('en','ru')}">{t('EN','RU')}</a><button class="theme-toggle" aria-label="{t('Включить светлую тему','Switch to light theme')}" aria-pressed="false"><span class="theme-icon" aria-hidden="true">☀</span></button><a class="header-contact" href="{home()}#contact">{t('На связи','Get in touch')}</a><button class="menu-button" aria-label="{t('Открыть меню','Open menu')}" aria-controls="mobile-nav" aria-expanded="false"><span aria-hidden="true">☰</span></button></div><nav id="mobile-nav" hidden>{nav}<a href="{home()}#contact">{t('Контакты','Contact')}</a></nav></header>'''
-def footer():return f'''<footer class="wrap footer"><a class="brand" href="{home()}">m<span class="brand-star">✳</span>s</a><span>© 2026 {t('Марк Сердюк','Mark Serdyuk')}</span><a href="{home()}feed.xml">RSS</a><a href="#top">{t('Наверх','Back to top')}</a></footer><div class="toast" id="toast" role="status" aria-live="polite"></div></body></html>'''
+def discovery_nav():
+ return '<nav class="discovery-nav wrap" aria-label="'+t('Разделы сайта','Site sections')+'">'+''.join(f'<a href="{home()}{slug}/">{label}</a>' for slug,label in [('projects',t('Все проекты','All projects')),('expertise',t('Компетенции','Capabilities')),('research',t('Исследования и преподавание','Research & teaching')),('speaking',t('Выступления и публикации','Speaking & publications'))])+'</nav>'
+def footer():return discovery_nav()+ f'''<footer class="wrap footer"><a class="brand" href="{home()}">m<span class="brand-star">✳</span>s</a><span>© 2026 {t('Марк Сердюк','Mark Serdyuk')}</span><a href="{home()}feed.xml">RSS</a><a href="#top">{t('Наверх','Back to top')}</a></footer><div class="toast" id="toast" role="status" aria-live="polite"></div></body></html>'''
 def metrics(c):return ''.join(f'<div><strong>{m[0] if LANG=="ru" else m[0].replace("100 млн ₽","100M RUB").replace("Unit-экономика","Unit economics")}</strong><span>{m[1 if LANG=="ru" else 2]}</span></div>' for m in c['metrics'])
 def bullets(c):return '<ul>'+''.join(f'<li>{v(b)}</li>' for b in c['bullets'])+'</ul>'
 def experience():
@@ -68,8 +81,8 @@ def homepage():
  game=(ROOT/f'content/game/{LANG}.snippet').read_text().replace(' ↗','').replace('—','–')
  return head(title,desc,home())+header(home())+hero+experience()+research()+about()+media()+contact()+game+'</main>'+footer()
 def casepage(c):
- title=v(c['company'])+' – '+t('опыт Марка Сердюка','Mark Serdyuk’s work');desc=v(c['summary']);path=caseurl(c)
- body=f'''<main id="main"><section class="case-page wrap" id="top"><a class="text-link" href="{home()}#case-{c['slug']}">{t('Вернуться к опыту','Back to experience')}</a><p class="eyebrow">{v(c['company'])} · {v(c['period'])}</p><h1>{v(c['title'])}</h1><p class="case-role">{v(c['role'])}</p><p class="case-intro">{desc}</p><div class="case-metrics">{metrics(c)}</div><h2>{t('Мой вклад','My contribution')}</h2>{bullets(c)}<p class="case-source">{t('По резюме Марка Сердюка, ноябрь 2026.','Based on Mark Serdyuk’s resume, November 2026.')}</p>{cv()}</section>{contact()}</main>'''
+ title=v(DISCOVERY[c['slug']]['heading'])+' – '+t('Марк Сердюк','Mark Serdyuk');desc=v(c['summary']);path=caseurl(c)
+ body=f'''<main id="main"><section class="case-page wrap" id="top"><nav class="breadcrumbs"><a href="{home()}">{t('Главная','Home')}</a><a href="{home()}projects/">{t('Проекты','Projects')}</a><span>{v(c['company'])}</span></nav><p class="eyebrow">{v(c['company'])} · {v(c['period'])}</p><h1>{v(DISCOVERY[c['slug']]['heading'])}</h1><p class="case-role">{v(c['role'])}</p><p class="case-intro">{desc}</p><div class="case-metrics">{metrics(c)}</div><div class="case-context"><h2>{t('Задача и контекст','Challenge and context')}</h2><p>{v(DISCOVERY[c['slug']]['context'])}</p><dl class="case-facts"><div><dt>{t('Роль','Role')}</dt><dd>{v(c['role'])}</dd></div><div><dt>{t('Период','Period')}</dt><dd>{v(c['period'])}</dd></div><div><dt>{t('Этап','Stage')}</dt><dd>{v(DISCOVERY[c['slug']]['status'])}</dd></div></dl><h2>{t('Мой вклад','My contribution')}</h2>{bullets(c)}<h2>{t('Что означают результаты','Understanding the results')}</h2><p>{v(DISCOVERY[c['slug']]['measurement'])}</p></div><h2>{t('Связанные проекты','Related projects')}</h2><div class="related-links">{''.join(f'<a href="{caseurl(other)}">{v(other["company"])}</a>' for other in CASES if other['slug'] in DISCOVERY[c['slug']]['related'])}</div><p class="case-source">{t('По резюме Марка Сердюка, ноябрь 2026.','Based on Mark Serdyuk’s resume, November 2026.')}</p>{cv()}</section>{contact()}</main>'''
  return head(title,desc,path,c)+header(path)+body+footer()
 def feeds():
  entries=[('portfolio-2026-11',t('Обновлённое резюме и портфолио','Updated resume and portfolio'),t('Актуальный опыт, исследования и преподавание.','Current experience, research and teaching.'))]
@@ -81,6 +94,14 @@ if __name__=='__main__':
  for LANG in ['ru','en']:
   write(home().lstrip('/')+'index.html',homepage());urls.append(DOMAIN+home());feeds()
   for c in CASES:write(caseurl(c).lstrip('/')+'index.html',casepage(c));urls.append(DOMAIN+caseurl(c))
- write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{u}</loc><lastmod>2026-11-19</lastmod></url>' for u in urls)+'</urlset>')
+  urls.extend(extra_pages(globals()))
+ sitemap=[]
+ for u in urls:
+  ru=u.replace(DOMAIN+'/en/',DOMAIN+'/');en=DOMAIN+'/en/'+ru.removeprefix(DOMAIN+'/')
+  alternates=''.join(f'<xhtml:link rel="alternate" hreflang="{lang}" href="{href}"/>' for lang,href in [('ru',ru),('en',en),('x-default',ru)])
+  image=f'<image:image><image:loc>{DOMAIN}/assets/img/mark-sweater.jpg</image:loc></image:image>' if u in (DOMAIN+'/',DOMAIN+'/en/') else ''
+  sitemap.append(f'<url><loc>{u}</loc><lastmod>2026-11-19</lastmod>{alternates}{image}</url>')
+ write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'+''.join(sitemap)+'</urlset>')
+ text_exports(ROOT,urls)
  write('404.html','''<!doctype html><html lang="ru" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Страница не найдена</title><link rel="stylesheet" href="/assets/styles.css"></head><body><main class="case-page wrap"><p class="eyebrow">404</p><h1>Кажется, мы<br>сбились с орбиты.</h1><a class="button primary" href="/">На главную</a></main></body></html>''')
  print('Generated RU/EN homepages, 12 project pages, feeds and sitemap.')

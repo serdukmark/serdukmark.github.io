@@ -57,14 +57,18 @@ for path,p in pages.items():
    if dest not in pages or pages[dest].alternates.get(p.lang)!=url:errors.append(f'{rel}: non-reciprocal hreflang {lang}')
   graph=p.schemas[0].get('@graph',[]) if p.schemas else []
   nodes={n.get('@type'):n for n in graph}
-  expected={'Person','WebSite','WebPage','CreativeWork','BreadcrumbList'} if 'projects' in rel.parts else {'Person','WebSite','ProfilePage'}
+  is_home=rel.as_posix() in ('index.html','en/index.html')
+  is_case='projects' in rel.parts and rel.parent.name!='projects'
+  expected={'Person','WebSite','ProfilePage'} if is_home else {'Person','WebSite','WebPage','BreadcrumbList'} | ({'CreativeWork'} if is_case else set())
   if set(nodes)!=expected:errors.append(f'{rel}: incorrect schema types')
   else:
    page=nodes.get('WebPage',nodes.get('ProfilePage'))
    if page['url']!=url or page['inLanguage']!=p.lang or page['name']!=p.title_text:errors.append(f'{rel}: schema does not match page')
+   if is_home and page.get('mainEntity',{}).get('@id')!='https://mserdyuk.ru/#person':errors.append(f'{rel}: missing profile mainEntity')
+   if not path.with_suffix('.md').exists():errors.append(f'{rel}: missing text export')
    if 'BreadcrumbList' in nodes:
     crumbs=nodes['BreadcrumbList']['itemListElement']
-    if [x['position'] for x in crumbs]!=[1,2] or crumbs[-1]['item']!=url:errors.append(f'{rel}: incorrect breadcrumbs')
+    if [x['position'] for x in crumbs]!=list(range(1,4 if is_case else 3)) or crumbs[-1]['item']!=url:errors.append(f'{rel}: incorrect breadcrumbs')
  for ref in p.refs:
   u=urlsplit(ref)
   if u.scheme or u.netloc:continue
@@ -80,6 +84,13 @@ descriptions=[p.meta['description'] for p in indexed]
 if len(descriptions)!=len(set(descriptions)):errors.append('duplicate descriptions')
 locations={n.text for n in ET.parse(ROOT/'sitemap.xml').iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')}
 if locations!={p.canonical for p in indexed}:errors.append('sitemap does not match indexable pages')
+from urllib.robotparser import RobotFileParser
+robots=RobotFileParser();robots.parse((ROOT/'robots.txt').read_text().splitlines())
+for bot in ['Googlebot','Bingbot','YandexBot','OAI-SearchBot','Claude-SearchBot','PerplexityBot']:
+ for url in locations:
+  if not robots.can_fetch(bot,url):errors.append(f'{bot}: blocked {url}')
+for url in locations:
+ if url not in (ROOT/'llms.txt').read_text():errors.append(f'missing AI index entry: {url}')
 assert isinstance(json.loads((ROOT/'content/updates.json').read_text()),list)
 if errors:raise SystemExit('\n'.join(errors))
 print(f'PASS: {len(pages)} pages, all local resources, fragments, language metadata and XML feeds.')

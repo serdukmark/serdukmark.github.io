@@ -42,4 +42,19 @@ PM Runner, scoring/difficulty, Firebase endpoint and restart auto-save behaviour
 
 ## Deployment and discovery
 
-GitHub Pages serves the `main` branch. Preserve CNAME, verification files and `.nojekyll`. No hosting migration. All 14 indexable pages have self-canonical URLs, reciprocal RU/EN links, metadata and JSON-LD. Existing project routes remain available. Sitemap and RSS feeds are regenerated. The 404 and private-profile redirect are noindex. Publishing does not confirm search-engine indexing.
+GitHub Pages serves the `main` branch. Preserve CNAME, verification files and `.nojekyll`. No hosting migration. All 22 indexable pages have self-canonical URLs, reciprocal RU/EN links, metadata and JSON-LD. Existing project routes remain available. Sitemap and RSS feeds are regenerated. The 404 and private-profile redirect are noindex. Publishing does not confirm search-engine indexing.
+
+
+## Search and AI discovery (November 19, 2026)
+
+- `content/discovery.json`: reviewed case context, stage and metric definitions.
+- `scripts/discovery.py`: RU/EN project index, capabilities, research and speaking pages, plus equivalent Markdown exports.
+- Homepages use ProfilePage with Person mainEntity; cases use WebPage/CreativeWork and breadcrumbs. No invented ratings, clients or FAQ rich-result promises.
+- The sitemap contains all 22 canonical pages, language alternatives and homepage portrait references. All meaningful content is readable without JavaScript.
+- `robots.txt` allows search crawlers. This preserves the existing general policy rather than changing training permissions. `llms.txt` and `llms-full.txt` are optional discovery aids, not an established ranking requirement.
+- IndexNow submits changed canonical HTML pages after a successful Pages deployment. `content/indexnow.json` and the root verification file identify this public site; no account credentials are stored. `python3 scripts/submit_indexnow.py --dry-run` previews the URLs; without `--dry-run` it verifies the published key and notifies participating engines. Acceptance is not indexing. Google requires its own Search Console/sitemap workflow.
+- Add actual publication/report URLs when available. Current media links lead to the owner's Telegram posts; do not represent these as independent verification of the results.
+
+Owner actions: verify ownership in Google Search Console, Yandex Webmaster and Bing Webmaster Tools; submit https://mserdyuk.ru/sitemap.xml; obtain legitimate profile links from the university, conference and publication pages; publish original case studies with methods and source evidence. Review indexing, non-brand queries, contact conversions and available AI citation reports monthly. Do not buy link packages or mass-produce duplicate keyword pages.
+
+Reference documentation: [Google AI search](https://developers.google.com/search/docs/appearance/ai-features), [Google profile pages](https://developers.google.com/search/docs/appearance/structured-data/profile-page), [IndexNow](https://www.indexnow.org/documentation), [Yandex Alice](https://yandex.ru/support/webmaster/ru/alice), [Perplexity crawlers](https://docs.perplexity.ai/docs/resources/perplexity-crawlers).

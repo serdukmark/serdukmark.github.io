@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: '22'
       - run: python scripts/build.py
-      - run: git diff --exit-code -- '*.html' sitemap.xml feed.xml en/feed.xml
+      - run: git diff --exit-code -- '*.html' '**/index.md' index.md llms.txt llms-full.txt sitemap.xml feed.xml en/feed.xml
       - run: python scripts/check.py
       - run: node --check assets/app.js && node --check assets/game.js && node --check assets/config.js && node --check assets/orbit.js && node --check assets/interactions.js && node --check assets/interactions-en.js
       - run: node tests/game.test.cjs

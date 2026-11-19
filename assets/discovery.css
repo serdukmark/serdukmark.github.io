@@ -1,0 +1,20 @@
+.discovery-nav{display:flex;flex-wrap:wrap;gap:14px 30px;padding-top:32px;padding-bottom:32px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.discovery-nav a:hover,.related-links a:hover{color:var(--accent)}
+.knowledge-page{padding-top:50px;padding-bottom:90px;max-width:1256px;margin:auto}
+.knowledge-page h1{font-size:clamp(38px,5.5vw,76px);line-height:1.08;letter-spacing:-.055em;max-width:1000px;margin:32px 0}
+.knowledge-lead{font-size:clamp(18px,2vw,23px);line-height:1.6;color:var(--muted);max-width:850px;margin-bottom:55px}
+.knowledge-page section{padding:35px 0;border-top:1px solid var(--line);max-width:900px}
+.knowledge-page h2{font-size:clamp(24px,3vw,36px);line-height:1.25;letter-spacing:-.03em;margin-bottom:20px}
+.knowledge-page section p,.case-context p{font-size:18px;line-height:1.75;color:var(--muted);max-width:850px}
+.knowledge-page section>a{display:inline-block;margin:18px 0;text-decoration:underline;text-underline-offset:5px}
+.knowledge-photo{display:block;width:min(100%,680px);height:400px;object-fit:cover;border-radius:20px;margin:20px 0}
+.knowledge-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.knowledge-card{padding:30px;border:1px solid var(--line);border-radius:22px;background:var(--surface);display:block;transition:border-color .2s}
+.knowledge-card:hover{border-color:var(--accent)}
+.knowledge-card h2{font-size:26px;margin:18px 0}.knowledge-card p{line-height:1.7;color:var(--muted);margin-bottom:20px}.knowledge-card>span:last-child{font-size:13px;color:var(--accent)}
+.breadcrumbs{display:flex;flex-wrap:wrap;gap:10px 18px;color:var(--muted);font-size:14px;line-height:1.6}.breadcrumbs a{text-decoration:underline;text-underline-offset:4px}
+.case-context{max-width:900px;margin:35px 0}.case-context h2{margin:36px 0 20px}
+.case-facts{display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:25px;padding:25px 0;margin:25px 0;border-block:1px solid var(--line)}
+.case-facts dt{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}.case-facts dd{margin:0;line-height:1.5;font-size:16px}
+.related-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin:25px 0}.related-links a{font-size:16px;text-decoration:underline;text-underline-offset:5px}
+@media(max-width:700px){.knowledge-grid,.case-facts{grid-template-columns:1fr}.knowledge-page{padding-top:30px}.knowledge-card{padding:22px}.knowledge-photo{height:300px}.knowledge-page section p,.case-context p{font-size:16px}.discovery-nav{gap:18px;font-size:13px}}
