@@ -16,5 +16,5 @@ jobs:
       - run: python scripts/build.py
       - run: git diff --exit-code -- '*.html' sitemap.xml feed.xml en/feed.xml
       - run: python scripts/check.py
-      - run: node --check assets/app.js && node --check assets/game.js && node --check assets/config.js
+      - run: node --check assets/app.js && node --check assets/game.js && node --check assets/config.js && node --check assets/orbit.js
       - run: node tests/game.test.cjs

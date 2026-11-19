@@ -11,7 +11,7 @@
     const icon = themeButton?.querySelector('.theme-icon');
     if (icon) icon.textContent = light ? '☾' : '☀';
     const color = document.querySelector('#theme-color');
-    if (color) color.content = light ? '#f4f1e9' : '#111210';
+    if (color) color.content = light ? '#f6f7f2' : '#0b0e11';
     window.dispatchEvent(new Event('themechange'));
   }
   themeButton?.addEventListener('click', () => {
@@ -79,32 +79,16 @@
   });
   const project = location.pathname.match(/\/projects\/([^/]+)\//)?.[1];
   if (project) track('case_view', { project });
-  const calculator = document.querySelector('.calculator');
-  let calcTracked = false;
-  const num = new Intl.NumberFormat(en ? 'en-US' : 'ru-RU', { maximumFractionDigits: 1 });
-  if (calculator) {
-    const fields = ['people', 'minutes', 'cost', 'adoption'].map(key => document.getElementById(key));
-    let announceTimer;
-    function calculate(immediate = false) {
-      const [people, minutes, cost, adoption] = fields.map(field => Number(field.value));
-      fields.forEach(field => { document.getElementById(field.id + '-value').textContent = num.format(Number(field.value)); });
-      const hours = people * minutes / 60 * 240 * adoption / 100;
-      const value = hours * cost;
-      clearTimeout(announceTimer);
-      const render = () => {
-        const result = document.getElementById('calc-result');
-        const millions = value >= 1000000;
-        result.replaceChildren(document.createTextNode(num.format(value / (millions ? 1000000 : 1000)) + ' '));
-        const unit = document.createElement('small'); unit.textContent = millions ? tr('млн ₽', 'M RUB') : tr('тыс. ₽', 'K RUB'); result.append(unit);
-        document.getElementById('calc-hours').textContent = num.format(hours) + tr(' часов в год', ' hours per year');
-      };
-      if (immediate) render(); else announceTimer = setTimeout(render, 130);
-    }
-    fields.forEach(field => field.addEventListener('input', () => {
-      calculate();
-      if (!calcTracked) { track('calculator_use'); calcTracked = true; }
-    }));
-    calculate(true);
+  const portrait = document.querySelector('.portrait-stage');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  if (portrait && matchMedia('(pointer: fine)').matches) {
+    portrait.addEventListener('pointermove', event => {
+      if (reduce.matches || root.dataset.motion === 'paused') return;
+      const bounds = portrait.getBoundingClientRect();
+      portrait.style.setProperty('--mx', ((event.clientX - bounds.left) / bounds.width - .5) * 10 + 'px');
+      portrait.style.setProperty('--my', ((event.clientY - bounds.top) / bounds.height - .5) * 10 + 'px');
+    });
+    portrait.addEventListener('pointerleave', () => { portrait.style.setProperty('--mx','0px'); portrait.style.setProperty('--my','0px'); });
   }
   // Download the game only after the visitor opens the easter egg.
   const game = document.getElementById('game-details');
@@ -117,6 +101,14 @@
     document.head.appendChild(script);
     track('game_open');
   });
+  let progressQueued = false;
+  function updateProgress() {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    root.style.setProperty('--page-progress', max > 0 ? String(Math.min(1, scrollY / max)) : '0');
+    progressQueued = false;
+  }
+  addEventListener('scroll', () => { if (!progressQueued) { progressQueued = true; requestAnimationFrame(updateProgress); } }, {passive:true});
+  updateProgress();
   // The selected section is a visual aid; every link remains a normal anchor.
   if ('IntersectionObserver' in window) {
     const links = [...document.querySelectorAll('.desktop-nav a')];
