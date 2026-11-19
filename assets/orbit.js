@@ -13,12 +13,29 @@
   const links = [...document.querySelectorAll('.planet-logo')];
   const tabs = [...document.querySelectorAll('.company-tab')];
   const motion = document.getElementById('motion-toggle');
+  const mobile = matchMedia('(max-width: 800px)');
+  const layout = document.querySelector('.experience-layout');
+  const dock = document.querySelector('.orbit-sticky');
   const TAU = Math.PI * 2;
   const land = JSON.parse(document.getElementById('orbit-land').textContent);
   let size = 0, yaw = .65, target = .65, active = -1;
   let visible = true, paused = false, raf = 0, scrollDirty = true, previous = 0;
   let contextLost = false;
-  let colors = {}, hovered = -1, dragging = false, dragX = 0, dragYaw = 0;
+  let colors = {}, hovered = -1, dragging = false, dragX = 0, dragY = 0, dragYaw = 0, moved = false;
+  function syncDock() {
+    root.classList.toggle('orbit-mobile', mobile.matches);
+    if (!mobile.matches) {root.classList.remove('orbit-dock-active');return;}
+    const rect = layout.getBoundingClientRect();
+    const active = rect.top < 70 && rect.bottom > 70+dock.getBoundingClientRect().height;
+    root.classList.toggle('orbit-dock-active', active);
+    visible=active;
+  }
+  function navigate(i) {
+    select(i);target=.65-i*TAU/links.length;
+    if(reduced.matches||paused)yaw=target;
+    cards[i].scrollIntoView({behavior:reduced.matches?'instant':'smooth',block:'start'});
+    scrollDirty=true;wake();
+  }
   function theme() {
     const style = getComputedStyle(root);
     const light = root.dataset.theme === 'light';
@@ -87,7 +104,8 @@
     document.querySelector('.orbit-index').textContent=`0${i+1} / 06`;
   }
   function scrollState() {
-    let i=0;const threshold=innerHeight*.5;
+    syncDock();
+    let i=0;const threshold=mobile.matches ? 70+Math.max(0,innerHeight-70-dock.getBoundingClientRect().height)*.4 : innerHeight*.5;
     cards.forEach((el,n)=>{if(el.getBoundingClientRect().top<threshold)i=n;});
     select(i);
     const rect=cards[i].getBoundingClientRect();const progress=Math.max(0,Math.min(1,(threshold-rect.top)/Math.max(1,rect.height)));
@@ -96,26 +114,30 @@
     scrollDirty=false;
   }
   function frame(now) {
-    raf=0;if(document.hidden||!visible)return;
+    raf=0;if(document.hidden)return;
     if(scrollDirty && !dragging)scrollState();
+    if(!visible||contextLost)return;
     const dt=Math.min(50,now-(previous||now));previous=now;
     const delta=target-yaw;
     yaw+=delta*(1-Math.exp(-dt/180));
     draw();
     if(Math.abs(delta)>.001&&!reduced.matches&&!paused)raf=requestAnimationFrame(frame);
   }
-  function wake(){if(!raf&&visible&&!document.hidden&&!contextLost)raf=requestAnimationFrame(frame);}
+  function wake(){if(!raf&&!document.hidden)raf=requestAnimationFrame(frame);}
   function restore() {
     previous=0;scrollDirty=true;
     theme();fit();wake();
   }
   canvas.addEventListener('pointerdown', e => {
-    if(e.pointerType !== 'mouse' || paused || reduced.matches) return;
-    dragging = true; dragX = e.clientX; dragYaw = yaw;
+    if(e.pointerType === 'mouse' && e.button !== 0) return;
+    dragging = true; moved = false; dragX = e.clientX; dragY = e.clientY; dragYaw = yaw;
     canvas.setPointerCapture(e.pointerId);
   });
   canvas.addEventListener('pointermove', e => {
     if(!dragging)return;
+    const dx=e.clientX-dragX, dy=e.clientY-dragY;
+    if(!moved && (Math.abs(dx)<8 || Math.abs(dx)<Math.abs(dy)))return;
+    moved=true;
     yaw = target = dragYaw + (e.clientX - dragX) / size * TAU;
     draw();
   });
@@ -123,16 +145,17 @@
     if(!dragging)return;
     dragging=false;
     if(canvas.hasPointerCapture(e.pointerId))canvas.releasePointerCapture(e.pointerId);
+    if(!moved){scrollDirty=true;wake();return;}
     const index=((Math.round((.65-yaw)/(TAU/links.length))%links.length)+links.length)%links.length;
-    select(index);
-    cards[index].scrollIntoView({behavior: reduced.matches ? 'instant' : 'smooth', block:'start'});
-    scrollDirty=true;wake();
+    navigate(index);
   }
   canvas.addEventListener('pointerup',release);
   canvas.addEventListener('pointercancel',e=>{dragging=false;scrollDirty=true;wake();});
   addEventListener('scroll',()=>{scrollDirty=true;wake();},{passive:true});
   addEventListener('resize',()=>{fit();scrollDirty=true;wake();},{passive:true});
   addEventListener('themechange',theme);
+  mobile.addEventListener('change',()=>{visible=true;syncDock();fit();scrollDirty=true;wake();});
+  document.querySelectorAll('[data-orbit-step]').forEach(button=>button.addEventListener('click',()=>navigate((active+Number(button.dataset.orbitStep)+cards.length)%cards.length)));
   document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else restore();});
   addEventListener('pageshow',restore);
   // Canvas 2D restores automatically unless contextlost is canceled.
@@ -141,7 +164,7 @@
   motion.addEventListener('click',()=>{paused=!paused;root.dataset.motion=paused?'paused':'running';motion.setAttribute('aria-pressed',String(paused));motion.textContent=paused?(en?'Resume animation':'Включить анимацию'):(en?'Pause animation':'Приостановить анимацию');scrollDirty=true;wake();});
   reduced.addEventListener('change',()=>{scrollDirty=true;wake();});
   links.forEach((el,i)=>{el.addEventListener('mouseenter',()=>{hovered=i;wake();});el.addEventListener('mouseleave',()=>{hovered=-1;wake();});});
-  theme();fit();scrollState();wake();
+  syncDock();theme();fit();scrollState();wake();
   if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)restore();else{cancelAnimationFrame(raf);raf=0;}},{rootMargin:'100px'}).observe(canvas);
   if('ResizeObserver' in window)new ResizeObserver(()=>{fit();scrollDirty=true;wake();}).observe(viewport);
 })();

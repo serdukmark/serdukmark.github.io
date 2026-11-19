@@ -61,3 +61,25 @@
 .portal-bar{position:sticky;top:0;z-index:5;background:var(--bg)}
 .flash-controls>span{color:#b6c2bc}.flash-all .flash-controls>span{color:var(--muted)}
 @media print{.flash-shade,.flash-controls,.flash-hint,.portal-entry,.case-portal{display:none!important}}
+
+/* Touch exploration keeps vertical scrolling available and provides a full reading mode. */
+.xray-stage{touch-action:pan-y}
+.process-node{display:inline-block;max-width:100%}
+@media(max-width:800px){
+ .portal-shell{width:calc(100% - 32px)}
+ .portal-bar{padding:14px 0;gap:12px}
+ .portal-back,.portal-theme,.portal-next,.xray-toggle,.flash-controls button{min-height:44px}
+ .portal-companies button{min-height:44px}
+ .portal-intro{gap:16px;padding-bottom:22px}
+ .portal-intro>p{font-size:16px}
+ .xray-stage{min-height:500px;--lens:105px}
+ .lens-ring{width:210px;height:210px}
+ .xray-metrics span{font-size:16px}
+ .xray-stage.show-inside{min-height:0}
+ .show-inside .xray-surface{display:none}
+ .show-inside .xray-inside{position:relative;clip-path:none;min-height:450px;gap:30px}
+ .show-inside .process-grid{gap:24px}
+ .show-inside .process-grid p{font-size:16px}
+ .show-inside .surface-caption{font-size:13px}
+ .portal-footer{padding-bottom:env(safe-area-inset-bottom)}
+}

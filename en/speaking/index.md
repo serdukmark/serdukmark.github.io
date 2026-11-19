@@ -7,7 +7,7 @@ Mark Serdyuk
 
 # On stage and in publications
 
-I speak about the first steps in a career and share product-work experience. This page brings together my Find IT talk and participation in a Forbes.ru special project.
+I speak about the first steps in a career and share experience in product management. This page brings together my Find IT talk and participation in a Forbes.ru special project.
 
 ## Find IT career forum
 
@@ -16,7 +16,7 @@ At FutureToday’s forum I spoke with Ivan about the first steps after starting 
 
 ## Forbes.ru special project
 
-I took part in an interview and photoshoot for a Forbes.ru special project. My Telegram channel contains a post about the participation.
+I took part in an interview and photoshoot for a Forbes.ru special project. I shared the experience on my Telegram channel.
 [Participation post on Telegram](https://t.me/mserdyuk/24)
 
 Experience information: Mark Serdyuk’s November 2026 resume and author posts. [Resume PDF (Russian)](https://mserdyuk.ru/serdyuk-mark-cv.pdf)

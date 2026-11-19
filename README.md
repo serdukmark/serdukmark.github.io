@@ -20,6 +20,7 @@ node --check assets/app.js
 node --check assets/orbit.js
 node tests/game.test.cjs
 node tests/orbit.test.cjs
+python3 tests/translations.test.py
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
@@ -27,7 +28,7 @@ No npm install or external build service is required. Generated HTML is committe
 
 ## Interaction and accessibility
 
-Default is dark on a first visit; theme choice persists. Main content is server-rendered HTML. Desktop experience has a sticky globe that rotates with page scrolling and clickable company markers. Mouse users can drag the globe to pick a company. Mobile uses a linear layout. Motion respects reduced-motion preferences and has a pause control. There is no scroll hijacking or autoplay sound. Canvas stops redrawing when settled, off-screen or in a hidden tab. The globe includes inline land data and an inline SVG fallback; its markers remain spread around the globe even when animation is unavailable. Canvas recovers on visibility, page restore and context restore, and resizing never clears an unchanged backing store. The project lens updates once per animation frame with no delayed clipping transition.
+Default is dark on a first visit; theme choice persists. Main content is server-rendered HTML. Desktop experience has a sticky globe that rotates with page scrolling and clickable company markers. Mouse users can drag the globe to pick a company. On mobile, case descriptions scroll above a compact globe dock, visible only within the experience section. Scroll, previous/next controls, company markers and horizontal touch rotation share the selected case; vertical gestures retain native page scrolling. Motion respects reduced-motion preferences and has a pause control. There is no scroll hijacking or autoplay sound. Canvas stops redrawing when settled, off-screen or in a hidden tab. The globe includes inline land data and an inline SVG fallback; its markers remain spread around the globe even when animation is unavailable. Canvas recovers on visibility, page restore and context restore, and resizing never clears an unchanged backing store. The project lens updates once per animation frame with no delayed clipping transition.
 
 ## Content and assets
 
@@ -59,3 +60,7 @@ GitHub Pages serves the `main` branch. Preserve CNAME, verification files and `.
 Owner actions: verify ownership in Google Search Console, Yandex Webmaster and Bing Webmaster Tools; submit https://mserdyuk.ru/sitemap.xml; obtain legitimate profile links from the university, conference and publication pages; publish original case studies with methods and source evidence. Review indexing, non-brand queries, contact conversions and available AI citation reports monthly. Do not buy link packages or mass-produce duplicate keyword pages.
 
 Reference documentation: [Google AI search](https://developers.google.com/search/docs/appearance/ai-features), [Google profile pages](https://developers.google.com/search/docs/appearance/structured-data/profile-page), [IndexNow](https://www.indexnow.org/documentation), [Yandex Alice](https://yandex.ru/support/webmaster/ru/alice), [Perplexity crawlers](https://docs.perplexity.ai/docs/resources/perplexity-crawlers).
+
+## English copy and browser translation
+
+English pages preserve the Russian source’s roles, project stages and metrics. Personal-name text uses `translate="no"` and `notranslate`; the surrounding prose remains translatable. The English navigation uses “About me” and the homepage uses “Results” to avoid misleading generic back-translations. Touch users see results by default, can enable the flashlight, and can reveal the entire X-ray layer in a naturally sized reading layout.

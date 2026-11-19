@@ -6,7 +6,7 @@
     ],
     "status": [
       "Эксплуатация и обучение команды",
-      "In production and team training"
+      "In production · employee training"
     ],
     "context": [
       "Внутренние пользователи работают с информацией, расчётами, метриками и управленческой отчётностью. Работа объединила AI-ассистента, базу знаний и обучение сотрудников.",
@@ -24,7 +24,7 @@
   "yandex": {
     "heading": [
       "Подготовка сервиса «Грузчик без машины» в Яндексе",
-      "Discovery for Yandex’s “Mover without a van” service"
+      "Preparing Yandex’s moving-help service for development"
     ],
     "status": [
       "Подготовка к разработке",
@@ -32,11 +32,11 @@
     ],
     "context": [
       "Новый сервисный сценарий требовал сформировать ценностное предложение, описать путь пользователя и подготовить продуктовые требования. В проекте я собрал команду и подготовил основу для разработки.",
-      "The new service scenario required a value proposition, a user journey and product requirements. I assembled the team and prepared the foundation for development."
+      "The new service offered moving help without transport. It required a value proposition, a user journey and product requirements. I assembled the team and laid the groundwork for development."
     ],
     "measurement": [
       "Результат этапа – собранная команда, требования, приоритизированный бэклог, модель спроса и unit-экономика для оценки коммерческого потенциала сценария.",
-      "The stage produced an assembled team, requirements, a prioritised backlog, a demand model and unit economics to assess the scenario’s commercial potential."
+      "This preparation stage delivered a team, product requirements, a prioritised backlog, a demand model and unit economics to assess the service’s commercial potential."
     ],
     "related": [
       "tbank",
@@ -54,11 +54,11 @@
     ],
     "context": [
       "Работа была связана с потребностями внутренних пользователей, первичными учётными документами и ERP-системами. CustDev охватил десять дочерних обществ.",
-      "The work concerned internal user needs, primary accounting documents and ERP systems. Customer development covered ten subsidiaries."
+      "The work focused on internal users’ needs, source accounting documents and ERP systems. User research covered ten subsidiaries."
     ],
     "measurement": [
       "CustDev охватил десять дочерних обществ. Подготовлены калькулятор и дашборды для оценки эффектов роботизации; апробированы LLM-сценарии и доработана методология инвестиционной оценки.",
-      "Customer development covered ten subsidiaries. Deliverables included an automation-impact calculator and dashboards, LLM use-case pilots and improvements to investment appraisal methodology."
+      "User research covered ten subsidiaries. I developed a calculator and dashboards to assess the benefits of process automation, piloted LLM applications and refined the investment appraisal methodology."
     ],
     "related": [
       "magnit",
@@ -72,15 +72,15 @@
     ],
     "status": [
       "Исследование и подготовка партнёрской базы",
-      "Research and partner-pipeline preparation"
+      "Research and preparation of a partner database"
     ],
     "context": [
       "Исследовал привлечение партнёров в направлении автоуслуг. Работа включала глубинные интервью с представителями автосервисов, анализ конкурентов и подготовку базы для запуска в регионах.",
-      "I researched partner acquisition for auto services. The work included in-depth interviews with auto-service representatives, competitor analysis and preparing a regional partner pipeline."
+      "I researched partner acquisition for automotive services through in-depth interviews with auto repair businesses, competitor analysis and preparation of a regional partner database."
     ],
     "measurement": [
       "131 – количество проведённых глубинных интервью. Пять регионов – география подготовленной партнёрской базы.",
-      "131 is the number of in-depth interviews conducted. Five regions describes the coverage of the prepared partner database."
+      "I conducted 131 in-depth interviews. The partner database covered five regions."
     ],
     "related": [
       "yandex",
@@ -90,7 +90,7 @@
   "x5": {
     "heading": [
       "Полевые исследования и CJM директоров-партнёров X5 Group",
-      "Field research and partner-director CJM at X5 Group"
+      "Field research and user journey mapping for X5 Group’s store partner-directors"
     ],
     "status": [
       "Исследование и предложения по улучшению",
@@ -98,7 +98,7 @@
     ],
     "context": [
       "Исследовал систему полномочий директоров-партнёров на местах. Полевые наблюдения в магазинах стали основой для карты пользовательского пути и предложений по изменению системы.",
-      "I researched partner directors’ authority in the field. Observations in stores informed a customer journey map and proposals to improve the system."
+      "I studied how decision-making authority is delegated to store partner-directors. Observations in stores informed a user journey map and recommendations for improving the delegation of authority."
     ],
     "measurement": [
       "Исследование охватило магазины девяти регионов. Сформировано более 50 предложений по улучшению.",
@@ -116,7 +116,7 @@
     ],
     "status": [
       "Работа группы и представление результатов",
-      "Working-group delivery and presentation"
+      "Working group coordination and presentation of findings"
     ],
     "context": [
       "В проекте Стратегии образования до 2040 года прошёл путь от участника до руководителя рабочей группы. Работа включала сбор экспертных позиций и представление результатов руководителям федеральных органов власти.",
