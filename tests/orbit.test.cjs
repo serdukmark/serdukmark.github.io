@@ -7,7 +7,7 @@ function setup({width = 500, observers = true, context = true, mobile = false} =
   const callbacks = new Map(), pending = new Map();
   let next = 0, writes = 0, paints = 0, resize, intersect, scrolled = -1;
   const classes = new Set();
-  const layoutRect = {top: 20, bottom: 5000};
+  const layoutRect = {top: 100, bottom: 5000};
   const element = () => ({
     style: {getPropertyValue: () => '#ff654f'},
     classList: {toggle(name, on) {if(on)classes.add(name);else classes.delete(name);}, remove(name) {classes.delete(name);}},

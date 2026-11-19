@@ -26,7 +26,7 @@
     root.classList.toggle('orbit-mobile', mobile.matches);
     if (!mobile.matches) {root.classList.remove('orbit-dock-active');return;}
     const rect = layout.getBoundingClientRect();
-    const active = rect.top < 70 && rect.bottom > 70+dock.getBoundingClientRect().height;
+    const active = rect.top < innerHeight*.5 && rect.bottom > 70+dock.getBoundingClientRect().height;
     root.classList.toggle('orbit-dock-active', active);
     visible=active;
   }
