@@ -14,7 +14,7 @@ Updated: 2026-11-19
 Соединяю исследование, команду и AI,
 чтобы продукты приносили пользу бизнесу.
 
-[Исследовать опыт ](https://mserdyuk.ru/#work) [Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[Исследовать опыт ](https://mserdyuk.ru/#work) [Резюме PDF](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 +
 
@@ -233,7 +233,7 @@ DEADLINE / 2025–2026
 Математика и компьютерные науки.
 Специализация «Продуктовый менеджмент».
 
-[Полное резюме ↓](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[Полное резюме ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 9
 
@@ -286,13 +286,13 @@ Forbes.ru
 
 Обсудить продуктовую роль,
 AI-задачу или новую идею.
-[Написать Марку ](https://t.me/serdukmark) [Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[Написать Марку ](https://t.me/serdukmark) [Резюме PDF](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 [m.gov@internet.ru](mailto:m.gov@internet.ru) Скопировать [+7 952 997-74-40](tel:+79529977440)
 
 Сердюк в своём темпе [Telegram](https://t.me/mserdyuk) [MAX](https://max.ru/channel_mserdyuk)
 
-Сыграем? PM Runner Обгони дедлайны, перепрыгни баги и собери кофе.  Играть ↗  Свернуть −
+Сыграем? PM Runner Обгони дедлайны, перепрыгни баги и собери кофе.  Играть  Свернуть
 
 Прыгай через баги и дедлайны. Пробел, ↑ или тап – прыжок. Можно прыгнуть дважды. Кофе – +10 очков.
 

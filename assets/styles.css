@@ -92,3 +92,17 @@ img.logo-gazprom{transform:scale(1.6)}img.logo-yandex{transform:scale(1.12)}
 
 /* Identical eight-spoke decoration across desktop and mobile font systems. */
 .asterisk{display:inline-block;width:1em;height:1em;vertical-align:-.08em;flex-shrink:0;overflow:visible}
+
+/* UI geometry is independent of emoji fonts and tracks the existing control state. */
+.ui-icon{display:inline-block;width:1em;height:1em;vertical-align:-.125em;flex-shrink:0}
+.theme-icon{display:inline-flex;align-items:center;justify-content:center;line-height:1}
+.theme-icon .icon-moon{display:none}
+:root[data-theme=light] .theme-icon .icon-sun{display:none}
+:root[data-theme=light] .theme-icon .icon-moon{display:inline-block}
+.menu-button{min-width:36px;min-height:44px}
+.menu-button .ui-icon{vertical-align:middle}
+.menu-button .icon-close{display:none}
+.menu-button[aria-expanded=true] .icon-menu{display:none}
+.menu-button[aria-expanded=true] .icon-close{display:inline-block}
+.portal-theme .theme-icon{font-size:20px;vertical-align:middle}
+.game-cta .ui-icon{margin-left:.25em}
