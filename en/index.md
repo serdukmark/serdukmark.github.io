@@ -22,7 +22,7 @@ to create business value.
 
  The human behind the products
 
-✳  AI × PRODUCT
+  AI × PRODUCT
 
 Curious about complex problems
 
@@ -214,8 +214,6 @@ Teaching assistant with industry experience on the Fundamentals of Business Anal
 
 100+ cases developed and reviewed up to 170 students in tutorial sessions
 
-✳
-
 DEADLINE / 2025–2026
 
 ### Mentoring teams
@@ -237,7 +235,7 @@ Specialisation in Product Management.
 
 [Full CV ↓](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
-9✳
+9
 
 ### academic and corporate scholarships
 
