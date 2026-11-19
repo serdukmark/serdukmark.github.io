@@ -1,7 +1,7 @@
 Source: https://mserdyuk.ru/en/research/
 Updated: 2026-11-19
 
-[Home](https://mserdyuk.ru/en/) Research and teaching 
+[Home](https://mserdyuk.ru/en/) Research and teaching
 
 Mark Serdyuk
 
@@ -21,7 +21,7 @@ Since April 2025 I have been an industry teaching assistant at Central Universit
 
 I mentored teams with podium finishes and wins at the DEADLINE finals in 2025 and 2026, combining teaching with industry projects.
 
-[Magnit Tech](https://mserdyuk.ru/en/projects/magnit/) 
+[Magnit Tech](https://mserdyuk.ru/en/projects/magnit/)
 
-Experience information: Mark Serdyuk’s November 2026 resume and author posts. [Resume PDF (Russian)](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+Experience information: Mark Serdyuk’s November 2026 resume and author posts. [Resume PDF (Russian)](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 [Contact me](https://t.me/serdukmark)

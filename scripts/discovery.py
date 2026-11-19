@@ -79,10 +79,10 @@ class MainText(HTMLParser):
   if not self.active or self.skip:return
   if tag=='a' and self.hrefs:self.parts.append(']('+self.hrefs.pop()+') ')
   elif tag in ('h1','h2','h3','h4','p','li','div'):self.parts.append('\n')
-  elif tag in ('span','strong','b','a'):self.parts.append(' ')
+  elif tag in ('span','strong','b','a','button'):self.parts.append(' ')
  def handle_data(self,data):
   if self.active and not self.skip:self.parts.append(data)
- def result(self):return re.sub(r'\n[ \t]*\n(?:[ \t]*\n)+','\n\n',''.join(self.parts)).strip()
+ def result(self):return '\n'.join(line.rstrip() for line in re.sub(r'\n[ \t]*\n(?:[ \t]*\n)+','\n\n',''.join(self.parts)).strip().splitlines())
 
 def text_exports(root,urls):
  contents=[];index=[]

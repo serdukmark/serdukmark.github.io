@@ -1,7 +1,7 @@
 Source: https://mserdyuk.ru/projects/yandex/
 Updated: 2026-11-19
 
-[Главная](https://mserdyuk.ru/) [Проекты](https://mserdyuk.ru/projects/) Яндекс 
+[Главная](https://mserdyuk.ru/) [Проекты](https://mserdyuk.ru/projects/) Яндекс
 
 Яндекс · Февраль – июнь 2026
 
@@ -11,9 +11,9 @@ Updated: 2026-11-19
 
 Подготовил новый сервисный сценарий «Грузчик без машины» к разработке и собрал команду.
 
-Discovery от потребности к требованиям 
+Discovery от потребности к требованиям
 
-Unit-экономика модель коммерческого потенциала 
+Unit-экономика модель коммерческого потенциала
 
 ## Задача и контекст
 
@@ -45,10 +45,10 @@ Unit-экономика модель коммерческого потенциа
 
 ## Связанные проекты
 
-[Т-Банк](https://mserdyuk.ru/projects/tbank/) [X5 Group](https://mserdyuk.ru/projects/x5/) 
+[Т-Банк](https://mserdyuk.ru/projects/tbank/) [X5 Group](https://mserdyuk.ru/projects/x5/)
 
 По резюме Марка Сердюка, ноябрь 2026.
-[Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 Следующий шаг
 
@@ -57,8 +57,8 @@ Unit-экономика модель коммерческого потенциа
 
 Обсудить продуктовую роль,
 AI-задачу или новую идею.
-[Написать Марку ](https://t.me/serdukmark) [Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Написать Марку ](https://t.me/serdukmark) [Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
-[m.gov@internet.ru](mailto:m.gov@internet.ru) Скопировать[+7 952 997-74-40](tel:+79529977440) 
+[m.gov@internet.ru](mailto:m.gov@internet.ru) Скопировать [+7 952 997-74-40](tel:+79529977440)
 
 Сердюк в своём темпе [Telegram](https://t.me/mserdyuk) [MAX](https://max.ru/channel_mserdyuk)

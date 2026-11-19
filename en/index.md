@@ -1,12 +1,12 @@
 Source: https://mserdyuk.ru/en/
 Updated: 2026-11-19
 
-AI Product Manager Moscow · let’s talk 
+AI Product Manager Moscow · let’s talk
 
 People. Technology. Impact.
 
 # Mark
-Serdyuk 
+Serdyuk
 
 I speak the language
 of humans and machines.
@@ -14,7 +14,7 @@ of humans and machines.
 Connecting research, teams and AI
 to make products work for business.
 
-[Explore experience ](https://mserdyuk.ru/en/#work) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Explore experience ](https://mserdyuk.ru/en/#work) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 +
 
@@ -26,19 +26,19 @@ to make products work for business.
 
 Curious about complexity
 
-Scroll. Everything connects. 
+Scroll. Everything connects.
 
-DISCOVERY / DELIVERY / AI 
+DISCOVERY / DELIVERY / AI
 
-100 M RUB  
+100 M RUB
 
 confirmed annual economic impact
 
-1 200+  
+1 200+
 
 weekly users of the AI assistant
 
-150+  
+150+
 
 PMs and team leads trained in AI
 
@@ -53,18 +53,18 @@ Research, assemble a team, deliver outcomes. From a new service to enterprise AI
 
  Experience orbit
 
-[Magnit Tech ](https://mserdyuk.ru/en/#case-magnit) [Yandex ](https://mserdyuk.ru/en/#case-yandex) [Gazpromneft Business Service ](https://mserdyuk.ru/en/#case-gazprom) [T-Bank ](https://mserdyuk.ru/en/#case-tbank) [X5 Group ](https://mserdyuk.ru/en/#case-x5) [Government of Russia ](https://mserdyuk.ru/en/#case-government) 
+[Magnit Tech ](https://mserdyuk.ru/en/#case-magnit) [Yandex ](https://mserdyuk.ru/en/#case-yandex) [Gazpromneft Business Service ](https://mserdyuk.ru/en/#case-gazprom) [T-Bank ](https://mserdyuk.ru/en/#case-tbank) [X5 Group ](https://mserdyuk.ru/en/#case-x5) [Government of Russia ](https://mserdyuk.ru/en/#case-government)
 
-Magnit Tech 01 / 06 
+Magnit Tech 01 / 06
 
 Scroll, drag the globe or choose a company
 
-[Magnit Tech](https://mserdyuk.ru/en/#case-magnit) [Yandex](https://mserdyuk.ru/en/#case-yandex) [Gazpromneft Business Service](https://mserdyuk.ru/en/#case-gazprom) [T-Bank](https://mserdyuk.ru/en/#case-tbank) [X5 Group](https://mserdyuk.ru/en/#case-x5) [Government of Russia](https://mserdyuk.ru/en/#case-government) 
+[Magnit Tech](https://mserdyuk.ru/en/#case-magnit) [Yandex](https://mserdyuk.ru/en/#case-yandex) [Gazpromneft Business Service](https://mserdyuk.ru/en/#case-gazprom) [T-Bank](https://mserdyuk.ru/en/#case-tbank) [X5 Group](https://mserdyuk.ru/en/#case-x5) [Government of Russia](https://mserdyuk.ru/en/#case-government)
 
-Pause animation[Next: research](https://mserdyuk.ru/en/#research) 
+Pause animation [Next: research](https://mserdyuk.ru/en/#research)
 
 ### Magnit Tech
-June 2026 – present 
+June 2026 – present
 
 AI Product Manager
 
@@ -72,19 +72,19 @@ AI Product Manager
 
 Built and launched a corporate multi-agent assistant for information retrieval, calculations, metrics and management reporting.
 
-1 200+ weekly users 
+1 200+ weekly users
 
-100M RUB annual economic impact 
+100M RUB annual economic impact
 
 - Integrated corporate models and AI agents for semantic search, calculations and reporting.
 
 - Launched a learning portal from scratch and trained 150+ product managers and team leads in AI tools.
 
 - Relaunched the knowledge base with a unified design system, employee workspace and connected internal services.
-[Explore this project+ ](https://mserdyuk.ru/en/projects/magnit/) 
+[Explore this project+ ](https://mserdyuk.ru/en/projects/magnit/)
 
 ### Yandex
-February – June 2026 
+February – June 2026
 
 Product Manager
 
@@ -92,19 +92,19 @@ Product Manager
 
 Prepared the new “Mover without a van” service scenario for development and assembled the team.
 
-Discovery from needs to requirements 
+Discovery from needs to requirements
 
-Unit economics commercial potential model 
+Unit economics commercial potential model
 
 - Defined the value proposition and user journey.
 
 - Translated research findings into product requirements and a prioritised backlog.
 
 - Built a demand model and unit economics to assess commercial potential and conditions for scaling.
-[Explore this project+ ](https://mserdyuk.ru/en/projects/yandex/) 
+[Explore this project+ ](https://mserdyuk.ru/en/projects/yandex/)
 
 ### Gazpromneft Business Service
-July – September 2025 
+July – September 2025
 
 Project Lead
 
@@ -112,19 +112,19 @@ Project Lead
 
 Researched internal user needs and piloted LLMs for primary accounting documents and ERP systems.
 
-10 subsidiaries in CustDev 
+10 subsidiaries in CustDev
 
-LLM + ERP automation use cases piloted 
+LLM + ERP automation use cases piloted
 
 - Built a calculator and dashboards to assess automation impact.
 
 - Improved the investment appraisal methodology for IT solutions.
 
 - Initiated research into a product-led approach and launched an internal networking and collaboration service.
-[Explore this project+ ](https://mserdyuk.ru/en/projects/gazprom/) 
+[Explore this project+ ](https://mserdyuk.ru/en/projects/gazprom/)
 
 ### T-Bank
-June – October 2025 
+June – October 2025
 
 Business Analyst
 
@@ -132,19 +132,19 @@ Business Analyst
 
 Researched partner acquisition for auto services, from in-depth interviews to a partner pipeline.
 
-131 in-depth interviews with auto services 
+131 in-depth interviews with auto services
 
-5 regions prepared for launch 
+5 regions prepared for launch
 
 - Interviewed auto service representatives and analysed competitors.
 
 - Prepared a partner database for launch across five regions.
 
 - Created a partner acquisition landing page.
-[Explore this project+ ](https://mserdyuk.ru/en/projects/tbank/) 
+[Explore this project+ ](https://mserdyuk.ru/en/projects/tbank/)
 
 ### X5 Group
-March – September 2025 
+March – September 2025
 
 Business Analyst
 
@@ -152,19 +152,19 @@ Business Analyst
 
 Researched partner directors’ authority in the field and translated observations into improvement proposals.
 
-9 regions of field research 
+9 regions of field research
 
-50+ improvement proposals 
+50+ improvement proposals
 
 - Conducted field research in stores across nine regions.
 
 - Mapped the partner directors’ customer journey.
 
 - Developed more than 50 proposals to improve the authority system.
-[Explore this project+ ](https://mserdyuk.ru/en/projects/x5/) 
+[Explore this project+ ](https://mserdyuk.ru/en/projects/x5/)
 
 ### Government of Russia
-December 2024 – December 2025 
+December 2024 – December 2025
 
 Working Group Lead
 
@@ -172,23 +172,23 @@ Working Group Lead
 
 Progressed from participant to working group lead on the Education Strategy 2040 project.
 
-8 working group members 
+8 working group members
 
-100+ experts contributed their views 
+100+ experts contributed their views
 
 - Led a working group of eight.
 
 - Collected input from more than 100 experts.
 
 - Presented the results to leaders of federal executive and legislative bodies.
-[Explore this project+ ](https://mserdyuk.ru/en/projects/government/) 
+[Explore this project+ ](https://mserdyuk.ru/en/projects/government/)
 
 Research & teaching
 
 ## Understand it.
 Then pass it on.
 
-BRICS  NDB 
+BRICS  NDB
 
 2025–2026 · International finance
 
@@ -198,10 +198,10 @@ to an international report.
 Contributed to international reports with Yakov and Partners and the Russian Ministry of Finance.
 
 2025 BRICS seminar
-Brazil 
+Brazil
 
 2026 New Development
-Bank meeting 
+Bank meeting
 
 Central University · since April 2025
 
@@ -210,9 +210,9 @@ Explaining.
 
 Industry teaching assistant for Fundamentals of Business Analytics. Contributed to course materials and assignments.
 
-100+ cases developed and reviewed up to 170 students in consultation sessions 
+100+ cases developed and reviewed up to 170 students in consultation sessions
 
-✳ 
+✳
 
 DEADLINE / 2025–2026
 
@@ -233,14 +233,14 @@ more to learn.
 Mathematics and Computer Science.
 Specialisation in Product Management.
 
-[Full CV ↓](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Full CV ↓](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
-9✳ 
+9✳
 
 ### academic and corporate scholarships
 
 Potanin Foundation · T-Bank ×2 (Science, Academic) · Central University · Avito · Sber · Reksoft Consulting · Moscow Exchange · Harbour.Space
-2024–2026 
+2024–2026
 
 ### Wins & podium finishes
 
@@ -265,19 +265,19 @@ worth sharing.
 
 [
 
-Forbes.ru  
+Forbes.ru
 
 Special project publication
-View on Telegram+  
+View on Telegram+
 
 ](https://t.me/mserdyuk/24) [
 
-On stage. 
+On stage.
 
 Forum speaker · Find IT
-About the talk+  
+About the talk+
 
-](https://t.me/mserdyuk/19) 
+](https://t.me/mserdyuk/19)
 
 The next step
 
@@ -286,13 +286,13 @@ something.
 
 A product role, an AI challenge,
 or a new idea.
-[Message Mark ](https://t.me/serdukmark) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Message Mark ](https://t.me/serdukmark) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
-[m.gov@internet.ru](mailto:m.gov@internet.ru) Copy[+7 952 997-74-40](tel:+79529977440) 
+[m.gov@internet.ru](mailto:m.gov@internet.ru) Copy [+7 952 997-74-40](tel:+79529977440)
 
-Serdyuk at his own pace [Telegram](https://t.me/mserdyuk) [MAX](https://max.ru/channel_mserdyuk) 
+Serdyuk at his own pace [Telegram](https://t.me/mserdyuk) [MAX](https://max.ru/channel_mserdyuk)
 
-Ready to play? PM Runner Outrun deadlines, jump over bugs and collect coffee.  Play ↗  Collapse −   
+Ready to play? PM Runner Outrun deadlines, jump over bugs and collect coffee.  Play ↗  Collapse −
 
 Jump over bugs and deadlines. Space, ↑ or tap to jump. Double jump is available. Coffee adds 10 points.
 

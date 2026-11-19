@@ -1,7 +1,7 @@
 Source: https://mserdyuk.ru/projects/magnit/
 Updated: 2026-11-19
 
-[Главная](https://mserdyuk.ru/) [Проекты](https://mserdyuk.ru/projects/) Магнит Tech 
+[Главная](https://mserdyuk.ru/) [Проекты](https://mserdyuk.ru/projects/) Магнит Tech
 
 Магнит Tech · Июнь 2026 – сейчас
 
@@ -11,9 +11,9 @@ Updated: 2026-11-19
 
 Создал и вывел в эксплуатацию корпоративного мультиагентного ассистента: поиск информации, расчёты, анализ метрик и управленческая отчётность.
 
-1 200+ еженедельных пользователей 
+1 200+ еженедельных пользователей
 
-100 млн ₽ экономического эффекта в год 
+100 млн ₽ экономического эффекта в год
 
 ## Задача и контекст
 
@@ -45,10 +45,10 @@ Updated: 2026-11-19
 
 ## Связанные проекты
 
-[Яндекс](https://mserdyuk.ru/projects/yandex/) [Газпромнефть Бизнес-сервис](https://mserdyuk.ru/projects/gazprom/) 
+[Яндекс](https://mserdyuk.ru/projects/yandex/) [Газпромнефть Бизнес-сервис](https://mserdyuk.ru/projects/gazprom/)
 
 По резюме Марка Сердюка, ноябрь 2026.
-[Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 Следующий шаг
 
@@ -57,8 +57,8 @@ Updated: 2026-11-19
 
 Обсудить продуктовую роль,
 AI-задачу или новую идею.
-[Написать Марку ](https://t.me/serdukmark) [Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Написать Марку ](https://t.me/serdukmark) [Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
-[m.gov@internet.ru](mailto:m.gov@internet.ru) Скопировать[+7 952 997-74-40](tel:+79529977440) 
+[m.gov@internet.ru](mailto:m.gov@internet.ru) Скопировать [+7 952 997-74-40](tel:+79529977440)
 
 Сердюк в своём темпе [Telegram](https://t.me/mserdyuk) [MAX](https://max.ru/channel_mserdyuk)

@@ -1,7 +1,7 @@
 Source: https://mserdyuk.ru/projects/x5/
 Updated: 2026-11-19
 
-[Главная](https://mserdyuk.ru/) [Проекты](https://mserdyuk.ru/projects/) X5 Group 
+[Главная](https://mserdyuk.ru/) [Проекты](https://mserdyuk.ru/projects/) X5 Group
 
 X5 Group · Март – сентябрь 2025
 
@@ -11,9 +11,9 @@ X5 Group · Март – сентябрь 2025
 
 Исследовал систему полномочий директоров-партнёров на местах и перевёл наблюдения в предложения по улучшению.
 
-9 регионов полевых исследований 
+9 регионов полевых исследований
 
-50+ предложений по улучшению 
+50+ предложений по улучшению
 
 ## Задача и контекст
 
@@ -45,10 +45,10 @@ X5 Group · Март – сентябрь 2025
 
 ## Связанные проекты
 
-[Т-Банк](https://mserdyuk.ru/projects/tbank/) [Правительство РФ](https://mserdyuk.ru/projects/government/) 
+[Т-Банк](https://mserdyuk.ru/projects/tbank/) [Правительство РФ](https://mserdyuk.ru/projects/government/)
 
 По резюме Марка Сердюка, ноябрь 2026.
-[Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 Следующий шаг
 
@@ -57,8 +57,8 @@ X5 Group · Март – сентябрь 2025
 
 Обсудить продуктовую роль,
 AI-задачу или новую идею.
-[Написать Марку ](https://t.me/serdukmark) [Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Написать Марку ](https://t.me/serdukmark) [Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
-[m.gov@internet.ru](mailto:m.gov@internet.ru) Скопировать[+7 952 997-74-40](tel:+79529977440) 
+[m.gov@internet.ru](mailto:m.gov@internet.ru) Скопировать [+7 952 997-74-40](tel:+79529977440)
 
 Сердюк в своём темпе [Telegram](https://t.me/mserdyuk) [MAX](https://max.ru/channel_mserdyuk)

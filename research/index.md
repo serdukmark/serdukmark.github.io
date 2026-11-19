@@ -1,7 +1,7 @@
 Source: https://mserdyuk.ru/research/
 Updated: 2026-11-19
 
-[Главная](https://mserdyuk.ru/) Исследования и преподавание 
+[Главная](https://mserdyuk.ru/) Исследования и преподавание
 
 Марк Сердюк
 
@@ -21,7 +21,7 @@ Updated: 2026-11-19
 
 Ментор команд-призёров и победителей финалов DEADLINE 2025 и 2026 годов. Преподавательскую деятельность совмещаю с работой над индустриальными проектами.
 
-[Магнит Tech](https://mserdyuk.ru/projects/magnit/) 
+[Магнит Tech](https://mserdyuk.ru/projects/magnit/)
 
-Сведения об опыте: резюме Марка Сердюка, ноябрь 2026, и публикации автора. [Резюме PDF](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+Сведения об опыте: резюме Марка Сердюка, ноябрь 2026, и публикации автора. [Резюме PDF](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 [Связаться со мной](https://t.me/serdukmark)

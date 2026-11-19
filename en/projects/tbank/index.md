@@ -1,7 +1,7 @@
 Source: https://mserdyuk.ru/en/projects/tbank/
 Updated: 2026-11-19
 
-[Home](https://mserdyuk.ru/en/) [Projects](https://mserdyuk.ru/en/projects/) T-Bank 
+[Home](https://mserdyuk.ru/en/) [Projects](https://mserdyuk.ru/en/projects/) T-Bank
 
 T-Bank · June – October 2025
 
@@ -11,9 +11,9 @@ Business Analyst
 
 Researched partner acquisition for auto services, from in-depth interviews to a partner pipeline.
 
-131 in-depth interviews with auto services 
+131 in-depth interviews with auto services
 
-5 regions prepared for launch 
+5 regions prepared for launch
 
 ## Challenge and context
 
@@ -45,10 +45,10 @@ Research and partner-pipeline preparation
 
 ## Related projects
 
-[Yandex](https://mserdyuk.ru/en/projects/yandex/) [X5 Group](https://mserdyuk.ru/en/projects/x5/) 
+[Yandex](https://mserdyuk.ru/en/projects/yandex/) [X5 Group](https://mserdyuk.ru/en/projects/x5/)
 
 Based on Mark Serdyuk’s resume, November 2026.
-[CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 The next step
 
@@ -57,8 +57,8 @@ something.
 
 A product role, an AI challenge,
 or a new idea.
-[Message Mark ](https://t.me/serdukmark) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Message Mark ](https://t.me/serdukmark) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
-[m.gov@internet.ru](mailto:m.gov@internet.ru) Copy[+7 952 997-74-40](tel:+79529977440) 
+[m.gov@internet.ru](mailto:m.gov@internet.ru) Copy [+7 952 997-74-40](tel:+79529977440)
 
 Serdyuk at his own pace [Telegram](https://t.me/mserdyuk) [MAX](https://max.ru/channel_mserdyuk)

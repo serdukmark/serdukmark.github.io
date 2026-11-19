@@ -1,7 +1,7 @@
 Source: https://mserdyuk.ru/projects/tbank/
 Updated: 2026-11-19
 
-[Главная](https://mserdyuk.ru/) [Проекты](https://mserdyuk.ru/projects/) Т-Банк 
+[Главная](https://mserdyuk.ru/) [Проекты](https://mserdyuk.ru/projects/) Т-Банк
 
 Т-Банк · Июнь – октябрь 2025
 
@@ -11,9 +11,9 @@ Updated: 2026-11-19
 
 Исследовал привлечение партнёров в направлении автоуслуг: от глубинных интервью до подготовки партнёрской базы.
 
-131 глубинное интервью с автосервисами 
+131 глубинное интервью с автосервисами
 
-5 регионов для запуска 
+5 регионов для запуска
 
 ## Задача и контекст
 
@@ -45,10 +45,10 @@ Updated: 2026-11-19
 
 ## Связанные проекты
 
-[Яндекс](https://mserdyuk.ru/projects/yandex/) [X5 Group](https://mserdyuk.ru/projects/x5/) 
+[Яндекс](https://mserdyuk.ru/projects/yandex/) [X5 Group](https://mserdyuk.ru/projects/x5/)
 
 По резюме Марка Сердюка, ноябрь 2026.
-[Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 Следующий шаг
 
@@ -57,8 +57,8 @@ Updated: 2026-11-19
 
 Обсудить продуктовую роль,
 AI-задачу или новую идею.
-[Написать Марку ](https://t.me/serdukmark) [Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Написать Марку ](https://t.me/serdukmark) [Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
-[m.gov@internet.ru](mailto:m.gov@internet.ru) Скопировать[+7 952 997-74-40](tel:+79529977440) 
+[m.gov@internet.ru](mailto:m.gov@internet.ru) Скопировать [+7 952 997-74-40](tel:+79529977440)
 
 Сердюк в своём темпе [Telegram](https://t.me/mserdyuk) [MAX](https://max.ru/channel_mserdyuk)

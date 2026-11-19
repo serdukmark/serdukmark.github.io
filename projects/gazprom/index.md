@@ -1,7 +1,7 @@
 Source: https://mserdyuk.ru/projects/gazprom/
 Updated: 2026-11-19
 
-[Главная](https://mserdyuk.ru/) [Проекты](https://mserdyuk.ru/projects/) Газпромнефть Бизнес-сервис 
+[Главная](https://mserdyuk.ru/) [Проекты](https://mserdyuk.ru/projects/) Газпромнефть Бизнес-сервис
 
 Газпромнефть Бизнес-сервис · Июль – сентябрь 2025
 
@@ -11,9 +11,9 @@ Updated: 2026-11-19
 
 Исследовал потребности внутренних пользователей и апробировал LLM для первичных учётных документов и ERP-систем.
 
-10 дочерних обществ в CustDev 
+10 дочерних обществ в CustDev
 
-LLM + ERP апробация сценариев автоматизации 
+LLM + ERP апробация сценариев автоматизации
 
 ## Задача и контекст
 
@@ -45,10 +45,10 @@ CustDev охватил десять дочерних обществ. Подго�
 
 ## Связанные проекты
 
-[Магнит Tech](https://mserdyuk.ru/projects/magnit/) [X5 Group](https://mserdyuk.ru/projects/x5/) 
+[Магнит Tech](https://mserdyuk.ru/projects/magnit/) [X5 Group](https://mserdyuk.ru/projects/x5/)
 
 По резюме Марка Сердюка, ноябрь 2026.
-[Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 Следующий шаг
 
@@ -57,8 +57,8 @@ CustDev охватил десять дочерних обществ. Подго�
 
 Обсудить продуктовую роль,
 AI-задачу или новую идею.
-[Написать Марку ](https://t.me/serdukmark) [Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Написать Марку ](https://t.me/serdukmark) [Резюме PDF↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
-[m.gov@internet.ru](mailto:m.gov@internet.ru) Скопировать[+7 952 997-74-40](tel:+79529977440) 
+[m.gov@internet.ru](mailto:m.gov@internet.ru) Скопировать [+7 952 997-74-40](tel:+79529977440)
 
 Сердюк в своём темпе [Telegram](https://t.me/mserdyuk) [MAX](https://max.ru/channel_mserdyuk)

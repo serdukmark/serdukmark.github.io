@@ -1,7 +1,7 @@
 Source: https://mserdyuk.ru/en/projects/yandex/
 Updated: 2026-11-19
 
-[Home](https://mserdyuk.ru/en/) [Projects](https://mserdyuk.ru/en/projects/) Yandex 
+[Home](https://mserdyuk.ru/en/) [Projects](https://mserdyuk.ru/en/projects/) Yandex
 
 Yandex · February – June 2026
 
@@ -11,9 +11,9 @@ Product Manager
 
 Prepared the new “Mover without a van” service scenario for development and assembled the team.
 
-Discovery from needs to requirements 
+Discovery from needs to requirements
 
-Unit economics commercial potential model 
+Unit economics commercial potential model
 
 ## Challenge and context
 
@@ -45,10 +45,10 @@ The stage produced an assembled team, requirements, a prioritised backlog, a dem
 
 ## Related projects
 
-[T-Bank](https://mserdyuk.ru/en/projects/tbank/) [X5 Group](https://mserdyuk.ru/en/projects/x5/) 
+[T-Bank](https://mserdyuk.ru/en/projects/tbank/) [X5 Group](https://mserdyuk.ru/en/projects/x5/)
 
 Based on Mark Serdyuk’s resume, November 2026.
-[CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 The next step
 
@@ -57,8 +57,8 @@ something.
 
 A product role, an AI challenge,
 or a new idea.
-[Message Mark ](https://t.me/serdukmark) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf) 
+[Message Mark ](https://t.me/serdukmark) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
-[m.gov@internet.ru](mailto:m.gov@internet.ru) Copy[+7 952 997-74-40](tel:+79529977440) 
+[m.gov@internet.ru](mailto:m.gov@internet.ru) Copy [+7 952 997-74-40](tel:+79529977440)
 
 Serdyuk at his own pace [Telegram](https://t.me/mserdyuk) [MAX](https://max.ru/channel_mserdyuk)
