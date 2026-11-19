@@ -294,10 +294,28 @@
   }
   function run(){lastFrame=0;accumulator=0;cancelAnimationFrame(rafId);rafId=requestAnimationFrame(loop);}
   function start(){fit();reset();state='running';overlay.hidden=true;pauseBtn.hidden=false;pauseBtn.textContent=tr('Пауза','Pause');statusEl.textContent='';canvas.focus({preventScroll:true});run();}
-  function resume(){if(!details.open||document.hidden)return;state='running';overlay.hidden=true;pauseBtn.hidden=false;canvas.focus({preventScroll:true});run();}
+  function resume(){
+    if(state!=='paused'||!details.open||document.hidden)return;
+    state='countdown';overlay.replaceChildren();overlay.hidden=false;pauseBtn.hidden=false;
+    const count=document.createElement('p');count.className='game__countdown';count.textContent='3';
+    count.setAttribute('role','status');count.setAttribute('aria-live','polite');
+    const hint=document.createElement('p');hint.textContent=tr('Приготовься!','Get ready!');
+    overlay.append(count,hint);canvas.focus({preventScroll:true});
+    let began=null;
+    function countdown(now){
+      if(state!=='countdown')return;
+      if(document.hidden||!details.open){pause();return;}
+      if(began===null)began=now;
+      const remaining=3-Math.floor((now-began)/1000);
+      if(remaining<=0){state='running';overlay.hidden=true;statusEl.textContent='';run();return;}
+      if(count.textContent!==String(remaining))count.textContent=String(remaining);
+      rafId=requestAnimationFrame(countdown);
+    }
+    cancelAnimationFrame(rafId);rafId=requestAnimationFrame(countdown);
+  }
   function button(text,fn,primary=true){const b=document.createElement('button');b.type='button';b.className='button'+(primary?' primary':'');b.textContent=text;b.addEventListener('click',fn);return b;}
   function pause(){
-    if(state!=='running')return;
+    if(state!=='running'&&state!=='countdown')return;
     state='paused';cancelAnimationFrame(rafId);pauseBtn.hidden=true;overlay.replaceChildren();
     const title=document.createElement('p');title.className='game__title';title.textContent=tr('Пауза','Paused');
     const resumeBtn=button(tr('Продолжить','Resume'),resume);
@@ -375,7 +393,7 @@
   document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
   details.addEventListener('toggle',()=>{if(!details.open)pause();else{fit();loadBoard();}});
   window.addEventListener('themechange',()=>{colors();if(state!=='running')draw();});
-  let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(state==='running')pause();if(details.open)fit();},100);});
+  let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(state==='running'||state==='countdown')pause();if(details.open)fit();},100);});
   if('IntersectionObserver'in window)new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)pause();},{threshold:0}).observe(canvas);
   window.__pmRunner=Object.freeze({pause});
   reset();fit();loadBoard();

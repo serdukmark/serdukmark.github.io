@@ -37,3 +37,12 @@ html[data-motion=paused] *,html[data-motion=paused] *:before,html[data-motion=pa
 img.logo-magnit{filter:url(#magnit-transparent)}
 
 img.logo-gazprom{transform:scale(1.6)}img.logo-yandex{transform:scale(1.12)}
+
+/* A percentage row gap can overflow an auto-height single-column grid. */
+@media(max-width:800px){.experience-layout{row-gap:40px;column-gap:0}}
+.education-logo{padding:0;background:transparent;overflow:hidden}
+.education-logo .cu-logo{width:100%;height:100%;object-fit:contain}
+.education-logo .cu-logo-dark{display:none}
+:root[data-theme=light] .education-logo .cu-logo-light{display:none}
+:root[data-theme=light] .education-logo .cu-logo-dark{display:block}
+.game__countdown{font-size:64px;font-weight:700;line-height:1;color:var(--accent);margin:0}
