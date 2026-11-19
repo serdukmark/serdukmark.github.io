@@ -89,3 +89,6 @@ img.logo-gazprom{transform:scale(1.6)}img.logo-yandex{transform:scale(1.12)}
 }
 @media(max-width:360px){.orbit-mobile .orbit-sticky{grid-template-columns:minmax(0,1fr) 124px;gap:6px}.orbit-mobile .orbit-viewport{width:160px;height:160px}.orbit-mobile .planet-logo{width:36px;height:36px}.orbit-mobile .orbit-caption{font-size:10px}}
 @media print{.orbit-mobile .orbit-sticky{display:none!important}.orbit-mobile .experience-layout{padding-bottom:0}}
+
+/* Identical eight-spoke decoration across desktop and mobile font systems. */
+.asterisk{display:inline-block;width:1em;height:1em;vertical-align:-.08em;flex-shrink:0;overflow:visible}
