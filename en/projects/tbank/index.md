@@ -9,15 +9,15 @@ T-Bank · June – October 2025
 
 Business Analyst
 
-Researched partner acquisition for auto services, from in-depth interviews to a partner pipeline.
+Researched partner acquisition for automotive services, from in-depth interviews to preparing a partner database.
 
-131 in-depth interviews with auto services
+131 in-depth interviews with auto repair businesses
 
 5 regions prepared for launch
 
 ## Challenge and context
 
-I researched partner acquisition for auto services. The work included in-depth interviews with auto-service representatives, competitor analysis and preparing a regional partner pipeline.
+I researched partner acquisition for automotive services through in-depth interviews with auto repair businesses, competitor analysis and preparation of a regional partner database.
 
 Role
 
@@ -29,11 +29,11 @@ June – October 2025
 
 Stage
 
-Research and partner-pipeline preparation
+Research and preparation of a partner database
 
 ## My contribution
 
-- Interviewed auto service representatives and analysed competitors.
+- Interviewed representatives of auto repair businesses and analysed competitors.
 
 - Prepared a partner database for launch across five regions.
 
@@ -41,23 +41,23 @@ Research and partner-pipeline preparation
 
 ## Understanding the results
 
-131 is the number of in-depth interviews conducted. Five regions describes the coverage of the prepared partner database.
+I conducted 131 in-depth interviews. The partner database covered five regions.
 
 ## Related projects
 
 [Yandex](https://mserdyuk.ru/en/projects/yandex/) [X5 Group](https://mserdyuk.ru/en/projects/x5/)
 
 Based on Mark Serdyuk’s resume, November 2026.
-[CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 The next step
 
-## Let’s build
-something.
+## Let’s work
+together.
 
-A product role, an AI challenge,
-or a new idea.
-[Message Mark ](https://t.me/serdukmark) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+Let’s discuss a product role,
+an AI challenge or a new idea.
+[Message me ](https://t.me/serdukmark) [CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 [m.gov@internet.ru](mailto:m.gov@internet.ru) Copy [+7 952 997-74-40](tel:+79529977440)
 

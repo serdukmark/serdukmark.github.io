@@ -61,6 +61,8 @@ DISCOVERY / DELIVERY / AI
 
 [Магнит Tech](https://mserdyuk.ru/#case-magnit) [Яндекс](https://mserdyuk.ru/#case-yandex) [Газпромнефть Бизнес-сервис](https://mserdyuk.ru/#case-gazprom) [Т-Банк](https://mserdyuk.ru/#case-tbank) [X5 Group](https://mserdyuk.ru/#case-x5) [Правительство РФ](https://mserdyuk.ru/#case-government)
 
+Предыдущий Следующий
+
 Приостановить анимацию [Дальше: исследования](https://mserdyuk.ru/#research)
 
 ### Магнит Tech

@@ -9,7 +9,7 @@ Magnit Tech · June 2026 – present
 
 AI Product Manager
 
-Built and launched a corporate multi-agent assistant for information retrieval, calculations, metrics and management reporting.
+Built and put into operation an enterprise multi-agent AI assistant for information search, calculations, metric analysis and management reporting.
 
 1 200+ weekly users
 
@@ -29,15 +29,15 @@ June 2026 – present
 
 Stage
 
-In production and team training
+In production · employee training
 
 ## My contribution
 
-- Integrated corporate models and AI agents for semantic search, calculations and reporting.
+- Integrated enterprise AI models and agents for semantic search, calculations and reporting.
 
-- Launched a learning portal from scratch and trained 150+ product managers and team leads in AI tools.
+- Built a training portal from scratch and taught 150+ product managers and team leads how to use AI.
 
-- Relaunched the knowledge base with a unified design system, employee workspace and connected internal services.
+- Relaunched the knowledge base with a consistent design system, a personal workspace and key internal services in one place.
 
 ## Understanding the results
 
@@ -48,16 +48,16 @@ In production and team training
 [Yandex](https://mserdyuk.ru/en/projects/yandex/) [Gazpromneft Business Service](https://mserdyuk.ru/en/projects/gazprom/)
 
 Based on Mark Serdyuk’s resume, November 2026.
-[CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 The next step
 
-## Let’s build
-something.
+## Let’s work
+together.
 
-A product role, an AI challenge,
-or a new idea.
-[Message Mark ](https://t.me/serdukmark) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+Let’s discuss a product role,
+an AI challenge or a new idea.
+[Message me ](https://t.me/serdukmark) [CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 [m.gov@internet.ru](mailto:m.gov@internet.ru) Copy [+7 952 997-74-40](tel:+79529977440)
 

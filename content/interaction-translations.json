@@ -31,7 +31,7 @@
   "Методология": "Methodology",
   "Инициативы": "Initiatives",
   "Интервью": "Interviews",
-  "Партнёрская база": "Partner pipeline",
+  "Партнёрская база": "Partner database",
   "Лендинг": "Landing page",
   "Полевые исследования": "Field research",
   "Путь пользователя": "User journey",
@@ -39,5 +39,10 @@
   "Команда": "Team",
   "Эксперты": "Experts",
   "Представление результатов": "Presenting results",
-  "Развивать": "Develop"
+  "Развивать": "Develop",
+  "Коснись схемы или открой весь слой кнопкой.": "Touch the diagram or use the button to reveal the full layer.",
+  "Коснись результата · исследуй детали": "Touch a result to explore the details",
+  "Листай кейсы или вращай глобус": "Scroll through the cases or rotate the globe",
+  "Вернуть затемнение": "Restore the spotlight",
+  "К результатам": "Back to results"
 }

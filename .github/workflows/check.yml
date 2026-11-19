@@ -16,6 +16,7 @@ jobs:
       - run: python scripts/build.py
       - run: git diff --exit-code -- '*.html' '**/index.md' index.md llms.txt llms-full.txt sitemap.xml feed.xml en/feed.xml
       - run: python scripts/check.py
+      - run: python tests/translations.test.py
       - run: node --check assets/app.js && node --check assets/game.js && node --check assets/config.js && node --check assets/orbit.js && node --check assets/interactions.js && node --check assets/interactions-en.js
       - run: node tests/game.test.cjs
       - run: node tests/orbit.test.cjs

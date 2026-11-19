@@ -15,7 +15,7 @@ I contributed to international reports with Yakov and Partners and the Russian M
 
 ## Fundamentals of Business Analytics
 
-Since April 2025 I have been an industry teaching assistant at Central University. I developed and reviewed more than 100 teaching cases and worked with groups of up to 170 students in consultation sessions.
+Since April 2025 I have been an teaching assistant with industry experience at Central University. I developed and reviewed more than 100 teaching cases and worked with groups of up to 170 students in tutorial sessions.
 
 ## Team mentoring
 

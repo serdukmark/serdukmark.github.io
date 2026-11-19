@@ -5,11 +5,11 @@ Updated: 2026-11-19
 
 Yandex · February – June 2026
 
-# Discovery for Yandex’s “Mover without a van” service
+# Preparing Yandex’s moving-help service for development
 
 Product Manager
 
-Prepared the new “Mover without a van” service scenario for development and assembled the team.
+Assembled the team and prepared a new moving-help service, without transport, for development.
 
 Discovery from needs to requirements
 
@@ -17,7 +17,7 @@ Unit economics commercial potential model
 
 ## Challenge and context
 
-The new service scenario required a value proposition, a user journey and product requirements. I assembled the team and prepared the foundation for development.
+The new service offered moving help without transport. It required a value proposition, a user journey and product requirements. I assembled the team and laid the groundwork for development.
 
 Role
 
@@ -37,27 +37,27 @@ Preparation for development
 
 - Translated research findings into product requirements and a prioritised backlog.
 
-- Built a demand model and unit economics to assess commercial potential and conditions for scaling.
+- Developed demand and unit economics models to assess the service’s commercial potential and requirements for scaling.
 
 ## Understanding the results
 
-The stage produced an assembled team, requirements, a prioritised backlog, a demand model and unit economics to assess the scenario’s commercial potential.
+This preparation stage delivered a team, product requirements, a prioritised backlog, a demand model and unit economics to assess the service’s commercial potential.
 
 ## Related projects
 
 [T-Bank](https://mserdyuk.ru/en/projects/tbank/) [X5 Group](https://mserdyuk.ru/en/projects/x5/)
 
 Based on Mark Serdyuk’s resume, November 2026.
-[CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 The next step
 
-## Let’s build
-something.
+## Let’s work
+together.
 
-A product role, an AI challenge,
-or a new idea.
-[Message Mark ](https://t.me/serdukmark) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+Let’s discuss a product role,
+an AI challenge or a new idea.
+[Message me ](https://t.me/serdukmark) [CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 [m.gov@internet.ru](mailto:m.gov@internet.ru) Copy [+7 952 997-74-40](tel:+79529977440)
 

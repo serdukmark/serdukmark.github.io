@@ -3,18 +3,18 @@ Updated: 2026-11-19
 
 AI Product Manager Moscow · let’s talk
 
-People. Technology. Impact.
+People. Technology. Results.
 
 # Mark
 Serdyuk
 
 I speak the language
-of humans and machines.
+of people and AI.
 
-Connecting research, teams and AI
-to make products work for business.
+I bring research, teams and AI together
+to create business value.
 
-[Explore experience ](https://mserdyuk.ru/en/#work) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[Explore my work ](https://mserdyuk.ru/en/#work) [CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 +
 
@@ -24,7 +24,7 @@ to make products work for business.
 
 ✳  AI × PRODUCT
 
-Curious about complexity
+Curious about complex problems
 
 Scroll. Everything connects.
 
@@ -40,7 +40,7 @@ weekly users of the AI assistant
 
 150+
 
-PMs and team leads trained in AI
+product managers and team leads trained to use AI
 
 Results at Magnit Tech · resume, November 2026
 
@@ -61,6 +61,8 @@ Scroll, drag the globe or choose a company
 
 [Magnit Tech](https://mserdyuk.ru/en/#case-magnit) [Yandex](https://mserdyuk.ru/en/#case-yandex) [Gazpromneft Business Service](https://mserdyuk.ru/en/#case-gazprom) [T-Bank](https://mserdyuk.ru/en/#case-tbank) [X5 Group](https://mserdyuk.ru/en/#case-x5) [Government of Russia](https://mserdyuk.ru/en/#case-government)
 
+Previous Next
+
 Pause animation [Next: research](https://mserdyuk.ru/en/#research)
 
 ### Magnit Tech
@@ -68,19 +70,19 @@ June 2026 – present
 
 AI Product Manager
 
-#### AI that works for the business.
+#### AI that delivers business value.
 
-Built and launched a corporate multi-agent assistant for information retrieval, calculations, metrics and management reporting.
+Built and put into operation an enterprise multi-agent AI assistant for information search, calculations, metric analysis and management reporting.
 
 1 200+ weekly users
 
 100M RUB annual economic impact
 
-- Integrated corporate models and AI agents for semantic search, calculations and reporting.
+- Integrated enterprise AI models and agents for semantic search, calculations and reporting.
 
-- Launched a learning portal from scratch and trained 150+ product managers and team leads in AI tools.
+- Built a training portal from scratch and taught 150+ product managers and team leads how to use AI.
 
-- Relaunched the knowledge base with a unified design system, employee workspace and connected internal services.
+- Relaunched the knowledge base with a consistent design system, a personal workspace and key internal services in one place.
 [Explore this project+ ](https://mserdyuk.ru/en/projects/magnit/)
 
 ### Yandex
@@ -88,9 +90,9 @@ February – June 2026
 
 Product Manager
 
-#### A mover. Without a van.
+#### Moving help. Without a vehicle.
 
-Prepared the new “Mover without a van” service scenario for development and assembled the team.
+Assembled the team and prepared a new moving-help service, without transport, for development.
 
 Discovery from needs to requirements
 
@@ -100,7 +102,7 @@ Unit economics commercial potential model
 
 - Translated research findings into product requirements and a prioritised backlog.
 
-- Built a demand model and unit economics to assess commercial potential and conditions for scaling.
+- Developed demand and unit economics models to assess the service’s commercial potential and requirements for scaling.
 [Explore this project+ ](https://mserdyuk.ru/en/projects/yandex/)
 
 ### Gazpromneft Business Service
@@ -108,11 +110,11 @@ July – September 2025
 
 Project Lead
 
-#### Automation with clear economics.
+#### Automation with a clear business case.
 
-Researched internal user needs and piloted LLMs for primary accounting documents and ERP systems.
+Researched internal users’ needs and piloted LLM applications for source accounting documents and ERP systems.
 
-10 subsidiaries in CustDev
+10 subsidiaries covered by user research
 
 LLM + ERP automation use cases piloted
 
@@ -120,7 +122,7 @@ LLM + ERP automation use cases piloted
 
 - Improved the investment appraisal methodology for IT solutions.
 
-- Initiated research into a product-led approach and launched an internal networking and collaboration service.
+- Initiated a study of the transition to a product management approach and launched an internal networking and team collaboration service.
 [Explore this project+ ](https://mserdyuk.ru/en/projects/gazprom/)
 
 ### T-Bank
@@ -130,13 +132,13 @@ Business Analyst
 
 #### Start with a conversation. 131 times.
 
-Researched partner acquisition for auto services, from in-depth interviews to a partner pipeline.
+Researched partner acquisition for automotive services, from in-depth interviews to preparing a partner database.
 
-131 in-depth interviews with auto services
+131 in-depth interviews with auto repair businesses
 
 5 regions prepared for launch
 
-- Interviewed auto service representatives and analysed competitors.
+- Interviewed representatives of auto repair businesses and analysed competitors.
 
 - Prepared a partner database for launch across five regions.
 
@@ -148,19 +150,19 @@ March – September 2025
 
 Business Analyst
 
-#### Big business. In the details.
+#### Big business. The details matter.
 
-Researched partner directors’ authority in the field and translated observations into improvement proposals.
+Studied how decision-making authority is delegated to store partner-directors and turned field observations into recommendations.
 
-9 regions of field research
+9 regions covered by field research
 
 50+ improvement proposals
 
 - Conducted field research in stores across nine regions.
 
-- Mapped the partner directors’ customer journey.
+- Created a user journey map for store partner-directors.
 
-- Developed more than 50 proposals to improve the authority system.
+- Developed more than 50 recommendations to improve the delegation of authority.
 [Explore this project+ ](https://mserdyuk.ru/en/projects/x5/)
 
 ### Government of Russia
@@ -168,7 +170,7 @@ December 2024 – December 2025
 
 Working Group Lead
 
-#### Looking towards 2040.
+#### Looking ahead to 2040.
 
 Progressed from participant to working group lead on the Education Strategy 2040 project.
 
@@ -208,9 +210,9 @@ Central University · since April 2025
 ### Teaching.
 Explaining.
 
-Industry teaching assistant for Fundamentals of Business Analytics. Contributed to course materials and assignments.
+Teaching assistant with industry experience on the Fundamentals of Business Analytics course. Contributed to course materials and assignments.
 
-100+ cases developed and reviewed up to 170 students in consultation sessions
+100+ cases developed and reviewed up to 170 students in tutorial sessions
 
 ✳
 
@@ -219,7 +221,7 @@ DEADLINE / 2025–2026
 ### Mentoring teams
 that win.
 
-Mentored finalist teams with podium finishes and wins in 2025 and 2026.
+Mentored prize-winning teams at the 2025 and 2026 finals.
 
 Education & capabilities
 
@@ -281,12 +283,12 @@ About the talk+
 
 The next step
 
-## Let’s build
-something.
+## Let’s work
+together.
 
-A product role, an AI challenge,
-or a new idea.
-[Message Mark ](https://t.me/serdukmark) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+Let’s discuss a product role,
+an AI challenge or a new idea.
+[Message me ](https://t.me/serdukmark) [CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 [m.gov@internet.ru](mailto:m.gov@internet.ru) Copy [+7 952 997-74-40](tel:+79529977440)
 

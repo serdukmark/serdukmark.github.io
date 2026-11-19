@@ -5,19 +5,19 @@ Updated: 2026-11-19
 
 X5 Group · March – September 2025
 
-# Field research and partner-director CJM at X5 Group
+# Field research and user journey mapping for X5 Group’s store partner-directors
 
 Business Analyst
 
-Researched partner directors’ authority in the field and translated observations into improvement proposals.
+Studied how decision-making authority is delegated to store partner-directors and turned field observations into recommendations.
 
-9 regions of field research
+9 regions covered by field research
 
 50+ improvement proposals
 
 ## Challenge and context
 
-I researched partner directors’ authority in the field. Observations in stores informed a customer journey map and proposals to improve the system.
+I studied how decision-making authority is delegated to store partner-directors. Observations in stores informed a user journey map and recommendations for improving the delegation of authority.
 
 Role
 
@@ -35,9 +35,9 @@ Research and improvement proposals
 
 - Conducted field research in stores across nine regions.
 
-- Mapped the partner directors’ customer journey.
+- Created a user journey map for store partner-directors.
 
-- Developed more than 50 proposals to improve the authority system.
+- Developed more than 50 recommendations to improve the delegation of authority.
 
 ## Understanding the results
 
@@ -48,16 +48,16 @@ The research covered stores in nine regions and produced more than 50 improvemen
 [T-Bank](https://mserdyuk.ru/en/projects/tbank/) [Government of Russia](https://mserdyuk.ru/en/projects/government/)
 
 Based on Mark Serdyuk’s resume, November 2026.
-[CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 The next step
 
-## Let’s build
-something.
+## Let’s work
+together.
 
-A product role, an AI challenge,
-or a new idea.
-[Message Mark ](https://t.me/serdukmark) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+Let’s discuss a product role,
+an AI challenge or a new idea.
+[Message me ](https://t.me/serdukmark) [CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 [m.gov@internet.ru](mailto:m.gov@internet.ru) Copy [+7 952 997-74-40](tel:+79529977440)
 

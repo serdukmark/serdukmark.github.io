@@ -9,15 +9,15 @@ Gazpromneft Business Service · July – September 2025
 
 Project Lead
 
-Researched internal user needs and piloted LLMs for primary accounting documents and ERP systems.
+Researched internal users’ needs and piloted LLM applications for source accounting documents and ERP systems.
 
-10 subsidiaries in CustDev
+10 subsidiaries covered by user research
 
 LLM + ERP automation use cases piloted
 
 ## Challenge and context
 
-The work concerned internal user needs, primary accounting documents and ERP systems. Customer development covered ten subsidiaries.
+The work focused on internal users’ needs, source accounting documents and ERP systems. User research covered ten subsidiaries.
 
 Role
 
@@ -37,27 +37,27 @@ Research and use-case pilots
 
 - Improved the investment appraisal methodology for IT solutions.
 
-- Initiated research into a product-led approach and launched an internal networking and collaboration service.
+- Initiated a study of the transition to a product management approach and launched an internal networking and team collaboration service.
 
 ## Understanding the results
 
-Customer development covered ten subsidiaries. Deliverables included an automation-impact calculator and dashboards, LLM use-case pilots and improvements to investment appraisal methodology.
+User research covered ten subsidiaries. I developed a calculator and dashboards to assess the benefits of process automation, piloted LLM applications and refined the investment appraisal methodology.
 
 ## Related projects
 
 [Magnit Tech](https://mserdyuk.ru/en/projects/magnit/) [X5 Group](https://mserdyuk.ru/en/projects/x5/)
 
 Based on Mark Serdyuk’s resume, November 2026.
-[CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+[CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 The next step
 
-## Let’s build
-something.
+## Let’s work
+together.
 
-A product role, an AI challenge,
-or a new idea.
-[Message Mark ](https://t.me/serdukmark) [CV · PDF / RU↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
+Let’s discuss a product role,
+an AI challenge or a new idea.
+[Message me ](https://t.me/serdukmark) [CV · PDF (Russian)↓ ](https://mserdyuk.ru/serdyuk-mark-cv.pdf)
 
 [m.gov@internet.ru](mailto:m.gov@internet.ru) Copy [+7 952 997-74-40](tel:+79529977440)
 

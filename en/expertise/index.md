@@ -7,7 +7,7 @@ Mark Serdyuk
 
 # Capabilities through real projects
 
-My work connects AI product management, user research, business analysis and team training. Below are the capabilities and projects where I applied them.
+My work connects AI product management, user research, business analysis and team training. Below are the areas of expertise and the projects where I applied them.
 
 ## Enterprise AI products
 
@@ -17,13 +17,13 @@ At Magnit Tech I built and launched a multi-agent assistant for information retr
 
 ## Discovery and user research
 
-I conducted 131 in-depth interviews with auto services at T-Bank. At X5 Group I conducted field research in stores across nine regions, mapped partner directors’ journeys and developed more than 50 improvement proposals.
+I conducted 131 in-depth interviews with representatives of auto repair businesses at T-Bank. At X5 Group I conducted field research in stores across nine regions, mapped store partner-directors’ user journeys and developed more than 50 improvement proposals.
 
 [T-Bank](https://mserdyuk.ru/en/projects/tbank/) [X5 Group](https://mserdyuk.ru/en/projects/x5/)
 
 ## Preparing a product for development
 
-At Yandex I assembled the team for “Mover without a van”, defined its value proposition, user journey, requirements and backlog priorities, and prepared demand and unit-economics models. This experience concerns the pre-launch stage.
+At Yandex I assembled the team for “Moving help without transport”, defined its value proposition, user journey, requirements and backlog priorities, and prepared demand and unit-economics models. This experience concerns the pre-launch stage.
 
 [Yandex](https://mserdyuk.ru/en/projects/yandex/)
 

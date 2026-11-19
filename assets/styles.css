@@ -61,3 +61,31 @@ img.logo-gazprom{transform:scale(1.6)}img.logo-yandex{transform:scale(1.12)}
 @media(hover:none){.portrait-stage:hover img{transform:scale(1.035)}}
 .portrait-frame img{object-position:center top}
 @media(max-width:560px){.portrait-stage .tag-ai{top:8px}}
+
+/* A compact experience controller stays below the case being read on phones. */
+.orbit-stepper{display:none}
+@media(max-width:800px){
+ .orbit-mobile .experience-layout{display:block;padding-bottom:230px}
+ .orbit-mobile .orbit-sticky{position:fixed;inset:auto 0 0;top:auto;z-index:25;display:grid;grid-template-columns:minmax(0,1fr) 138px;grid-template-rows:auto 1fr auto;gap:6px 12px;margin:0;padding:10px max(16px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));background:var(--bg);border-top:1px solid var(--line);box-shadow:0 -12px 32px #0003;visibility:hidden;pointer-events:none}
+ .orbit-mobile.orbit-dock-active .orbit-sticky{visibility:visible;pointer-events:auto}
+ .orbit-mobile .orbit-viewport{grid-column:1;grid-row:1/4;width:180px;height:180px;max-width:100%;aspect-ratio:1;margin:auto}
+ .orbit-mobile .orbit-kicker,.orbit-mobile .company-tabs,.orbit-mobile .planet-logo .planet-label,.orbit-mobile .orbit-controls>a{display:none}
+ .orbit-mobile .orbit-caption{bottom:0;gap:6px;font-size:11px;line-height:1.2}
+ .orbit-mobile #orbit-name{max-width:125px}
+ .orbit-mobile .orbit-index{font-size:10px}
+ .orbit-mobile .planet-logo{width:40px;height:40px;border-radius:12px}
+ .orbit-mobile .planet-logo img.company-logo{width:27px;height:27px}
+ .orbit-mobile .orbit-hint{grid-column:2;grid-row:1;font-size:12px;line-height:1.3;text-align:left;align-self:start;margin:0;color:var(--muted)}
+ .orbit-mobile .orbit-stepper{grid-column:2;grid-row:2;display:grid;gap:4px;align-self:center}
+ .orbit-stepper button{min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:30px;font-size:14px;text-align:center}
+ .orbit-mobile .orbit-controls{grid-column:2;grid-row:3;margin:0;display:block}
+ .orbit-mobile .orbit-controls button{min-height:44px;width:100%;font-size:12px;text-underline-offset:3px}
+ .orbit-mobile .experience-card{scroll-margin-top:0}
+ .orbit-mobile .experience-card h4{font-size:32px}
+ .orbit-mobile .case-summary{font-size:16px}
+ .orbit-mobile .case-metrics span{font-size:14px}
+ .orbit-mobile .experience-card ul{font-size:16px}
+ .person-name{overflow-wrap:normal}
+}
+@media(max-width:360px){.orbit-mobile .orbit-sticky{grid-template-columns:minmax(0,1fr) 124px;gap:6px}.orbit-mobile .orbit-viewport{width:160px;height:160px}.orbit-mobile .planet-logo{width:36px;height:36px}.orbit-mobile .orbit-caption{font-size:10px}}
+@media print{.orbit-mobile .orbit-sticky{display:none!important}.orbit-mobile .experience-layout{padding-bottom:0}}
