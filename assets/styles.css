@@ -51,3 +51,13 @@ img.logo-gazprom{transform:scale(1.6)}img.logo-yandex{transform:scale(1.12)}
 .game__overlay--countdown{inset:8px 0 auto;background:transparent;pointer-events:none;padding:0;flex-direction:row;gap:10px;align-items:center}
 .game__overlay--countdown .game__countdown{font-size:34px;line-height:40px}
 .game__overlay--countdown>p:last-child{font-size:13px;color:var(--muted)}
+
+/* Keep clipping stationary: moving a blended, rounded image exposes compositing seams. */
+.portrait-stage{transform:none;transition:none}
+.portrait-frame{border:0;border-radius:28px;background:#191a1b;isolation:isolate;clip-path:inset(0 round 28px)}
+.portrait-frame img{display:block;mix-blend-mode:normal;opacity:1;filter:none;object-position:center 35%;transform:scale(1.035);backface-visibility:hidden;transition:transform .65s ease}
+.portrait-stage:hover img{filter:none;transform:translate(var(--mx),var(--my)) scale(1.06)}
+.portrait-shade{pointer-events:none;border-radius:inherit}
+@media(hover:none){.portrait-stage:hover img{transform:scale(1.035)}}
+.portrait-frame img{object-position:center top}
+@media(max-width:560px){.portrait-stage .tag-ai{top:8px}}
