@@ -3,6 +3,7 @@
   'use strict';
   const canvas = document.getElementById('orbit-canvas');
   if (!canvas) return;
+  const viewport = canvas.parentElement;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
   const root = document.documentElement;
@@ -13,18 +14,26 @@
   const tabs = [...document.querySelectorAll('.company-tab')];
   const motion = document.getElementById('motion-toggle');
   const TAU = Math.PI * 2;
-  let land = [], size = 500, yaw = .65, target = .65, active = -1;
+  const land = JSON.parse(document.getElementById('orbit-land').textContent);
+  let size = 0, yaw = .65, target = .65, active = -1;
   let visible = true, paused = false, raf = 0, scrollDirty = true, previous = 0;
+  let contextLost = false;
   let colors = {}, hovered = -1, dragging = false, dragX = 0, dragYaw = 0;
   function theme() {
     const style = getComputedStyle(root);
-    colors = {ink: style.getPropertyValue('--ink').trim(), accent: style.getPropertyValue('--accent').trim(), muted: style.getPropertyValue('--muted').trim(), line: style.getPropertyValue('--line').trim(), bg: style.getPropertyValue('--bg').trim()};
+    const light = root.dataset.theme === 'light';
+    colors = {accent: style.getPropertyValue('--accent').trim() || (light ? '#38600a' : '#d1f878'), line: style.getPropertyValue('--line').trim() || (light ? '#c6cec7' : '#303835'), bg: style.getPropertyValue('--bg').trim() || (light ? '#f6f7f2' : '#0b0e11')};
     draw();
   }
   function fit() {
-    size = canvas.clientWidth || 500;
+    const width = viewport.clientWidth;
+    if (!width || contextLost) return;
+    size = width;
     const dpr = Math.min(devicePixelRatio || 1, 2);
-    canvas.width = size * dpr; canvas.height = size * dpr;
+    const pixels = Math.round(size * dpr);
+    // Assigning either dimension clears Canvas, even when the value is unchanged.
+    if (canvas.width !== pixels) canvas.width = pixels;
+    if (canvas.height !== pixels) canvas.height = pixels;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     draw();
   }
@@ -41,7 +50,7 @@
     ctx.globalAlpha = alpha; ctx.strokeStyle = color; ctx.lineWidth = width; ctx.stroke();
   }
   function draw() {
-    if (!colors.accent || !size) return;
+    if (contextLost || !colors.accent || !size) return;
     ctx.clearRect(0,0,size,size);
     const r = size * .337, cx=size/2, cy=size/2;
     // Quiet technical frame around a geographically recognisable point cloud.
@@ -67,6 +76,7 @@
       el.style.opacity=String(i===active||i===hovered?1:.5+(z+1)*.23);
       if(i===active){ctx.globalAlpha=.5;ctx.strokeStyle=el.style.getPropertyValue('--company');ctx.setLineDash([3,5]);ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(x,y);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;ctx.fillStyle=colors.accent;ctx.beginPath();ctx.arc(cx,cy,3,0,TAU);ctx.fill();}
     });ctx.globalAlpha=1;
+    viewport.setAttribute('data-orbit-ready', '');
   }
   function select(i) {
     if(i===active)return;
@@ -94,7 +104,11 @@
     draw();
     if(Math.abs(delta)>.001&&!reduced.matches&&!paused)raf=requestAnimationFrame(frame);
   }
-  function wake(){if(!raf&&visible&&!document.hidden)raf=requestAnimationFrame(frame);}
+  function wake(){if(!raf&&visible&&!document.hidden&&!contextLost)raf=requestAnimationFrame(frame);}
+  function restore() {
+    previous=0;scrollDirty=true;
+    theme();fit();wake();
+  }
   canvas.addEventListener('pointerdown', e => {
     if(e.pointerType !== 'mouse' || paused || reduced.matches) return;
     dragging = true; dragX = e.clientX; dragYaw = yaw;
@@ -119,12 +133,15 @@
   addEventListener('scroll',()=>{scrollDirty=true;wake();},{passive:true});
   addEventListener('resize',()=>{fit();scrollDirty=true;wake();},{passive:true});
   addEventListener('themechange',theme);
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else{scrollDirty=true;previous=0;wake();}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else restore();});
+  addEventListener('pageshow',restore);
+  // Canvas 2D restores automatically unless contextlost is canceled.
+  canvas.addEventListener('contextlost',()=>{contextLost=true;cancelAnimationFrame(raf);raf=0;viewport.removeAttribute('data-orbit-ready');});
+  canvas.addEventListener('contextrestored',()=>{contextLost=false;restore();});
   motion.addEventListener('click',()=>{paused=!paused;root.dataset.motion=paused?'paused':'running';motion.setAttribute('aria-pressed',String(paused));motion.textContent=paused?(en?'Resume animation':'Включить анимацию'):(en?'Pause animation':'Приостановить анимацию');scrollDirty=true;wake();});
   reduced.addEventListener('change',()=>{scrollDirty=true;wake();});
   links.forEach((el,i)=>{el.addEventListener('mouseenter',()=>{hovered=i;wake();});el.addEventListener('mouseleave',()=>{hovered=-1;wake();});});
-  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){scrollDirty=true;previous=0;wake();}else{cancelAnimationFrame(raf);raf=0;}},{rootMargin:'100px'}).observe(canvas);
-  new ResizeObserver(fit).observe(canvas);
   theme();fit();scrollState();wake();
-  fetch('/assets/data/land.json').then(r=>{if(!r.ok)throw Error('land');return r.json();}).then(points=>{land=points;wake();}).catch(()=>{});
+  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)restore();else{cancelAnimationFrame(raf);raf=0;}},{rootMargin:'100px'}).observe(canvas);
+  if('ResizeObserver' in window)new ResizeObserver(()=>{fit();scrollDirty=true;wake();}).observe(viewport);
 })();

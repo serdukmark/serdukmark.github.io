@@ -9,7 +9,7 @@ dialog.className = 'case-portal';
 dialog.setAttribute('aria-labelledby', 'portal-title');
 dialog.innerHTML = `<canvas class="portal-dust" aria-hidden="true"></canvas><div class="portal-shell"><header class="portal-bar"><button class="portal-back">Закрыть кейс</button><span>ВНУТРИ ПРОЕКТА</span><button class="portal-theme" aria-label="Переключить тему">◐</button></header><nav class="portal-companies" aria-label="Другие проекты"></nav><div class="portal-content"></div><footer class="portal-footer"><span>От задачи к результату · мой вклад в проект</span><button class="portal-next">Следующий проект</button></footer></div>`;
 document.body.append(dialog);
-let selected = 0, opener, frame, closing = false;
+let selected = 0, opener, frame, lensFrame = 0, closing = false;
 const escape = text => text.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const nav = dialog.querySelector('.portal-companies');
 cards.forEach((card, i) => {
@@ -17,6 +17,7 @@ cards.forEach((card, i) => {
  b.addEventListener('click', () => render(i)); nav.append(b);
 });
 function render(i) {
+ cancelAnimationFrame(lensFrame);lensFrame=0;
  selected = i; const c = cards[i];
  dialog.style.setProperty('--case-color', c.style.getPropertyValue('--company'));
  [...nav.children].forEach((b,n) => {b.setAttribute('aria-pressed',String(n===i));});
@@ -28,10 +29,21 @@ function render(i) {
  const stages = [['AI-ассистент','Обучение','База знаний'],['Ценность','Требования','Экономика'],['Оценка эффектов','Методология','Инициативы'],['Интервью','Партнёрская база','Лендинг'],['Полевые исследования','Путь пользователя','Предложения'],['Команда','Эксперты','Представление результатов']][i];
  dialog.querySelector('.portal-content').innerHTML = `<div class="portal-intro"><div class="portal-company">${c.querySelector('.company-icon').innerHTML}<span>${escape(company)}</span></div><h2 id="portal-title">${escape(title)}</h2><p>${escape(summary)}</p></div><div class="xray-toolbar"><div><span class="eyebrow">РЕНТГЕН ПРОЕКТА</span><p>Проведи линзой и посмотри, что за результатом.</p></div><button class="xray-toggle" aria-pressed="false">Показать изнутри</button></div><div class="xray-stage" tabindex="0" aria-label="Рентген проекта. Используйте кнопку Показать изнутри, чтобы прочитать весь слой."><div class="xray-surface"><span class="surface-label">НА ПОВЕРХНОСТИ</span><div class="result-object"><span class="object-orbit"></span><div class="result-emblem">${c.querySelector('.company-icon').innerHTML}</div></div><div class="xray-metrics">${metrics}</div><span class="surface-caption">${escape(company)} · ${escape(c.querySelector('.eyebrow').textContent)}</span></div><div class="xray-inside" aria-hidden="true"><span class="surface-label">ПОД ПОВЕРХНОСТЬЮ · МОЯ РАБОТА</span><div class="process-grid">${bullets.map((b,n)=>`<article><span class="process-node">${stages[n] || 'Развивать'}</span><p>${escape(b)}</p></article>`).join('')}</div><span class="surface-caption">Схематичное представление · не интерфейс внутренней системы</span></div><div class="lens-ring" aria-hidden="true"><span>ВНУТРИ</span></div></div><a class="portal-detail" href="${c.querySelector('.case-link').getAttribute('href')}">Прочитать полный кейс</a>`;
  const stage = dialog.querySelector('.xray-stage'), inside = dialog.querySelector('.xray-inside'), toggle = dialog.querySelector('.xray-toggle');
- const point = e => {const r=stage.getBoundingClientRect();stage.style.setProperty('--lx',`${e.clientX-r.left}px`);stage.style.setProperty('--ly',`${e.clientY-r.top}px`);stage.classList.add('has-pointer');};
+ let pointerX=0,pointerY=0;
+ const point = e => {
+  pointerX=e.clientX;pointerY=e.clientY;
+  if(lensFrame)return;
+  lensFrame=requestAnimationFrame(()=>{
+   lensFrame=0;
+   const r=stage.getBoundingClientRect();
+   stage.style.setProperty('--lx',`${pointerX-r.left-stage.clientLeft}px`);
+   stage.style.setProperty('--ly',`${pointerY-r.top-stage.clientTop}px`);
+   stage.classList.add('has-pointer');
+  });
+ };
  stage.addEventListener('pointermove',point);
  stage.addEventListener('pointerdown',point);
- stage.addEventListener('pointerleave',()=>stage.classList.remove('has-pointer'));
+ stage.addEventListener('pointerleave',()=>{cancelAnimationFrame(lensFrame);lensFrame=0;stage.classList.remove('has-pointer');});
  toggle.addEventListener('click',()=>{const all=stage.classList.toggle('show-inside');toggle.setAttribute('aria-pressed',String(all));toggle.textContent=all?'Вернуть результат':'Показать изнутри';inside.setAttribute('aria-hidden',String(!all));});
  dialog.querySelector('.portal-content').animate([{opacity:.4,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0)'}],{duration:reduced.matches?0:350});
 }
@@ -54,7 +66,7 @@ function open(i, source){
  particles({x:orb.x+orb.width/2,y:orb.y+orb.height/2,r:orb.width*.337});
  dialog.querySelector('.portal-back').focus({preventScroll:true});
 }
-async function close(){if(closing)return;closing=true;const r=opener?.getBoundingClientRect();if(!reduced.matches&&r){await dialog.animate([{clipPath:'circle(150vmax at 50% 50%)',opacity:1},{clipPath:`circle(20px at ${r.x+r.width/2}px ${r.y+r.height/2}px)`,opacity:.2}],{duration:380,easing:'ease-in',fill:'forwards'}).finished;}dialog.close();dialog.getAnimations().forEach(a=>a.cancel());document.body.classList.remove('portal-open');cancelAnimationFrame(frame);opener?.focus({preventScroll:true});closing=false;}
+async function close(){if(closing)return;closing=true;cancelAnimationFrame(lensFrame);lensFrame=0;const r=opener?.getBoundingClientRect();if(!reduced.matches&&r){await dialog.animate([{clipPath:'circle(150vmax at 50% 50%)',opacity:1},{clipPath:`circle(20px at ${r.x+r.width/2}px ${r.y+r.height/2}px)`,opacity:.2}],{duration:380,easing:'ease-in',fill:'forwards'}).finished;}dialog.close();dialog.getAnimations().forEach(a=>a.cancel());document.body.classList.remove('portal-open');cancelAnimationFrame(frame);opener?.focus({preventScroll:true});closing=false;}
 // Capture before the existing smooth-anchor navigation, preserving the globe's position.
 document.addEventListener('click',e=>{const el=e.target.closest('.planet-logo, .company-tab');if(!el)return;e.preventDefault();e.stopImmediatePropagation();open(Number(el.dataset.orbit??el.dataset.company),el);},true);
 dialog.querySelector('.portal-back').addEventListener('click',close);
