@@ -17,7 +17,8 @@ def write(p,s):
  p=ROOT/p;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(s,encoding='utf-8')
 def cv():return f'<a class="button secondary" href="/serdyuk-mark-cv.pdf" data-track="cv_download" download>{t("Резюме PDF","CV · PDF / RU")}<span aria-hidden="true">↓</span></a>'
 def logo(c):
- return f'<span aria-hidden="true" class="brandmark brandmark-{c["slug"]}">{c["mark"]}</span>'
+ ext='webp' if c['slug'] in ('tbank','yandex') else 'png'
+ return f'<img class="company-logo logo-{c["slug"]}" src="{asset("assets/logos/current/"+c["slug"]+"."+ext)}" alt="" aria-hidden="true" width="40" height="40">'
 def head(title,desc,path,case=None):
  url=DOMAIN+path; ru=path.replace('/en/','/'); en='/en'+ru
  graph=[{'@type':'WebSite','@id':DOMAIN+'/#website','url':DOMAIN+'/','name':'Марк Сердюк','inLanguage':['ru','en']},{'@type':'Person','@id':DOMAIN+'/#person','name':t('Марк Сердюк','Mark Serdyuk'),'url':DOMAIN+'/','jobTitle':t('Продуктовый менеджер AI-продуктов','AI Product Manager'),'image':DOMAIN+'/assets/img/mark-original.png','sameAs':['https://t.me/serdukmark','https://t.me/mserdyuk','https://max.ru/channel_mserdyuk'],'worksFor':{'@type':'Organization','name':'Магнит Tech'}}]
@@ -32,7 +33,7 @@ def head(title,desc,path,case=None):
 <link rel="preload" href="/assets/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark'}}catch(e){{}}</script>
 <link rel="stylesheet" href="{asset('assets/styles.css')}"><script src="{asset('assets/config.js')}" defer></script><script src="{asset('assets/app.js')}" data-game-src="{asset('assets/game.js')}" defer></script><script src="{asset('assets/orbit.js')}" defer></script>
-<script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False)}</script></head><body><a class="skip-link" href="#main">{t('К содержимому','Skip to content')}</a>'''
+<script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False)}</script></head><body><svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none"><defs><filter id="magnit-transparent" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 .9 0 0 0 0 .025 0 0 0 0 .08 0 -1 0 0 1"/><feComposite in2="SourceAlpha" operator="in"/></filter><filter id="x5-white-letters" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 -5 0 0 1" result="white"/><feComposite in="white" in2="SourceAlpha" operator="in" result="letters"/><feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="letters"/></feMerge></filter></defs></svg><a class="skip-link" href="#main">{t('К содержимому','Skip to content')}</a>'''
 def header(path=''):
  nav=''.join(f'<a href="{home()}#{id}">{name}</a>' for id,name in [('work',t('Опыт','Experience')),('research',t('Исследования','Research')),('about',t('Обо мне','About'))])
  alt=('/en'+path) if LANG=='ru' else path.replace('/en/','/')
